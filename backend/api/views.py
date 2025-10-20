@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from .models import LeaderboardEntry
 from .utils import random_score_increase
+from .auth import login_required, get_current_user
 import json
 import random
 
@@ -13,11 +14,41 @@ def add_cors_headers(response):
     return response
 
 def get_random_avatar():
-    """Return a random avatar emoji"""
+    """Return a random avatar emoji (fallback)"""
     avatars = ['👩', '👨', '🧑', '👩‍💼', '👨‍💼', '👩‍🔬', '👨‍🔬', '👩‍💻', '👨‍💻', 
                '👩‍🏫', '👨‍🏫', '👩‍⚕️', '👨‍⚕️', '👩‍🎨', '👨‍🎨', '👩‍🚀', '👨‍🚀',
                '👩‍🌾', '👨‍🌾', '👩‍🍳', '👨‍🍳', '👩‍🎤', '👨‍🎤', '👩‍🎬', '👨‍🎬']
     return random.choice(avatars)
+
+def get_or_create_user_leaderboard_entry(user_info):
+    """
+    Get or create a leaderboard entry for the authenticated user.
+    If the user doesn't exist, create them with a default score of 100.
+    """
+    zauth_id = user_info.get('id')
+    username = user_info.get('username', 'unknown')
+    picture_url = user_info.get('picture')
+    
+    # Try to find existing entry by zauth_id
+    entry = LeaderboardEntry.objects.filter(zauth_id=zauth_id).first()
+    
+    if not entry:
+        # Create new entry with score of 100, using username as name
+        entry = LeaderboardEntry.objects.create(
+            name=username,
+            score=100,
+            zauth_id=zauth_id,
+            picture_url=picture_url
+        )
+        print(f"Created new leaderboard entry for {username} (score: 100)")
+    else:
+        # Update picture URL if it changed
+        if entry.picture_url != picture_url:
+            entry.picture_url = picture_url
+            entry.save()
+            print(f"Updated picture URL for {username}")
+    
+    return entry
 
 @csrf_exempt
 def get_leaderboard(request):
@@ -32,11 +63,15 @@ def get_leaderboard(request):
         # Format data for frontend
         leaderboard_data = []
         for index, entry in enumerate(entries, 1):
+            # Use stored picture URL, or emoji fallback
+            avatar_url = entry.picture_url
+            
             leaderboard_data.append({
                 'rank': index,
                 'name': entry.name,
                 'score': entry.score,
-                'avatar': get_random_avatar()
+                'avatar': get_random_avatar() if not avatar_url else None,
+                'avatar_url': avatar_url
             })
         
         response = JsonResponse({
@@ -53,6 +88,7 @@ def get_leaderboard(request):
         return add_cors_headers(response)
 
 @csrf_exempt
+@login_required
 def process_text(request):
     if request.method == 'OPTIONS':
         response = JsonResponse({'success': True})
@@ -63,11 +99,15 @@ def process_text(request):
         return add_cors_headers(response)
     
     try:
+        # Get the current authenticated user
+        user = get_current_user(request)
+        username = user.get('username', 'Unknown')
+        
         data = json.loads(request.body)
         input_text = data.get('text', '')
         
-        # Increase Henry Davis's score randomly on each text submission
-        henry_result = random_score_increase("Henry Davis", 100, 200)
+        # Increase the authenticated user's score randomly on each text submission
+        score_result = random_score_increase(username, 100, 200)
         
         # Simple text processing - you can make this more sophisticated
         if not input_text.strip():
@@ -81,11 +121,16 @@ def process_text(request):
             processed_text += f"Uppercase: {input_text.upper()}\n\n"
             processed_text += f"Formatted:\n{'-' * 20}\n{input_text}\n{'-' * 20}"
             
-            # Add Henry's score update info to the response
-            if henry_result['success']:
-                processed_text += f"\n\n🎉 Bonus Info:\n"
-                processed_text += f"Henry Davis gained {henry_result['delta']} points!\n"
-                processed_text += f"New score: {henry_result['new_score']} (was {henry_result['old_score']})"
+            # Add user's score update info to the response
+            if score_result['success']:
+                processed_text += f"\n\n🎉 Score Update:\n"
+                processed_text += f"You gained {score_result['delta']} points!\n"
+                processed_text += f"New score: {score_result['new_score']} (was {score_result['old_score']})"
+            
+            # Add authenticated user info
+            processed_text += f"\n\n👤 Processed by: {username}"
+            if user.get('name'):
+                processed_text += f" ({user['name']})"
             
             response_text = processed_text
         
@@ -95,9 +140,9 @@ def process_text(request):
             'original_text': input_text
         }
         
-        # Include Henry's score update in the response
-        if henry_result['success']:
-            response_data['score_update'] = henry_result
+        # Include user's score update in the response
+        if score_result['success']:
+            response_data['score_update'] = score_result
         
         response = JsonResponse(response_data)
         return add_cors_headers(response)

@@ -1,0 +1,27 @@
+# Zeus OAuth Configuration Template
+# 
+# IMPORTANT: Copy this file to config.toml and fill in your actual values
+# DO NOT commit config.toml with real credentials!
+
+[zauth]
+# Get these from Zeus WPI when you register your application
+client_id = "YOUR_CLIENT_ID_HERE"
+client_secret = "YOUR_CLIENT_SECRET_HERE"
+
+# Zeus OAuth endpoints (these are typically correct, but verify with Zeus docs)
+authorize_url = "https://zauth.zeus.gent/oauth/authorize"
+access_token_url = "https://zauth.zeus.gent/oauth/token"
+api_base_url = "https://zauth.zeus.gent/api"
+
+# Your application's callback URL
+# For development: http://localhost:8000/api/auth/callback
+# For production: https://yourdomain.com/api/auth/callback
+redirect_uri = "http://localhost:8000/api/auth/callback"
+
+# OAuth scopes - adjust based on what data you need
+# Common values: "public" for basic profile info
+scope = "public"
+
+# Django secret key - generate a strong random value for production
+# You can generate one with: python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+secret_key = "CHANGE_THIS_TO_A_RANDOM_SECRET_KEY_IN_PRODUCTION"

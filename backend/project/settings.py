@@ -20,7 +20,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+@bjla1r$0xcob7iv1zdxzs1xwytsr-_$i=g(w5g1wr#ky!+j3'
+import tomllib
+from pathlib import Path as PathlibPath
+
+# Load config for OAuth secret key if available
+config_path = PathlibPath(BASE_DIR) / 'config.toml'
+if config_path.exists():
+    with open(config_path, 'rb') as f:
+        config = tomllib.load(f)
+        SECRET_KEY = config['zauth'].get('secret_key', 'django-insecure-+@bjla1r$0xcob7iv1zdxzs1xwytsr-_$i=g(w5g1wr#ky!+j3')
+else:
+    SECRET_KEY = 'django-insecure-+@bjla1r$0xcob7iv1zdxzs1xwytsr-_$i=g(w5g1wr#ky!+j3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,11 +47,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'api',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -120,3 +132,26 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CORS settings for OAuth callback
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # Vite dev server
+    "http://localhost:3000",  # Alternative frontend port
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+# Session settings for OAuth
+SESSION_COOKIE_SECURE = False  # Set to True in production with HTTPS
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_AGE = 86400  # 24 hours
+
+# Allow session cookies to work with frontend
+SESSION_COOKIE_DOMAIN = None
+
+# CSRF settings
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+]

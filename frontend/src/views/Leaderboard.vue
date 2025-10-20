@@ -5,7 +5,8 @@ interface LeaderboardEntry {
   rank: number
   name: string
   score: number
-  avatar: string
+  avatar?: string  // Emoji fallback
+  avatar_url?: string  // Zeus profile picture URL
 }
 
 const leaderboardData = ref<LeaderboardEntry[]>([])
@@ -68,7 +69,10 @@ onMounted(fetchLeaderboard)
           <div class="podium">
             <!-- Second Place -->
             <div v-if="leaderboardData[1]" class="podium-item second-place">
-              <div class="avatar">{{ leaderboardData[1].avatar }}</div>
+              <div class="avatar">
+                <img v-if="leaderboardData[1].avatar_url" :src="leaderboardData[1].avatar_url" :alt="leaderboardData[1].name" class="avatar-img" />
+                <span v-else>{{ leaderboardData[1].avatar }}</span>
+              </div>
               <div class="rank-badge silver">2</div>
               <h3>{{ leaderboardData[1].name }}</h3>
               <p class="score">{{ leaderboardData[1].score.toLocaleString() }}</p>
@@ -76,7 +80,10 @@ onMounted(fetchLeaderboard)
             
             <!-- First Place -->
             <div v-if="leaderboardData[0]" class="podium-item first-place">
-              <div class="avatar">{{ leaderboardData[0].avatar }}</div>
+              <div class="avatar">
+                <img v-if="leaderboardData[0].avatar_url" :src="leaderboardData[0].avatar_url" :alt="leaderboardData[0].name" class="avatar-img" />
+                <span v-else>{{ leaderboardData[0].avatar }}</span>
+              </div>
               <div class="rank-badge gold">1</div>
               <h3>{{ leaderboardData[0].name }}</h3>
               <p class="score">{{ leaderboardData[0].score.toLocaleString() }}</p>
@@ -85,7 +92,10 @@ onMounted(fetchLeaderboard)
             
             <!-- Third Place -->
             <div v-if="leaderboardData[2]" class="podium-item third-place">
-              <div class="avatar">{{ leaderboardData[2].avatar }}</div>
+              <div class="avatar">
+                <img v-if="leaderboardData[2].avatar_url" :src="leaderboardData[2].avatar_url" :alt="leaderboardData[2].name" class="avatar-img" />
+                <span v-else>{{ leaderboardData[2].avatar }}</span>
+              </div>
               <div class="rank-badge bronze">3</div>
               <h3>{{ leaderboardData[2].name }}</h3>
               <p class="score">{{ leaderboardData[2].score.toLocaleString() }}</p>
@@ -110,7 +120,10 @@ onMounted(fetchLeaderboard)
               <span class="rank-number">{{ player.rank }}</span>
             </div>
             <div class="player-col">
-              <span class="player-avatar">{{ player.avatar }}</span>
+              <span class="player-avatar">
+                <img v-if="player.avatar_url" :src="player.avatar_url" :alt="player.name" class="avatar-img-small" />
+                <span v-else>{{ player.avatar }}</span>
+              </span>
               <span class="player-name">{{ player.name }}</span>
             </div>
             <div class="score-col">
@@ -276,6 +289,20 @@ onMounted(fetchLeaderboard)
 .avatar {
   font-size: 3rem;
   margin-bottom: 1rem;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem auto;
+}
+
+.avatar-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.3);
 }
 
 .rank-badge {
@@ -406,6 +433,19 @@ onMounted(fetchLeaderboard)
 
 .player-avatar {
   font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.avatar-img-small {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .player-name {

@@ -3,6 +3,8 @@ from django.db import models
 class LeaderboardEntry(models.Model):
     name = models.CharField(max_length=100)
     score = models.IntegerField()
+    zauth_id = models.IntegerField(null=True, blank=True)  # Zeus user ID
+    picture_url = models.URLField(max_length=500, null=True, blank=True)  # Profile picture URL
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

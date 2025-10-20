@@ -1,3 +1,22 @@
 __pycache__
 venv
 .env
+
+# OAuth Configuration (contains sensitive credentials)
+backend/config.toml
+
+# Database
+db.sqlite3
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo

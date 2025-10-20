@@ -22,6 +22,7 @@ const submitText = async () => {
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include', // Include authentication cookies
       body: JSON.stringify({
         text: inputText.value
       })
