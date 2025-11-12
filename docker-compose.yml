@@ -1,6 +1,15 @@
 version: '3.8'
 
 services:
+
+  llm:
+    build: ./llm
+    container_name: vibe_llm
+    volumes:
+      - ./llm:/app
+    ports:
+      - "5555:5555"
+
   backend:
     build: ./backend
     container_name: vibe_backend
