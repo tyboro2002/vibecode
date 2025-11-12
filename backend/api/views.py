@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
-from .models import LeaderboardEntry
+from .models import LeaderboardEntry, Problem
 from .utils import random_score_increase
 from .auth import login_required, get_current_user
 import json
@@ -154,6 +154,28 @@ def process_text(request):
         }, status=400)
         return add_cors_headers(response)
     
+    except Exception as e:
+        response = JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+        return add_cors_headers(response)
+
+
+@csrf_exempt
+def get_all_problems(request):
+    if request.method != 'GET':
+        response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        return add_cors_headers(response)
+
+    try:
+        problems = Problem.objects.all()
+        problems_data = list(problems.values())
+        response = JsonResponse({
+            'success': True,
+            'problems': problems_data
+        })
+        return add_cors_headers(response)
     except Exception as e:
         response = JsonResponse({
             'success': False,

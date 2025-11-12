@@ -5,6 +5,8 @@ urlpatterns = [
     # Existing endpoints
     path('process-text/', views.process_text, name='process_text'),
     path('leaderboard/', views.get_leaderboard, name='get_leaderboard'),
+
+    path('problems/all/', views.get_all_problems, name='get_all_problems'),
     
     # Authentication endpoints
     path('auth/login', auth_views.login, name='auth_login'),
