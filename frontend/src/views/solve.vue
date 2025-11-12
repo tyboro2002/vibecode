@@ -1,10 +1,44 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import {ref, onMounted} from 'vue'
 
 const inputText = ref('')
 const displayText = ref('Your processed text will appear here when you submit...')
 const isLoading = ref(false)
 const errorMessage = ref('')
+const problems = ref([])
+
+// Fetch the problems from the backend on component mount
+onMounted(async () => {
+  try {
+    const response = await fetch('http://localhost:8000/api/problems/all', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+
+    const data = await response.json()
+    problems.value = data.problems || []
+    // for dev
+    // problems.value = [
+    //   "The Jumbled Jumper",
+    //   "Sortocalypse",
+    //   "The Shuffle Shuffle",
+    //   "Whack-a-Number",
+    //   "The Mischief Sort",
+    //   "Random Access Chaos",
+    //   "The Out-of-Place Race",
+    //   "Sort of Confused",
+    //   "HodgePodge Heap",
+    //   "Disorderly Conduct",
+    //   "The Misplaced Parade",
+    // ];
+
+  } catch (error) {
+    console.error('Error fetching problems:', error)
+  }
+})
 
 // Submit function to send text to backend
 const submitText = async () => {
@@ -15,7 +49,7 @@ const submitText = async () => {
 
   isLoading.value = true
   errorMessage.value = ''
-  
+
   try {
     const response = await fetch('http://localhost:8000/api/process-text/', {
       method: 'POST',
@@ -56,27 +90,39 @@ const clearText = () => {
 <template>
   <div class="other-container">
     <div class="split-layout">
+      <div>
+        <li v-for="(problem, index) in problems" :key="index" class="left-list">
+          <router-link
+              style="color: white"
+              :to="`/solve/${problem.id}`"
+          >
+            {{ problem.name }}
+          </router-link>
+
+          <span class="left-list-points">{{ problem.points }}</span>
+        </li>
+      </div>
       <!-- Left Side - Input Field -->
       <div class="input-section">
         <div class="input-card">
           <h2>✍️ Text Input</h2>
           <p>Type something and click submit to send it to the backend for processing!</p>
-          
+
           <div v-if="errorMessage" class="error-message">
             ⚠️ {{ errorMessage }}
           </div>
-          
+
           <div class="input-group">
             <label for="textInput" class="input-label">Enter your text:</label>
             <textarea
-              id="textInput"
-              v-model="inputText"
-              class="text-input"
-              placeholder="Start typing here..."
-              rows="10"
+                id="textInput"
+                v-model="inputText"
+                class="text-input"
+                placeholder="Start typing here..."
+                rows="10"
             ></textarea>
           </div>
-          
+
           <div class="input-controls">
             <button @click="submitText" :disabled="isLoading" class="submit-btn">
               <span v-if="isLoading">⏳ Processing...</span>
@@ -89,14 +135,15 @@ const clearText = () => {
               Characters: {{ inputText.length }}
             </div>
           </div>
-          
+
           <div class="quick-actions">
             <h3>Quick Insert:</h3>
             <div class="action-buttons">
               <button @click="inputText += 'Hello World! '" class="action-btn">
                 👋 Hello
               </button>
-              <button @click="inputText += 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '" class="action-btn">
+              <button @click="inputText += 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '"
+                      class="action-btn">
                 📝 Lorem
               </button>
               <button @click="inputText += '🎉🚀⭐💫 '" class="action-btn">
@@ -106,13 +153,13 @@ const clearText = () => {
           </div>
         </div>
       </div>
-      
+
       <!-- Right Side - Text Display -->
       <div class="display-section">
         <div class="display-card">
           <h2>📄 Backend Response</h2>
           <p>Processed response from the backend</p>
-          
+
           <div class="text-display">
             <div class="display-content" :class="{ 'loading': isLoading }">
               <div v-if="isLoading" class="loading-spinner">
@@ -130,6 +177,25 @@ const clearText = () => {
 </template>
 
 <style scoped>
+
+.left-list-points {
+  margin-left: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  text-align: right;
+  min-width: 2rem;
+}
+
+.left-list {
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .other-container {
   padding: 2rem;
   overflow-y: auto;
@@ -137,8 +203,8 @@ const clearText = () => {
 
 .split-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 200px 1fr 1fr;
+  gap: 15px;
   max-width: 1400px;
   margin: 0 auto;
   height: calc(100vh - 140px);
@@ -387,7 +453,7 @@ const clearText = () => {
     gap: 1.5rem;
     height: auto;
   }
-  
+
   .input-card,
   .display-card {
     height: auto;
@@ -399,27 +465,27 @@ const clearText = () => {
   .other-container {
     padding: 1rem;
   }
-  
+
   .input-card,
   .display-card {
     padding: 1.5rem;
   }
-  
+
   .input-card h2,
   .display-card h2 {
     font-size: 1.8rem;
   }
-  
+
   .action-buttons {
     justify-content: center;
   }
-  
+
   .input-controls {
     flex-direction: column;
     gap: 1rem;
     align-items: stretch;
   }
-  
+
   .submit-btn,
   .clear-btn {
     width: 100%;
@@ -430,12 +496,12 @@ const clearText = () => {
   .split-layout {
     gap: 1rem;
   }
-  
+
   .input-card,
   .display-card {
     padding: 1rem;
   }
-  
+
   .text-input {
     min-height: 150px;
   }
