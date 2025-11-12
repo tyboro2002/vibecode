@@ -15,3 +15,18 @@ class LeaderboardEntry(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.score}"
+
+
+class Problem(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)
+    points = models.IntegerField()
+    assignment = models.TextField()
+
+
+class Submission(models.Model):
+    id = models.AutoField(primary_key=True)
+    problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
+    submission_time = models.DateTimeField(auto_now_add=True)
+    submission_correct = models.BooleanField(default=False)
+    submisser = models.ForeignKey(LeaderboardEntry, on_delete=models.CASCADE)
