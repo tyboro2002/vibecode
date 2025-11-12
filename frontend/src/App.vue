@@ -82,11 +82,11 @@ watch(() => route.query.login, (newValue) => {
           Leaderboard
         </router-link>
         <router-link 
-          to="/other" 
-          :class="{ active: route.name === 'Other' }"
+          to="/solve"
+          :class="{ active: route.name === 'Solve' }"
           class="nav-btn"
         >
-          Other Page
+          Solver
         </router-link>
       </nav>
 

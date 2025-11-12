@@ -7,8 +7,8 @@
         <router-link to="/leaderboard" class="action-btn primary">
           📊 View Leaderboard
         </router-link>
-        <router-link to="/other" class="action-btn secondary">
-          🎯 Go to Other Page
+        <router-link to="/solve" class="action-btn secondary">
+          🎯 Go to Solve Page
         </router-link>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Leaderboard from '../views/Leaderboard.vue'
-import Other from '../views/Other.vue'
+import Solve from '../views/solve.vue'
 import { authService } from '@/services/auth'
 
 const routes = [
@@ -16,9 +16,9 @@ const routes = [
     component: Leaderboard
   },
   {
-    path: '/other',
-    name: 'Other',
-    component: Other,
+    path: '/solve',
+    name: 'Solve',
+    component: Solve,
     meta: { requiresAuth: true }
   }
 ]
