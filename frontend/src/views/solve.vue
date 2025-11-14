@@ -1,11 +1,38 @@
 <script setup lang="ts">
-import {ref, onMounted} from 'vue'
+import {ref, onMounted, onBeforeMount} from 'vue'
+// Vue Python editor and runtime
+import { usePython } from 'usepython'
+import { PyStatus, PyCodeBlock } from 'vuepython'
+import 'vuepython/style.css'
+import 'highlight.js/styles/stackoverflow-dark.css'
+
+type Problem = { id: string | number; name: string; points: number }
 
 const inputText = ref('')
 const displayText = ref('Your processed text will appear here when you submit...')
 const isLoading = ref(false)
 const errorMessage = ref('')
-const problems = ref([])
+const problems = ref<Problem[]>([])
+
+// Python runtime and example code for the editor
+const py = usePython()
+const pyCode = ref(
+  ``
+  // `print('starting python script')\n` +
+  // `a = 1\n` +
+  // `b = 2\n` +
+  // `print('finished python script')\n` +
+  // `c = a + b\n` +
+  // `# return value\n` +
+  // `c\n` + 
+  // `for i in range(0,10):\n` +
+  // `\tprint(i)`
+
+)
+
+onBeforeMount(async () => {
+  await py.load()
+})
 
 // Fetch the problems from the backend on component mount
 onMounted(async () => {
@@ -65,14 +92,14 @@ const submitText = async () => {
     const data = await response.json()
 
     if (data.success) {
-      displayText.value = data.processed_text
+      pyCode.value = data.processed_text
     } else {
       errorMessage.value = data.error || 'An error occurred while processing the text.'
-      displayText.value = 'Error processing text. Please try again.'
+      pyCode.value = 'Error processing text. Please try again.'
     }
   } catch (error) {
     errorMessage.value = 'Failed to connect to the backend. Make sure the server is running.'
-    displayText.value = 'Connection error. Please check if the backend server is running.'
+    pyCode.value = 'Connection error. Please check if the backend server is running.'
     console.error('Error:', error)
   } finally {
     isLoading.value = false
@@ -154,22 +181,17 @@ const clearText = () => {
         </div>
       </div>
 
-      <!-- Right Side - Text Display -->
+      <!-- Right Side - Python Editor -->
       <div class="display-section">
         <div class="display-card">
-          <h2>📄 Backend Response</h2>
-          <p>Processed response from the backend</p>
+          <h2>Python Editor</h2>
 
-          <div class="text-display">
-            <div class="display-content" :class="{ 'loading': isLoading }">
-              <div v-if="isLoading" class="loading-spinner">
-                🔄 Processing your text...
-              </div>
-              <div v-else>
-                {{ displayText }}
+            <div class="text-display">
+              <div class="display-content no-padding">
+                <div class="editor-status"><py-status :py="py" /></div>
+                <py-code-block id="script" :py="py" :code="pyCode" :controls="false" />
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
@@ -412,7 +434,9 @@ const clearText = () => {
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 1.5rem;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* let inner editor manage scrolling */
 }
 
 .display-content {
@@ -421,7 +445,7 @@ const clearText = () => {
   line-height: 1.6;
   white-space: pre-wrap;
   word-wrap: break-word;
-  min-height: 100px;
+  min-height: 0; /* allow flex child (editor) to grow */
 }
 
 .display-content.loading {
@@ -431,11 +455,28 @@ const clearText = () => {
   min-height: 200px;
 }
 
+.display-content.no-padding {
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .loading-spinner {
   font-size: 1.2rem;
   color: #4facfe;
   animation: pulse 2s infinite;
 }
+
+.pythonpad-iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+  border-radius: 8px;
+  background: #111;
+}
+
+/* Controls hidden via :controls="false" on <py-code-block> */
 
 @keyframes pulse {
   0%, 100% {
@@ -444,6 +485,93 @@ const clearText = () => {
   50% {
     opacity: 0.5;
   }
+}
+
+/* Python editor theming (ensure dark background + readable text) */
+:deep(.pycode-block),
+:deep(.pycode-block .code-editor),
+:deep(.pycode-block pre),
+:deep(.pycode-block code),
+:deep(.hljs) {
+  background-color: #0f172a !important; /* slate-900 */
+  color: #e5e7eb !important; /* gray-200 */
+}
+
+/* Force left alignment inside the editor */
+:deep(.pycode-block),
+:deep(.pycode-block .code-editor),
+:deep(.pycode-block pre),
+:deep(.pycode-block code),
+:deep(.hljs) {
+  text-align: left !important;
+}
+
+:deep(.pycode-block .code-editor) {
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow: auto !important;
+}
+
+/* Make the embedded editor fill the container */
+:deep(py-code-block),
+:deep(.pycode-block) {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+:deep(.pycode-block pre),
+:deep(.pycode-block code),
+:deep(.hljs) {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Optional: tweak borders and selection for better contrast */
+:deep(.pycode-block .code-editor) {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Remove white focus border/outline when clicking editor */
+:deep(.pycode-block .code-editor:focus),
+:deep(.pycode-block .code-editor:focus-visible),
+:deep(.pycode-block pre:focus),
+:deep(.pycode-block pre:focus-visible),
+:deep(.pycode-block code:focus),
+:deep(.pycode-block code:focus-visible),
+:deep(.hljs:focus),
+:deep(.hljs:focus-visible) {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* In case the container itself receives focus */
+.text-display:focus,
+.display-content:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* If the editor renders a textarea (.code-block), style it too */
+:deep(textarea.code-block) {
+  border: none;
+}
+
+:deep(textarea.code-block:focus),
+:deep(textarea.code-block:focus-visible) {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+:deep(.hljs ::selection),
+:deep(.pycode-block ::selection) {
+  background: rgba(79, 172, 254, 0.35) !important;
+  color: #fff !important;
 }
 
 /* Responsive Design */

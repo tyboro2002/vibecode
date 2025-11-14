@@ -14,6 +14,8 @@ from .auth import (
     ZAUTH_CONFIG
 )
 
+url = "http://localhost:5173"
+# url = "http://192.168.0.107:5173"
 
 @csrf_exempt
 @require_http_methods(["GET", "POST"])
@@ -98,7 +100,7 @@ def callback(request):
                 # Instead of creating a fake user, return an error
                 import urllib.parse
                 error_msg = urllib.parse.quote(f"Failed to get user info: {str(user_error)}")
-                return redirect(f'http://localhost:5173/?login=error&message={error_msg}')
+                return redirect(f'{url}/?login=error&message={error_msg}')
         
         # Store user info and token in session
         request.session['user'] = user_info
@@ -118,13 +120,13 @@ def callback(request):
         frontend_url = request.GET.get('redirect', '/')
         
         # Redirect to frontend with success (you might want to customize this URL)
-        return redirect(f'http://localhost:5173{frontend_url}?login=success')
+        return redirect(f'{url}{frontend_url}?login=success')
         
     except Exception as e:
         # Better error handling - redirect to frontend with error
         import urllib.parse
         error_msg = urllib.parse.quote(str(e))
-        return redirect(f'http://localhost:5173/?login=error&message={error_msg}')
+        return redirect(f'{url}/?login=error&message={error_msg}')
 
 
 @csrf_exempt
