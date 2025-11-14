@@ -1,16 +1,6 @@
 version: '3.8'
 
 services:
-
-  tests:
-    build: ./tests
-    container_name: vibe_tests
-    volumes:
-      - ./tests:/app
-    ports:
-      - "5556:5556"
-    gpus: all
-
   llm:
     build: ./llm
     container_name: vibe_llm
