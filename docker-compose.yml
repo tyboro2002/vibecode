@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-
   llm:
     build: ./llm
     container_name: vibe_llm

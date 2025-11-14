@@ -78,25 +78,27 @@ const submitText = async () => {
   errorMessage.value = ''
 
   try {
-    const response = await fetch('http://localhost:8000/api/process-text/', {
+    const response = await fetch('http://localhost:8000/api/submit/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       credentials: 'include', // Include authentication cookies
       body: JSON.stringify({
-        text: inputText.value
+        prompt: inputText.value,
+        code: ""
       })
     })
 
     const data = await response.json()
 
-    if (data.success) {
-      pyCode.value = data.processed_text
-    } else {
-      errorMessage.value = data.error || 'An error occurred while processing the text.'
-      pyCode.value = 'Error processing text. Please try again.'
-    }
+    // if (data.success) {
+      pyCode.value = data.generated_code
+    // } else {
+    //   errorMessage.value = data.error || 'An error occurred while processing the text.'
+    //   pyCode.value = 'Error processing text. Please try again.'
+    // }
+
   } catch (error) {
     errorMessage.value = 'Failed to connect to the backend. Make sure the server is running.'
     pyCode.value = 'Connection error. Please check if the backend server is running.'
