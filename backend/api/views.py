@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_http_methods
-from .models import LeaderboardEntry, Problem
+import requests
+from .models import LeaderboardEntry, Problem, TestCase
 from .utils import random_score_increase
 from .auth import login_required, get_current_user
 import json
@@ -175,6 +175,97 @@ def get_all_problems(request):
             'success': True,
             'problems': problems_data
         })
+        return add_cors_headers(response)
+    except Exception as e:
+        response = JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+        return add_cors_headers(response)
+
+
+@csrf_exempt
+@login_required
+def generate_code(request):
+    if request.method != 'POST':
+        response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        return add_cors_headers(response)
+    try:
+        data = json.loads(request.body)
+        prompt = data.get('prompt', '')
+        code = data.get('code', '')
+
+        # Call external code generation service
+        response = requests.post('http://llm:5555', json={
+            'prompt': prompt, 'code': code
+        })
+
+        result = response.json()
+        generated_code = result.get('code', '')
+
+        response = JsonResponse({
+            'success': True,
+            'generated_code': generated_code
+        })
+        return add_cors_headers(response)
+    except json.JSONDecodeError:
+        response = JsonResponse({
+            'success': False,
+            'error': 'Invalid JSON data'
+        }, status=400)
+        return add_cors_headers(response)
+    except Exception as e:
+        response = JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+        return add_cors_headers(response)
+
+
+@csrf_exempt
+@login_required
+def test_problem(request):
+    if request.method != 'POST':
+        response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        return add_cors_headers(response)
+
+    try:
+        data = json.loads(request.body)
+        problem_id = data.get('problem_id')
+        submission_content = data.get('submission')
+
+        # Fetch the problem
+        problem = Problem.objects.filter(id=problem_id).first()
+        if not problem:
+            response = JsonResponse({
+                'success': False,
+                'error': 'Problem not found'
+            }, status=404)
+            return add_cors_headers(response)
+
+        # Send submission to external grading service
+        testcases = TestCase.objects.filter(problem_id=problem_id)
+
+        response = requests.post('localhost:5556', json={
+            'problem_id': problem_id,
+            'code': submission_content,
+            'tests': testcases
+        })
+
+        result = response.json()
+        is_correct = result.get('correct', False)
+
+        response = JsonResponse({
+            'success': True,
+            'problem_id': problem_id,
+            'submission_correct': is_correct
+        })
+        return add_cors_headers(response)
+    except json.JSONDecodeError:
+        response = JsonResponse({
+            'success': False,
+            'error': 'Invalid JSON data'
+        }, status=400)
         return add_cors_headers(response)
     except Exception as e:
         response = JsonResponse({

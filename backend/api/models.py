@@ -30,3 +30,10 @@ class Submission(models.Model):
     submission_time = models.DateTimeField(auto_now_add=True)
     submission_correct = models.BooleanField(default=False)
     submisser = models.ForeignKey(LeaderboardEntry, on_delete=models.CASCADE)
+
+
+class TestCase(models.Model):
+    id = models.AutoField(primary_key=True)
+    problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
+    input_data = models.TextField()
+    expected_output = models.TextField()

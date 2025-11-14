@@ -7,6 +7,10 @@ urlpatterns = [
     path('leaderboard/', views.get_leaderboard, name='get_leaderboard'),
 
     path('problems/all/', views.get_all_problems, name='get_all_problems'),
+
+    path('submit/', views.generate_code, name='generate_code'),
+
+    path('test/', views.test_problem, name='test'),
     
     # Authentication endpoints
     path('auth/login', auth_views.login, name='auth_login'),
