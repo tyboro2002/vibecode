@@ -35,5 +35,5 @@ class Submission(models.Model):
 class TestCase(models.Model):
     id = models.AutoField(primary_key=True)
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
-    input_data = models.TextField()
+    input_data = models.JSONField()  # Store multiple inputs as JSON array/object
     expected_output = models.TextField()

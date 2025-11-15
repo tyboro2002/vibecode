@@ -9,6 +9,13 @@ import { marked } from 'marked'
 import DOMPurify from 'dompurify'
 
 type Problem = { id: string | number; name: string; points: number; assignment?: string }
+type TestResult = {
+  test_id: number
+  input: any
+  expected: string
+  actual: string
+  passed: boolean
+}
 
 const inputText = ref('')
 const displayText = ref('Your processed text will appear here when you submit...')
@@ -16,6 +23,11 @@ const isLoading = ref(false)
 const errorMessage = ref('')
 const problems = ref<Problem[]>([])
 const selectedProblem = ref<Problem | null>(null)
+const testResults = ref<TestResult[]>([])
+const totalTests = ref(0)
+const passedTests = ref(0)
+const showResults = ref(false)
+const showOnlyFailed = ref(false)
 
 // Python runtime and example code for the editor
 const py = usePython()
@@ -119,14 +131,83 @@ const clearText = () => {
   errorMessage.value = ''
 }
 
+// Test function to send code to test endpoint
+const testCode = async () => {
+  if (!selectedProblem.value) {
+    errorMessage.value = 'Please select a problem first.'
+    return
+  }
+
+  if (!pyCode.value.trim()) {
+    errorMessage.value = 'Please write some code before testing.'
+    return
+  }
+
+  isLoading.value = true
+  errorMessage.value = ''
+
+  try {
+    const response = await fetch('http://localhost:8000/api/test/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        problem_id: selectedProblem.value.id,
+        submission: pyCode.value,
+      })
+    })
+
+    const data = await response.json()
+
+    if (data.success) {
+      testResults.value = data.results || []
+      totalTests.value = data.total_tests || 0
+      passedTests.value = data.passed_tests || 0
+      showResults.value = true
+      
+      if (data.submission_correct) {
+        displayText.value = '✅ All test cases passed! Your solution is correct.'
+      } else {
+        displayText.value = '❌ Some test cases failed. Please review your code and try again.'
+      }
+    } else {
+      errorMessage.value = data.error || 'An error occurred while testing the code.'
+    }
+
+  } catch (error) {
+    errorMessage.value = 'Failed to connect to the backend. Make sure the server is running.'
+    console.error('Error:', error)
+  } finally {
+    isLoading.value = false
+  }
+}
+
 const selectProblem = (p: Problem) => {
   selectedProblem.value = p
+  // Reset code and test results when switching problems
+  pyCode.value = ''
+  inputText.value = ''
+  testResults.value = []
+  totalTests.value = 0
+  passedTests.value = 0
+  showResults.value = false
+  showOnlyFailed.value = false
+  errorMessage.value = ''
 }
 
 const assignmentHtml = computed(() => {
   const md = selectedProblem.value?.assignment || ''
   const html = marked.parse(md)
   return DOMPurify.sanitize(html)
+})
+
+const filteredTestResults = computed(() => {
+  if (showOnlyFailed.value) {
+    return testResults.value.filter(result => !result.passed)
+  }
+  return testResults.value
 })
 </script>
 
@@ -190,6 +271,58 @@ const assignmentHtml = computed(() => {
               <div class="display-content no-padding">
                 <div class="editor-status"><py-status :py="py" /></div>
                 <py-code-block id="script" :py="py" :code="pyCode" :controls="false" />
+              </div>
+            </div>
+
+            <div class="test-controls">
+              <button @click="testCode" :disabled="isLoading || !selectedProblem" class="test-btn">
+                <span v-if="isLoading">⏳ Testing...</span>
+                <span v-else>🧪 Test Solution</span>
+              </button>
+            </div>
+
+            <!-- Test Results Section -->
+            <div v-if="showResults" class="results-section">
+              <div class="results-header">
+                <h3>Test Results</h3>
+                <div class="results-summary">
+                  <button 
+                    @click="showOnlyFailed = !showOnlyFailed" 
+                    class="filter-btn"
+                    :class="{ active: showOnlyFailed }"
+                  >
+                    {{ showOnlyFailed ? '📋 Show All' : '❌ Failed Only' }}
+                  </button>
+                  <span class="summary-badge" :class="passedTests === totalTests ? 'success' : 'partial'">
+                    {{ passedTests }} / {{ totalTests }} passed
+                  </span>
+                </div>
+              </div>
+              
+              <div class="results-list">
+                <div v-if="filteredTestResults.length === 0" class="no-results">
+                  {{ showOnlyFailed ? '🎉 No failed tests!' : 'No test results available.' }}
+                </div>
+                <div v-for="(result, index) in filteredTestResults" :key="index" class="result-card" :class="result.passed ? 'passed' : 'failed'">
+                  <div class="result-header">
+                    <span class="result-status">{{ result.passed ? '✅' : '❌' }}</span>
+                    <span class="result-label">Test #{{ index + 1 }}</span>
+                  </div>
+                  
+                  <div class="result-details">
+                    <div class="result-row">
+                      <code class="result-value input-call">function_name({{ Array.isArray(result.input) ? result.input.join(', ') : result.input }})</code>
+                    </div>
+                    <div class="result-row">
+                      <span class="result-key">Expected:</span>
+                      <code class="result-value expected">{{ result.expected }}</code>
+                    </div>
+                    <div class="result-row">
+                      <span class="result-key">Got:</span>
+                      <code class="result-value" :class="result.passed ? 'correct' : 'incorrect'">{{ result.actual }}</code>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
         </div>
@@ -453,6 +586,202 @@ const assignmentHtml = computed(() => {
   opacity: 0.6;
   cursor: not-allowed;
   transform: none;
+}
+
+.test-btn {
+  background: linear-gradient(45deg, #43e97b, #38f9d7);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.test-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(67, 233, 123, 0.3);
+}
+
+.test-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.test-controls {
+  margin-top: auto;
+}
+
+.results-section {
+  margin-top: 1.5rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.results-header h3 {
+  color: white;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.results-summary {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.filter-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.filter-btn.active {
+  background: rgba(255, 107, 107, 0.2);
+  border-color: rgba(255, 107, 107, 0.5);
+  color: #ff6b6b;
+}
+
+.summary-badge {
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.summary-badge.success {
+  background: rgba(67, 233, 123, 0.2);
+  border: 1px solid rgba(67, 233, 123, 0.5);
+  color: #43e97b;
+}
+
+.summary-badge.partial {
+  background: rgba(255, 193, 7, 0.2);
+  border: 1px solid rgba(255, 193, 7, 0.5);
+  color: #ffc107;
+}
+
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.result-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 1rem;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.result-card.passed {
+  border-left: 3px solid #43e97b;
+}
+
+.result-card.failed {
+  border-left: 3px solid #ff6b6b;
+}
+
+.result-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.result-status {
+  font-size: 1.2rem;
+}
+
+.result-label {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.result-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.result-row {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.result-key {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  min-width: 70px;
+  font-size: 0.9rem;
+}
+
+.result-value {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.95);
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  flex: 1;
+  word-break: break-all;
+}
+
+.result-value.input-call {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.result-value.expected {
+  border: 1px solid rgba(100, 181, 246, 0.3);
+}
+
+.result-value.correct {
+  border: 1px solid rgba(67, 233, 123, 0.3);
+  color: #43e97b;
+}
+
+.result-value.incorrect {
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  color: #ff6b6b;
 }
 
 .char-count {

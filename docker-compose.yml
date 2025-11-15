@@ -10,6 +10,14 @@ services:
     ports:
       - "5555:5555"
 
+  grader:
+    build: ./grader
+    container_name: vibe_grader
+    volumes:
+      - ./grader:/app
+    ports:
+      - "5556:5556"
+
   backend:
     build: ./backend
     container_name: vibe_backend

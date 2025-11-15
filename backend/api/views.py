@@ -234,6 +234,10 @@ def test_problem(request):
         problem_id = data.get('problem_id')
         submission_content = data.get('submission')
 
+        # Get the current authenticated user
+        user = get_current_user(request)
+        user_entry = get_or_create_user_leaderboard_entry(user)
+
         # Fetch the problem
         problem = Problem.objects.filter(id=problem_id).first()
         if not problem:
@@ -245,20 +249,57 @@ def test_problem(request):
 
         # Send submission to external grading service
         testcases = TestCase.objects.filter(problem_id=problem_id)
+        
+        # Serialize test cases with JSON input_data
+        testcases_data = [
+            {
+                'id': tc.id,
+                'input_data': tc.input_data,  # Already JSON, no need to parse
+                'expected_output': tc.expected_output
+            }
+            for tc in testcases
+        ]
 
-        response = requests.post('localhost:5556', json={
+        response = requests.post('http://grader:5556', json={
             'problem_id': problem_id,
             'code': submission_content,
-            'tests': testcases
+            'tests': testcases_data
         })
 
         result = response.json()
         is_correct = result.get('correct', False)
+        total_tests = result.get('total_tests', 0)
+        passed_tests = result.get('passed_tests', 0)
+
+        # Create submission record
+        from .models import Submission
+        submission = Submission.objects.create(
+            problem=problem,
+            submission_correct=is_correct,
+            submisser=user_entry
+        )
+
+        # If all tests passed, award points to the user
+        if total_tests > 0 and total_tests == passed_tests:
+            # Check if user has already solved this problem before
+            previous_correct = Submission.objects.filter(
+                problem=problem,
+                submisser=user_entry,
+                submission_correct=True
+            ).exclude(id=submission.id).exists()
+            
+            # Only award points if this is the first time solving
+            if not previous_correct:
+                user_entry.score += problem.points
+                user_entry.save()
 
         response = JsonResponse({
             'success': True,
             'problem_id': problem_id,
-            'submission_correct': is_correct
+            'submission_correct': is_correct,
+            'results': result.get('results', []),
+            'total_tests': total_tests,
+            'passed_tests': passed_tests
         })
         return add_cors_headers(response)
     except json.JSONDecodeError:
