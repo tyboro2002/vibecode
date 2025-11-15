@@ -28,7 +28,8 @@ class Command(BaseCommand):
                     TestCase.objects.create(
                         problem=problem,
                         input_data=testcase_data['input_data'],
-                        expected_output=testcase_data['expected_output']
+                        expected_output=testcase_data['expected_output'],
+                        is_public=testcase_data.get('is_public', True)  # Default to public if not specified
                     )
                     added_count += 1
                 

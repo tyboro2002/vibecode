@@ -7,6 +7,7 @@ urlpatterns = [
     path('leaderboard/', views.get_leaderboard, name='get_leaderboard'),
 
     path('problems/all/', views.get_all_problems, name='get_all_problems'),
+    path('problems/solved/', views.get_solved_problems, name='get_solved_problems'),
 
     path('submit/', views.generate_code, name='generate_code'),
 

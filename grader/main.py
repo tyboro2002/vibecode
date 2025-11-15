@@ -11,6 +11,7 @@ class TestCase(BaseModel):
     id: int
     input_data: Any  # Can be list, dict, or single value
     expected_output: str
+    is_public: bool = True  # Default to public
 
 class GradeRequest(BaseModel):
     problem_id: int
@@ -73,7 +74,8 @@ async def grade_submission(request: GradeRequest):
                 'input': test.input_data,
                 'expected': test.expected_output,
                 'actual': output,
-                'passed': passed
+                'passed': passed,
+                'is_public': test.is_public
             })
         
         return {

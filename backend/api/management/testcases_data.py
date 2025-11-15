@@ -8,6 +8,7 @@ TESTCASES = {
         {"input_data": [[1, 2]], "expected_output": "[1, 2]"},
         {"input_data": [[1, 2, 3]], "expected_output": "[3, 1, 2]"},
         {"input_data": [[3, 5, 3, 4, 7, 8]], "expected_output": "[3, 3, 4, 5, 8, 7]"},
+        {"input_data": [[1, 2, 3, 4]], "expected_output": "[3, 1, 2, 4]", "is_public": False},
         {"input_data": [[1, 9, 2, 8, 5, 4]], "expected_output": "[9, 8, 5, 4, 2, 1]"},
         {"input_data": [[10, 3, 5, 9, 2, 7, 3, 1]], "expected_output": "[3, 3, 10, 9, 5, 2, 1, 7]"},
         {"input_data": [[7, 3, 7, 3]], "expected_output": "[3, 3, 7, 7]"},

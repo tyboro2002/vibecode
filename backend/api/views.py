@@ -186,6 +186,38 @@ def get_all_problems(request):
 
 @csrf_exempt
 @login_required
+def get_solved_problems(request):
+    if request.method != 'GET':
+        response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        return add_cors_headers(response)
+
+    try:
+        # Get the current authenticated user
+        user = get_current_user(request)
+        user_entry = get_or_create_user_leaderboard_entry(user)
+
+        # Find all problems the user has solved (has at least one correct submission)
+        from .models import Submission
+        solved_problem_ids = Submission.objects.filter(
+            submisser=user_entry,
+            submission_correct=True
+        ).values_list('problem_id', flat=True).distinct()
+
+        response = JsonResponse({
+            'success': True,
+            'solved_problem_ids': list(solved_problem_ids)
+        })
+        return add_cors_headers(response)
+    except Exception as e:
+        response = JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+        return add_cors_headers(response)
+
+
+@csrf_exempt
+@login_required
 def generate_code(request):
     if request.method != 'POST':
         response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
@@ -255,7 +287,8 @@ def test_problem(request):
             {
                 'id': tc.id,
                 'input_data': tc.input_data,  # Already JSON, no need to parse
-                'expected_output': tc.expected_output
+                'expected_output': tc.expected_output,
+                'is_public': tc.is_public
             }
             for tc in testcases
         ]

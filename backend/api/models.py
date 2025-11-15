@@ -37,3 +37,4 @@ class TestCase(models.Model):
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
     input_data = models.JSONField()  # Store multiple inputs as JSON array/object
     expected_output = models.TextField()
+    is_public = models.BooleanField(default=True)  # Public tests shown to users, hidden tests not

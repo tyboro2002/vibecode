@@ -15,6 +15,7 @@ type TestResult = {
   expected: string
   actual: string
   passed: boolean
+  is_public: boolean
 }
 
 const inputText = ref('')
@@ -23,6 +24,7 @@ const isLoading = ref(false)
 const errorMessage = ref('')
 const problems = ref<Problem[]>([])
 const selectedProblem = ref<Problem | null>(null)
+const solvedProblemIds = ref<number[]>([])
 const testResults = ref<TestResult[]>([])
 const totalTests = ref(0)
 const passedTests = ref(0)
@@ -66,6 +68,23 @@ onMounted(async () => {
     const data = await response.json()
     problems.value = data.problems || []
     selectedProblem.value = problems.value[0] ?? null
+
+    // Fetch solved problems
+    try {
+      const solvedResponse = await fetch('http://localhost:8000/api/problems/solved/', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      })
+      const solvedData = await solvedResponse.json()
+      if (solvedData.success) {
+        solvedProblemIds.value = solvedData.solved_problem_ids || []
+      }
+    } catch (error) {
+      console.log('User not authenticated or error fetching solved problems:', error)
+    }
     // for dev
     // problems.value = [
     //   "The Jumbled Jumper",
@@ -219,6 +238,11 @@ const testCode = async () => {
       
       if (data.submission_correct) {
         displayText.value = '✅ All test cases passed! Your solution is correct.'
+        
+        // Add the problem to solved list if not already there
+        if (selectedProblem.value && !solvedProblemIds.value.includes(selectedProblem.value.id as number)) {
+          solvedProblemIds.value.push(selectedProblem.value.id as number)
+        }
       } else {
         displayText.value = '❌ Some test cases failed. Please review your code and try again.'
       }
@@ -265,8 +289,11 @@ const filteredTestResults = computed(() => {
   <div class="other-container">
     <div class="split-layout">
       <div class="problems-panel">
-        <li v-for="(problem, index) in problems" :key="index" class="left-list" :class="{ selected: selectedProblem?.id === problem.id }" @click="selectProblem(problem)">
-          <span class="left-list-name">{{ problem.name }}</span>
+        <li v-for="(problem, index) in problems" :key="index" class="left-list" :class="{ selected: selectedProblem?.id === problem.id, solved: solvedProblemIds.includes(problem.id) }" @click="selectProblem(problem)">
+          <span class="left-list-name">
+            <span v-if="solvedProblemIds.includes(problem.id)" class="solved-icon">✅</span>
+            {{ problem.name }}
+          </span>
           <span class="left-list-points">{{ problem.points }}</span>
         </li>
       </div>
@@ -356,10 +383,10 @@ const filteredTestResults = computed(() => {
                 <div v-for="(result, index) in filteredTestResults" :key="index" class="result-card" :class="result.passed ? 'passed' : 'failed'">
                   <div class="result-header">
                     <span class="result-status">{{ result.passed ? '✅' : '❌' }}</span>
-                    <span class="result-label">Test #{{ index + 1 }}</span>
+                    <span class="result-label">Test #{{ index + 1 }}{{ result.is_public ? '' : ' 🔒' }}</span>
                   </div>
                   
-                  <div class="result-details">
+                  <div v-if="result.is_public" class="result-details">
                     <div class="result-row">
                       <code class="result-value input-call">function_name({{ Array.isArray(result.input) ? result.input.join(', ') : result.input }})</code>
                     </div>
@@ -370,6 +397,12 @@ const filteredTestResults = computed(() => {
                     <div class="result-row">
                       <span class="result-key">Got:</span>
                       <code class="result-value" :class="result.passed ? 'correct' : 'incorrect'">{{ result.actual }}</code>
+                    </div>
+                  </div>
+                  <div v-else class="result-details">
+                    <div class="hidden-test-message">
+                      <span class="lock-icon">🔒</span>
+                      <span>Hidden test case - {{ result.passed ? 'Passed' : 'Failed' }}</span>
                     </div>
                   </div>
                 </div>
@@ -424,6 +457,26 @@ const filteredTestResults = computed(() => {
 .left-list.selected:hover {
   background: rgba(79, 172, 254, 0.3);
   border-color: rgba(79, 172, 254, 0.6);
+}
+
+.left-list.solved {
+  background: rgba(67, 233, 123, 0.15);
+  border-color: rgba(67, 233, 123, 0.35);
+}
+
+.left-list.solved:hover {
+  background: rgba(67, 233, 123, 0.2);
+  border-color: rgba(67, 233, 123, 0.45);
+}
+
+.left-list.solved.selected {
+  background: linear-gradient(135deg, rgba(67, 233, 123, 0.2), rgba(79, 172, 254, 0.25));
+  border-color: rgba(79, 172, 254, 0.5);
+}
+
+.solved-icon {
+  margin-right: 0.5rem;
+  font-size: 1rem;
 }
 
 .left-list {
@@ -843,6 +896,23 @@ const filteredTestResults = computed(() => {
 .result-value.incorrect {
   border: 1px solid rgba(255, 107, 107, 0.3);
   color: #ff6b6b;
+}
+
+.hidden-test-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.lock-icon {
+  font-size: 1.1rem;
+  opacity: 0.8;
 }
 
 .char-count {
