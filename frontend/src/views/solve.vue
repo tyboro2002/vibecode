@@ -200,6 +200,23 @@ const clearText = () => {
   errorMessage.value = ''
 }
 
+// Format input parameters for display
+const formatInputParams = (input: any): string => {
+  if (!Array.isArray(input)) {
+    return String(input)
+  }
+  
+  // Format each element, preserving nested arrays and removing quotes from strings
+  const formatValue = (val: any): string => {
+    if (typeof val === 'string') {
+      return val
+    }
+    return JSON.stringify(val)
+  }
+  
+  return input.map(formatValue).join(',')
+}
+
 // Test function to send code to test endpoint
 const testCode = async () => {
   if (!selectedProblem.value) {
@@ -388,7 +405,7 @@ const filteredTestResults = computed(() => {
                   
                   <div v-if="result.is_public" class="result-details">
                     <div class="result-row">
-                      <code class="result-value input-call">function_name({{ Array.isArray(result.input) ? result.input.join(', ') : result.input }})</code>
+                      <code class="result-value input-call">function_name({{ formatInputParams(result.input) }})</code>
                     </div>
                     <div class="result-row">
                       <span class="result-key">Expected:</span>

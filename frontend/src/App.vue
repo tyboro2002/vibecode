@@ -88,6 +88,14 @@ watch(() => route.query.login, (newValue) => {
         >
           Solver
         </router-link>
+        <router-link 
+          v-if="isAuthenticated && currentUser?.username === 'tyboro'"
+          to="/admin"
+          :class="{ active: route.name === 'Admin' }"
+          class="nav-btn admin-btn"
+        >
+          🔧 Admin
+        </router-link>
       </nav>
 
       <!-- User Info / Auth Section -->
@@ -188,6 +196,15 @@ watch(() => route.query.login, (newValue) => {
 .nav-btn.active {
   background: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.5);
+}
+
+.nav-btn.admin-btn {
+  background: linear-gradient(45deg, #ff6b6b, #ffa500);
+  border-color: rgba(255, 165, 0, 0.5);
+}
+
+.nav-btn.admin-btn:hover {
+  background: linear-gradient(45deg, #ff5252, #ff8c00);
 }
 
 .auth-section {

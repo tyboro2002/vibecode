@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import Leaderboard from '../views/Leaderboard.vue'
 import Solve from '../views/solve.vue'
+import Admin from '../views/Admin.vue'
 import { authService } from '@/services/auth'
 
 const routes = [
@@ -20,6 +21,12 @@ const routes = [
     name: 'Solve',
     component: Solve,
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
+    meta: { requiresAuth: true, requiresAdmin: true }
   }
 ]
 
@@ -41,6 +48,16 @@ router.beforeEach(async (to, _from, next) => {
       // Redirect to login
       authService.login()
       return
+    }
+
+    // Check if route requires admin access (tyboro only)
+    if (to.meta.requiresAdmin) {
+      const username = authStatus.user?.username
+      if (username !== 'tyboro') {
+        // Redirect to home if not tyboro
+        next('/')
+        return
+      }
     }
   }
   

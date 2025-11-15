@@ -187,6 +187,195 @@ def get_all_problems(request):
 
 @csrf_exempt
 @login_required
+def update_problem(request, problem_id):
+    if request.method == 'OPTIONS':
+        response = JsonResponse({'success': True})
+        return add_cors_headers(response)
+    
+    if request.method != 'PATCH' and request.method != 'PUT':
+        response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        return add_cors_headers(response)
+
+    try:
+        # Check if user is tyboro (admin check)
+        user = get_current_user(request)
+        username = user.get('username', '')
+        
+        if username != 'tyboro':
+            response = JsonResponse({
+                'success': False,
+                'error': 'Unauthorized - Admin access required'
+            }, status=403)
+            return add_cors_headers(response)
+
+        # Get the problem
+        problem = Problem.objects.filter(id=problem_id).first()
+        
+        if not problem:
+            response = JsonResponse({
+                'success': False,
+                'error': 'Problem not found'
+            }, status=404)
+            return add_cors_headers(response)
+
+        # Parse request data
+        data = json.loads(request.body)
+        
+        # Update fields if provided
+        if 'points' in data:
+            problem.points = data['points']
+        
+        if 'assignment' in data:
+            problem.assignment = data['assignment']
+        
+        if 'name' in data:
+            problem.name = data['name']
+        
+        problem.save()
+        
+        response = JsonResponse({
+            'success': True,
+            'problem': {
+                'id': problem.id,
+                'name': problem.name,
+                'points': problem.points,
+                'assignment': problem.assignment
+            }
+        })
+        return add_cors_headers(response)
+    except json.JSONDecodeError:
+        response = JsonResponse({
+            'success': False,
+            'error': 'Invalid JSON data'
+        }, status=400)
+        return add_cors_headers(response)
+    except Exception as e:
+        response = JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+        return add_cors_headers(response)
+
+
+@csrf_exempt
+@login_required
+def create_test(request):
+    if request.method != 'POST':
+        response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        return add_cors_headers(response)
+    
+    try:
+        # # Admin check
+        # user = get_current_user(request)
+        # if user.username != 'tyboro':
+        #     response = JsonResponse({
+        #         'success': False,
+        #         'error': 'Unauthorized - Admin access required'
+        #     }, status=403)
+        #     return add_cors_headers(response)
+        
+        data = json.loads(request.body)
+        problem_id = data.get('problem_id')
+        input_data = data.get('input_data')
+        expected_output = data.get('expected_output')
+        is_public = data.get('is_public', True)
+        
+        if not problem_id or input_data is None or expected_output is None:
+            response = JsonResponse({
+                'success': False,
+                'error': 'Missing required fields: problem_id, input_data, expected_output'
+            }, status=400)
+            return add_cors_headers(response)
+        
+        # Verify problem exists
+        from .models import Problem
+        try:
+            problem = Problem.objects.get(id=problem_id)
+        except Problem.DoesNotExist:
+            response = JsonResponse({
+                'success': False,
+                'error': f'Problem with id {problem_id} not found'
+            }, status=404)
+            return add_cors_headers(response)
+        
+        # Create the test case
+        test_case = TestCase.objects.create(
+            problem=problem,
+            input_data=input_data,
+            expected_output=expected_output,
+            is_public=is_public
+        )
+        
+        response = JsonResponse({
+            'success': True,
+            'test': {
+                'id': test_case.id,
+                'problem_id': test_case.problem.id,
+                'problem_name': test_case.problem.name,
+                'input_data': test_case.input_data,
+                'expected_output': test_case.expected_output,
+                'is_public': test_case.is_public
+            }
+        })
+        return add_cors_headers(response)
+    except json.JSONDecodeError:
+        response = JsonResponse({
+            'success': False,
+            'error': 'Invalid JSON data'
+        }, status=400)
+        return add_cors_headers(response)
+    except Exception as e:
+        response = JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+        return add_cors_headers(response)
+
+
+@csrf_exempt
+@login_required
+def delete_test(request, test_id):
+    if request.method != 'DELETE':
+        response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        return add_cors_headers(response)
+    
+    try:
+        # Admin check
+        # user = get_current_user(request)
+        # if user.username != 'tyboro':
+        #     response = JsonResponse({
+        #         'success': False,
+        #         'error': 'Unauthorized - Admin access required'
+        #     }, status=403)
+        #     return add_cors_headers(response)
+        
+        # Find the test case
+        try:
+            test_case = TestCase.objects.get(id=test_id)
+        except TestCase.DoesNotExist:
+            response = JsonResponse({
+                'success': False,
+                'error': f'Test case with id {test_id} not found'
+            }, status=404)
+            return add_cors_headers(response)
+        
+        test_case.delete()
+        
+        response = JsonResponse({
+            'success': True,
+            'message': f'Test case {test_id} deleted successfully'
+        })
+        return add_cors_headers(response)
+    except Exception as e:
+        response = JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+        return add_cors_headers(response)
+
+
+@csrf_exempt
+@login_required
 def get_solved_problems(request):
     if request.method != 'GET':
         response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
@@ -254,6 +443,115 @@ def get_user_solved_problems(request, user_id):
             'total_points_from_problems': total_points,
             'problems_solved_count': len(solved_problems)
         })
+        return add_cors_headers(response)
+    except Exception as e:
+        response = JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+        return add_cors_headers(response)
+
+
+@csrf_exempt
+def get_all_tests(request):
+    if request.method != 'GET':
+        response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        return add_cors_headers(response)
+
+    try:
+        # Get all test cases with their associated problem information
+        testcases = TestCase.objects.select_related('problem').all()
+        
+        testcases_data = []
+        for tc in testcases:
+            testcases_data.append({
+                'id': tc.id,
+                'problem_id': tc.problem.id,
+                'problem_name': tc.problem.name,
+                'input_data': tc.input_data,
+                'expected_output': tc.expected_output,
+                'is_public': tc.is_public
+            })
+        
+        response = JsonResponse({
+            'success': True,
+            'tests': testcases_data,
+            'total_count': len(testcases_data)
+        })
+        return add_cors_headers(response)
+    except Exception as e:
+        response = JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+        return add_cors_headers(response)
+
+
+@csrf_exempt
+@login_required
+def update_test(request, test_id):
+    if request.method == 'OPTIONS':
+        response = JsonResponse({'success': True})
+        return add_cors_headers(response)
+    
+    if request.method != 'PATCH' and request.method != 'PUT':
+        response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        return add_cors_headers(response)
+
+    try:
+        # Check if user is tyboro (admin check)
+        user = get_current_user(request)
+        username = user.get('username', '')
+        
+        # if username != 'tyboro':
+        #     response = JsonResponse({
+        #         'success': False,
+        #         'error': 'Unauthorized - Admin access required'
+        #     }, status=403)
+        #     return add_cors_headers(response)
+
+        # Get the test case
+        test_case = TestCase.objects.filter(id=test_id).first()
+        
+        if not test_case:
+            response = JsonResponse({
+                'success': False,
+                'error': 'Test case not found'
+            }, status=404)
+            return add_cors_headers(response)
+
+        # Parse request data
+        data = json.loads(request.body)
+        
+        # Update fields if provided
+        if 'is_public' in data:
+            test_case.is_public = data['is_public']
+        
+        if 'expected_output' in data:
+            test_case.expected_output = data['expected_output']
+        
+        if 'input_data' in data:
+            test_case.input_data = data['input_data']
+        
+        test_case.save()
+        
+        response = JsonResponse({
+            'success': True,
+            'test': {
+                'id': test_case.id,
+                'problem_id': test_case.problem.id,
+                'problem_name': test_case.problem.name,
+                'input_data': test_case.input_data,
+                'expected_output': test_case.expected_output,
+                'is_public': test_case.is_public
+            }
+        })
+        return add_cors_headers(response)
+    except json.JSONDecodeError:
+        response = JsonResponse({
+            'success': False,
+            'error': 'Invalid JSON data'
+        }, status=400)
         return add_cors_headers(response)
     except Exception as e:
         response = JsonResponse({

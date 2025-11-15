@@ -1,7 +1,7 @@
 [
 {
   "model": "api.testcase",
-  "pk": 1167,
+  "pk": 2296,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -10,12 +10,13 @@
         2
       ]
     ],
-    "expected_output": "[1, 2]"
+    "expected_output": "[1, 2]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1168,
+  "pk": 2297,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -25,12 +26,13 @@
         3
       ]
     ],
-    "expected_output": "[3, 1, 2]"
+    "expected_output": "[3, 1, 2]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1169,
+  "pk": 2298,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -43,12 +45,30 @@
         8
       ]
     ],
-    "expected_output": "[3, 3, 4, 5, 8, 7]"
+    "expected_output": "[3, 3, 4, 5, 8, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1170,
+  "pk": 2299,
+  "fields": {
+    "problem": 108,
+    "input_data": [
+      [
+        1,
+        2,
+        3,
+        4
+      ]
+    ],
+    "expected_output": "[3, 1, 2, 4]",
+    "is_public": false
+  }
+},
+{
+  "model": "api.testcase",
+  "pk": 2300,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -61,12 +81,13 @@
         4
       ]
     ],
-    "expected_output": "[9, 8, 5, 4, 2, 1]"
+    "expected_output": "[9, 8, 5, 4, 2, 1]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1171,
+  "pk": 2301,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -81,12 +102,13 @@
         1
       ]
     ],
-    "expected_output": "[3, 3, 10, 9, 5, 2, 1, 7]"
+    "expected_output": "[3, 3, 10, 9, 5, 2, 1, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1172,
+  "pk": 2302,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -97,23 +119,25 @@
         3
       ]
     ],
-    "expected_output": "[3, 3, 7, 7]"
+    "expected_output": "[3, 3, 7, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1173,
+  "pk": 2303,
   "fields": {
     "problem": 108,
     "input_data": [
       []
     ],
-    "expected_output": "[]"
+    "expected_output": "[]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1174,
+  "pk": 2304,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -125,12 +149,13 @@
         6
       ]
     ],
-    "expected_output": "[4, 4, 5, 6, 6]"
+    "expected_output": "[4, 4, 5, 6, 6]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1175,
+  "pk": 2305,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -142,12 +167,13 @@
         42
       ]
     ],
-    "expected_output": "[0.5, 1.5, 4, 42, 100]"
+    "expected_output": "[0.5, 1.5, 4, 42, 100]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1176,
+  "pk": 2306,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -160,12 +186,13 @@
         5
       ]
     ],
-    "expected_output": "[10, 10, 9, 5, 5, 2]"
+    "expected_output": "[10, 10, 9, 5, 5, 2]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1177,
+  "pk": 2307,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -179,12 +206,13 @@
         3
       ]
     ],
-    "expected_output": "[3, 3, 20.5, 15, 15, 9, 7]"
+    "expected_output": "[3, 3, 20.5, 15, 15, 9, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1178,
+  "pk": 2308,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -194,12 +222,13 @@
         3
       ]
     ],
-    "expected_output": "[3, 3, 9]"
+    "expected_output": "[3, 3, 9]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1179,
+  "pk": 2309,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -209,12 +238,13 @@
         7
       ]
     ],
-    "expected_output": "[9, 7, 7]"
+    "expected_output": "[9, 7, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1180,
+  "pk": 2310,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -225,12 +255,13 @@
         5
       ]
     ],
-    "expected_output": "[9, 5, -1, -10]"
+    "expected_output": "[9, 5, -1, -10]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1181,
+  "pk": 2311,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -245,12 +276,13 @@
         5
       ]
     ],
-    "expected_output": "[3, 3, 9, 9, 5, 5, 7, 7]"
+    "expected_output": "[3, 3, 9, 9, 5, 5, 7, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1182,
+  "pk": 2312,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -261,12 +293,13 @@
         12
       ]
     ],
-    "expected_output": "[12, 12, 12, 9]"
+    "expected_output": "[12, 12, 12, 9]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1183,
+  "pk": 2313,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -281,12 +314,13 @@
         3
       ]
     ],
-    "expected_output": "[3, 3, 100, 50, 20, 10, 9, 7]"
+    "expected_output": "[3, 3, 100, 50, 20, 10, 9, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1184,
+  "pk": 2314,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -297,12 +331,13 @@
         1
       ]
     ],
-    "expected_output": "[9, 5, 1, 0]"
+    "expected_output": "[9, 5, 1, 0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1185,
+  "pk": 2315,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -314,12 +349,13 @@
         7
       ]
     ],
-    "expected_output": "[3, 3, 9, 7, 7]"
+    "expected_output": "[3, 3, 9, 7, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1186,
+  "pk": 2316,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -330,12 +366,13 @@
         50.2
       ]
     ],
-    "expected_output": "[1000.5, 50.2, 9, 0.01]"
+    "expected_output": "[1000.5, 50.2, 9, 0.01]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1187,
+  "pk": 2317,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -345,12 +382,13 @@
         9
       ]
     ],
-    "expected_output": "[3, 9, 7]"
+    "expected_output": "[3, 9, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1188,
+  "pk": 2318,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -360,12 +398,13 @@
         9
       ]
     ],
-    "expected_output": "[9, 6, 2]"
+    "expected_output": "[9, 6, 2]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1189,
+  "pk": 2319,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -375,12 +414,13 @@
         9
       ]
     ],
-    "expected_output": "[9, 9, 9]"
+    "expected_output": "[9, 9, 9]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1190,
+  "pk": 2320,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -388,12 +428,13 @@
         9
       ]
     ],
-    "expected_output": "[9]"
+    "expected_output": "[9]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1191,
+  "pk": 2321,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -410,12 +451,13 @@
         9
       ]
     ],
-    "expected_output": "[3, 9, 8, 6, 5, 4, 2, 1, 0, 7]"
+    "expected_output": "[3, 9, 8, 6, 5, 4, 2, 1, 0, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1192,
+  "pk": 2322,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -427,12 +469,13 @@
         9
       ]
     ],
-    "expected_output": "[9, 8, 6, 4, 2]"
+    "expected_output": "[9, 8, 6, 4, 2]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1193,
+  "pk": 2323,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -445,12 +488,13 @@
         5
       ]
     ],
-    "expected_output": "[9, 5, 5, 5, 5, 5]"
+    "expected_output": "[9, 5, 5, 5, 5, 5]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1194,
+  "pk": 2324,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -462,12 +506,13 @@
         -10
       ]
     ],
-    "expected_output": "[10, 9, 1, -5, -10]"
+    "expected_output": "[10, 9, 1, -5, -10]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1195,
+  "pk": 2325,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -479,12 +524,13 @@
         9
       ]
     ],
-    "expected_output": "[9, 2, 1, 0, -1]"
+    "expected_output": "[9, 2, 1, 0, -1]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1196,
+  "pk": 2326,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -495,12 +541,13 @@
         9
       ]
     ],
-    "expected_output": "[9, 6, 5, 4]"
+    "expected_output": "[9, 6, 5, 4]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1197,
+  "pk": 2327,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -509,12 +556,13 @@
         1
       ]
     ],
-    "expected_output": "[9, 1]"
+    "expected_output": "[9, 1]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1198,
+  "pk": 2328,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -525,12 +573,13 @@
         1.0
       ]
     ],
-    "expected_output": "[9, 1.2, 1.1, 1.0]"
+    "expected_output": "[9, 1.2, 1.1, 1.0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1199,
+  "pk": 2329,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -540,12 +589,13 @@
         -6.5
       ]
     ],
-    "expected_output": "[9, -5.5, -6.5]"
+    "expected_output": "[9, -5.5, -6.5]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1200,
+  "pk": 2330,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -556,12 +606,13 @@
         3
       ]
     ],
-    "expected_output": "[3, 3, 10, 9]"
+    "expected_output": "[3, 3, 10, 9]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1201,
+  "pk": 2331,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -572,12 +623,13 @@
         5
       ]
     ],
-    "expected_output": "[9, 5, 7, 7]"
+    "expected_output": "[9, 5, 7, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1202,
+  "pk": 2332,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -589,12 +641,13 @@
         5
       ]
     ],
-    "expected_output": "[1, 5, 10, 15, 20]"
+    "expected_output": "[1, 5, 10, 15, 20]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1203,
+  "pk": 2333,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -604,12 +657,13 @@
         5
       ]
     ],
-    "expected_output": "[-10, -1, 5]"
+    "expected_output": "[-10, -1, 5]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1204,
+  "pk": 2334,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -622,12 +676,13 @@
         5
       ]
     ],
-    "expected_output": "[3, 3, 5, 5, 7, 7]"
+    "expected_output": "[3, 3, 5, 5, 7, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1205,
+  "pk": 2335,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -637,12 +692,13 @@
         12
       ]
     ],
-    "expected_output": "[12, 12, 12]"
+    "expected_output": "[12, 12, 12]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1206,
+  "pk": 2336,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -654,12 +710,13 @@
         20
       ]
     ],
-    "expected_output": "[10, 20, 50, 100, 7]"
+    "expected_output": "[10, 20, 50, 100, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1207,
+  "pk": 2337,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -669,12 +726,13 @@
         1
       ]
     ],
-    "expected_output": "[0, 1, 5]"
+    "expected_output": "[0, 1, 5]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1208,
+  "pk": 2338,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -686,12 +744,13 @@
         3
       ]
     ],
-    "expected_output": "[3, 3, 3, 7, 7]"
+    "expected_output": "[3, 3, 3, 7, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1209,
+  "pk": 2339,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -701,12 +760,13 @@
         50.2
       ]
     ],
-    "expected_output": "[0.01, 50.2, 1000.5]"
+    "expected_output": "[0.01, 50.2, 1000.5]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1210,
+  "pk": 2340,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -715,12 +775,13 @@
         7
       ]
     ],
-    "expected_output": "[3, 7]"
+    "expected_output": "[3, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1211,
+  "pk": 2341,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -729,12 +790,13 @@
         8
       ]
     ],
-    "expected_output": "[4, 8]"
+    "expected_output": "[4, 8]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1212,
+  "pk": 2342,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -742,12 +804,13 @@
         12
       ]
     ],
-    "expected_output": "[12]"
+    "expected_output": "[12]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1213,
+  "pk": 2343,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -763,12 +826,13 @@
         8
       ]
     ],
-    "expected_output": "[3, 0, 1, 2, 4, 5, 6, 8, 7]"
+    "expected_output": "[3, 0, 1, 2, 4, 5, 6, 8, 7]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1214,
+  "pk": 2344,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -779,12 +843,13 @@
         5
       ]
     ],
-    "expected_output": "[1, 2, 4, 5]"
+    "expected_output": "[1, 2, 4, 5]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1215,
+  "pk": 2345,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -796,12 +861,13 @@
         5
       ]
     ],
-    "expected_output": "[5, 5, 5, 5, 5]"
+    "expected_output": "[5, 5, 5, 5, 5]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1216,
+  "pk": 2346,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -812,12 +878,13 @@
         -10
       ]
     ],
-    "expected_output": "[-10, -5, 1, 10]"
+    "expected_output": "[-10, -5, 1, 10]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1217,
+  "pk": 2347,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -828,12 +895,13 @@
         -1
       ]
     ],
-    "expected_output": "[-1, 0, 1, 2]"
+    "expected_output": "[-1, 0, 1, 2]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1218,
+  "pk": 2348,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -843,12 +911,13 @@
         6
       ]
     ],
-    "expected_output": "[4, 5, 6]"
+    "expected_output": "[4, 5, 6]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1219,
+  "pk": 2349,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -857,12 +926,13 @@
         5
       ]
     ],
-    "expected_output": "[1, 5]"
+    "expected_output": "[1, 5]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1220,
+  "pk": 2350,
   "fields": {
     "problem": 108,
     "input_data": [
@@ -877,12 +947,13 @@
         30
       ]
     ],
-    "expected_output": "[1, 2, 4, 5, 6, 8, 10, 30]"
+    "expected_output": "[1, 2, 4, 5, 6, 8, 10, 30]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1221,
+  "pk": 2351,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -903,12 +974,13 @@
         "short"
       ]
     ],
-    "expected_output": "{'Integers': 41, 'Floats': 2, 'Strings': 'clean-data-type-short'}"
+    "expected_output": "{'Integers': 41, 'Floats': 2, 'Strings': 'clean-data-type-short'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1222,
+  "pk": 2352,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -923,12 +995,13 @@
         100
       ]
     ],
-    "expected_output": "{'Integers': 98, 'Floats': 1, 'Strings': 'long'}"
+    "expected_output": "{'Integers': 98, 'Floats': 1, 'Strings': 'long'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1223,
+  "pk": 2353,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -939,23 +1012,25 @@
         "ok"
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': 'test-pass-fail'}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': 'test-pass-fail'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1224,
+  "pk": 2354,
   "fields": {
     "problem": 109,
     "input_data": [
       []
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1225,
+  "pk": 2355,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -967,12 +1042,13 @@
         -20
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1226,
+  "pk": 2356,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -984,12 +1060,13 @@
         -1.0
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 2, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 2, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1227,
+  "pk": 2357,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1001,12 +1078,13 @@
         "five"
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': 'four-three-five'}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': 'four-three-five'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1228,
+  "pk": 2358,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1017,12 +1095,13 @@
         "d"
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1229,
+  "pk": 2359,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1037,12 +1116,13 @@
         "seven"
       ]
     ],
-    "expected_output": "{'Integers': 9, 'Floats': 1, 'Strings': 'four-seven'}"
+    "expected_output": "{'Integers': 9, 'Floats': 1, 'Strings': 'four-seven'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1230,
+  "pk": 2360,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1058,12 +1138,13 @@
         8.8
       ]
     ],
-    "expected_output": "{'Integers': 8, 'Floats': 2, 'Strings': 'zero'}"
+    "expected_output": "{'Integers': 8, 'Floats': 2, 'Strings': 'zero'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1231,
+  "pk": 2361,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1075,12 +1156,13 @@
         5.0
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1232,
+  "pk": 2362,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1091,12 +1173,13 @@
         0
       ]
     ],
-    "expected_output": "{'Integers': 600, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 600, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1233,
+  "pk": 2363,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1108,12 +1191,13 @@
         100
       ]
     ],
-    "expected_output": "{'Integers': 111, 'Floats': 0, 'Strings': 'longstring-short'}"
+    "expected_output": "{'Integers': 111, 'Floats': 0, 'Strings': 'longstring-short'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1234,
+  "pk": 2364,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1125,12 +1209,13 @@
         "end"
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 1, 'Strings': 'word-another'}"
+    "expected_output": "{'Integers': 0, 'Floats': 1, 'Strings': 'word-another'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1235,
+  "pk": 2365,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1141,12 +1226,13 @@
         5.0
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1236,
+  "pk": 2366,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1164,12 +1250,13 @@
         6.0
       ]
     ],
-    "expected_output": "{'Integers': 1, 'Floats': 1, 'Strings': 'five'}"
+    "expected_output": "{'Integers': 1, 'Floats': 1, 'Strings': 'five'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1237,
+  "pk": 2367,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1180,12 +1267,13 @@
         "no"
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': 'test-test-test'}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': 'test-test-test'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1238,
+  "pk": 2368,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1196,12 +1284,13 @@
         -6000
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1239,
+  "pk": 2369,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1212,12 +1301,13 @@
         10
       ]
     ],
-    "expected_output": "{'Integers': 10, 'Floats': 0, 'Strings': 'four-char-long-string'}"
+    "expected_output": "{'Integers': 10, 'Floats': 0, 'Strings': 'four-char-long-string'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1240,
+  "pk": 2370,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1229,12 +1319,13 @@
         5.0
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1241,
+  "pk": 2371,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1246,12 +1337,13 @@
         9.5
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 5, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 5, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1242,
+  "pk": 2372,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1262,12 +1354,13 @@
         "xxxx"
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': 'xxxx'}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': 'xxxx'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1243,
+  "pk": 2373,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1278,12 +1371,13 @@
         2.5
       ]
     ],
-    "expected_output": "{'Integers': 30, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 30, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1244,
+  "pk": 2374,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1294,12 +1388,13 @@
         5.5
       ]
     ],
-    "expected_output": "{'Integers': 3000000, 'Floats': 1, 'Strings': 'mega'}"
+    "expected_output": "{'Integers': 3000000, 'Floats': 1, 'Strings': 'mega'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1245,
+  "pk": 2375,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1314,12 +1409,13 @@
         6
       ]
     ],
-    "expected_output": "{'Integers': 15, 'Floats': 1, 'Strings': 'four-word'}"
+    "expected_output": "{'Integers': 15, 'Floats': 1, 'Strings': 'four-word'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1246,
+  "pk": 2376,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1335,12 +1431,13 @@
         "hundred_char"
       ]
     ],
-    "expected_output": "{'Integers': 111, 'Floats': 2, 'Strings': 'ten_char-hundred_char'}"
+    "expected_output": "{'Integers': 111, 'Floats': 2, 'Strings': 'ten_char-hundred_char'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1247,
+  "pk": 2377,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1350,12 +1447,13 @@
         -5.5
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1248,
+  "pk": 2378,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1367,12 +1465,13 @@
         4.9
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1249,
+  "pk": 2379,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1382,12 +1481,13 @@
         5.1
       ]
     ],
-    "expected_output": "{'Integers': 5, 'Floats': 1, 'Strings': '1234'}"
+    "expected_output": "{'Integers': 5, 'Floats': 1, 'Strings': '1234'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1250,
+  "pk": 2380,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1399,12 +1499,13 @@
         10.0
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 5, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 5, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1251,
+  "pk": 2381,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1421,12 +1522,13 @@
         10
       ]
     ],
-    "expected_output": "{'Integers': 55, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 55, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1252,
+  "pk": 2382,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1439,12 +1541,13 @@
         "long"
       ]
     ],
-    "expected_output": "{'Integers': 20, 'Floats': 2, 'Strings': 'long-long'}"
+    "expected_output": "{'Integers': 20, 'Floats': 2, 'Strings': 'long-long'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1253,
+  "pk": 2383,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1455,30 +1558,32 @@
         "five"
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 1, 'Strings': 'four-five'}"
+    "expected_output": "{'Integers': 0, 'Floats': 1, 'Strings': 'four-five'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1254,
+  "pk": 2384,
   "fields": {
     "problem": 109,
     "input_data": [
       [
         1,
-        2.0,
+        2,
         "word",
-        6.0,
+        6,
         true,
         false
       ]
     ],
-    "expected_output": "{'Integers': 1, 'Floats': 1, 'Strings': 'word-word'}"
+    "expected_output": "{'Integers': 9, 'Floats': 0, 'Strings': 'word'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1255,
+  "pk": 2385,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1489,12 +1594,13 @@
         "d"
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1256,
+  "pk": 2386,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1506,12 +1612,13 @@
         7.0
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 2, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 2, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1257,
+  "pk": 2387,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1524,12 +1631,13 @@
         "five"
       ]
     ],
-    "expected_output": "{'Integers': 15, 'Floats': 1, 'Strings': 'five'}"
+    "expected_output": "{'Integers': 15, 'Floats': 1, 'Strings': 'five'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1258,
+  "pk": 2388,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1542,12 +1650,13 @@
         "c"
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1259,
+  "pk": 2389,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1559,12 +1668,13 @@
         "anotherlong"
       ]
     ],
-    "expected_output": "{'Integers': 6, 'Floats': 0, 'Strings': 'verylongstring-anotherlong'}"
+    "expected_output": "{'Integers': 6, 'Floats': 0, 'Strings': 'verylongstring-anotherlong'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1260,
+  "pk": 2390,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1577,12 +1687,13 @@
         "c"
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 3, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 3, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1261,
+  "pk": 2391,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1599,12 +1710,13 @@
         100
       ]
     ],
-    "expected_output": "{'Integers': 550, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 550, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1262,
+  "pk": 2392,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1616,12 +1728,13 @@
         "epsilon"
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': 'alpha-beta-gamma-delta-epsilon'}"
+    "expected_output": "{'Integers': 0, 'Floats': 0, 'Strings': 'alpha-beta-gamma-delta-epsilon'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1263,
+  "pk": 2393,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1638,12 +1751,13 @@
         6.0
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 10, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 10, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1264,
+  "pk": 2394,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1656,12 +1770,13 @@
         "five"
       ]
     ],
-    "expected_output": "{'Integers': 3, 'Floats': 2, 'Strings': 'four-five'}"
+    "expected_output": "{'Integers': 3, 'Floats': 2, 'Strings': 'four-five'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1265,
+  "pk": 2395,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1677,12 +1792,13 @@
         "long"
       ]
     ],
-    "expected_output": "{'Integers': 6, 'Floats': 3, 'Strings': 'word-test-long'}"
+    "expected_output": "{'Integers': 6, 'Floats': 3, 'Strings': 'word-test-long'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1266,
+  "pk": 2396,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1699,12 +1815,13 @@
         13
       ]
     ],
-    "expected_output": "{'Integers': 85, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': 85, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1267,
+  "pk": 2397,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1717,12 +1834,13 @@
         15.6
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 6, 'Strings': ''}"
+    "expected_output": "{'Integers': 0, 'Floats': 6, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1268,
+  "pk": 2398,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1732,12 +1850,13 @@
         -300
       ]
     ],
-    "expected_output": "{'Integers': -600, 'Floats': 0, 'Strings': ''}"
+    "expected_output": "{'Integers': -600, 'Floats': 0, 'Strings': ''}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1269,
+  "pk": 2399,
   "fields": {
     "problem": 109,
     "input_data": [
@@ -1750,595 +1869,649 @@
         "test"
       ]
     ],
-    "expected_output": "{'Integers': 0, 'Floats': 1, 'Strings': 'test'}"
+    "expected_output": "{'Integers': 0, 'Floats': 1, 'Strings': 'test'}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1270,
+  "pk": 2400,
   "fields": {
     "problem": 110,
     "input_data": [
       "A1234, B-567, C9999, D-1234, E34, F-ABC, GHIJK, Z-XYZW, H-456"
     ],
-    "expected_output": "['A1234', 'B-567', 'C9999', 'F-ABC', 'GHIJK', 'H-456']"
+    "expected_output": "['A1234', 'B-567', 'C9999', 'F-ABC', 'GHIJK', 'H-456']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1271,
+  "pk": 2401,
   "fields": {
     "problem": 110,
     "input_data": [
       "A-123, Z99999, b1234, C-5678, X_Y_Z, A-B-C, W23456"
     ],
-    "expected_output": "['A-123', 'X_Y_Z', 'A-B-C']"
+    "expected_output": "['A-123', 'X_Y_Z', 'A-B-C']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1272,
+  "pk": 2402,
   "fields": {
     "problem": 110,
     "input_data": [
       "START, A-123, BCDFG, X-Y-Z"
     ],
-    "expected_output": "['START', 'A-123', 'BCDFG', 'X-Y-Z']"
+    "expected_output": "['START', 'A-123', 'BCDFG', 'X-Y-Z']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1273,
+  "pk": 2403,
   "fields": {
     "problem": 110,
     "input_data": [
       ""
     ],
-    "expected_output": "[]"
+    "expected_output": "[]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1274,
+  "pk": 2404,
   "fields": {
     "problem": 110,
     "input_data": [
       "A123, B-12, C123, D-12"
     ],
-    "expected_output": "[]"
+    "expected_output": "[]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1275,
+  "pk": 2405,
   "fields": {
     "problem": 110,
     "input_data": [
       "A12345, B-12345, C12345, D-12345"
     ],
-    "expected_output": "[]"
+    "expected_output": "[]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1276,
+  "pk": 2406,
   "fields": {
     "problem": 110,
     "input_data": [
       "K12345, L-123, M123, N-123456"
     ],
-    "expected_output": "['L-123']"
+    "expected_output": "['L-123']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1277,
+  "pk": 2407,
   "fields": {
     "problem": 110,
     "input_data": [
       "A1234, BCDFG, C5678, HIJKL"
     ],
-    "expected_output": "['A1234', 'C5678']"
+    "expected_output": "['A1234', 'C5678']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1278,
+  "pk": 2408,
   "fields": {
     "problem": 110,
     "input_data": [
       "a1234, X-Y-Z, c5678, B-C-D"
     ],
-    "expected_output": "['X-Y-Z', 'B-C-D']"
+    "expected_output": "['X-Y-Z', 'B-C-D']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1279,
+  "pk": 2409,
   "fields": {
     "problem": 110,
     "input_data": [
       "1ABCD, X-Y-Z, 9EFGH, B-C-D"
     ],
-    "expected_output": "['X-Y-Z', 'B-C-D']"
+    "expected_output": "['X-Y-Z', 'B-C-D']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1280,
+  "pk": 2410,
   "fields": {
     "problem": 110,
     "input_data": [
       "Z99999, -1234, aBCDE, A-BCD, B-CD-E, Y-Z-W"
     ],
-    "expected_output": "['-1234', 'A-BCD', 'Y-Z-W']"
+    "expected_output": "['-1234', 'A-BCD', 'Y-Z-W']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1281,
+  "pk": 2411,
   "fields": {
     "problem": 110,
     "input_data": [
       "TOPIC"
     ],
-    "expected_output": "['TOPIC']"
+    "expected_output": "['TOPIC']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1282,
+  "pk": 2412,
   "fields": {
     "problem": 110,
     "input_data": [
       "K1234, L-567"
     ],
-    "expected_output": "['K1234', 'L-567']"
+    "expected_output": "['K1234', 'L-567']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1283,
+  "pk": 2413,
   "fields": {
     "problem": 110,
     "input_data": [
       ",A1234, B-567, C9999, D-123,"
     ],
-    "expected_output": "['B-567', 'D-123']"
+    "expected_output": "['B-567', 'D-123']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1284,
+  "pk": 2414,
   "fields": {
     "problem": 110,
     "input_data": [
       "A1234, XABCD, B5678, Y-EFG"
     ],
-    "expected_output": "['A1234', 'B5678', 'Y-EFG']"
+    "expected_output": "['A1234', 'B5678', 'Y-EFG']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1285,
+  "pk": 2415,
   "fields": {
     "problem": 110,
     "input_data": [
       "a1234, B-567, C9999, d-123"
     ],
-    "expected_output": "['B-567', 'C9999', 'd-123']"
+    "expected_output": "['B-567', 'C9999', 'd-123']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1286,
+  "pk": 2416,
   "fields": {
     "problem": 110,
     "input_data": [
       "A-B-C, X-Y-Z, CDEFG, D-E-F"
     ],
-    "expected_output": "['A-B-C', 'X-Y-Z', 'CDEFG', 'D-E-F']"
+    "expected_output": "['A-B-C', 'X-Y-Z', 'CDEFG', 'D-E-F']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1287,
+  "pk": 2417,
   "fields": {
     "problem": 110,
     "input_data": [
       "A1234, -, B5678, -A"
     ],
-    "expected_output": "['A1234', 'B5678']"
+    "expected_output": "['A1234', 'B5678']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1288,
+  "pk": 2418,
   "fields": {
     "problem": 110,
     "input_data": [
       "A123, B-123, C123, D-123"
     ],
-    "expected_output": "['B-123', 'D-123']"
+    "expected_output": "['B-123', 'D-123']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1289,
+  "pk": 2419,
   "fields": {
     "problem": 110,
     "input_data": [
       "A12345, B-12345, C12345, D-12345"
     ],
-    "expected_output": "[]"
+    "expected_output": "[]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1290,
+  "pk": 2420,
   "fields": {
     "problem": 110,
     "input_data": [
       "X-123, A1234, Z-567, C9999"
     ],
-    "expected_output": "['X-123', 'Z-567']"
+    "expected_output": "['X-123', 'Z-567']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1291,
+  "pk": 2421,
   "fields": {
     "problem": 110,
     "input_data": [
       "VALID, X-Y-Z, YYYY, Z-Z-Z"
     ],
-    "expected_output": "['VALID', 'X-Y-Z', 'Z-Z-Z']"
+    "expected_output": "['VALID', 'X-Y-Z', 'Z-Z-Z']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1292,
+  "pk": 2422,
   "fields": {
     "problem": 110,
     "input_data": [
       "A1234, 1-2-3, B5678, 4-5-6"
     ],
-    "expected_output": "['A1234', '1-2-3', 'B5678', '4-5-6']"
+    "expected_output": "['A1234', '1-2-3', 'B5678', '4-5-6']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1293,
+  "pk": 2423,
   "fields": {
     "problem": 110,
     "input_data": [
       "1-2-3, A1234"
     ],
-    "expected_output": "[]"
+    "expected_output": "[]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1294,
+  "pk": 2424,
   "fields": {
     "problem": 110,
     "input_data": [
       "aBcDe, xYxYx, 1BcdE, XyXyX"
     ],
-    "expected_output": "[]"
+    "expected_output": "[]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1295,
+  "pk": 2425,
   "fields": {
     "problem": 110,
     "input_data": [
       "A0000, B-123, C0000"
     ],
-    "expected_output": "['A0000', 'B-123', 'C0000']"
+    "expected_output": "['A0000', 'B-123', 'C0000']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1296,
+  "pk": 2426,
   "fields": {
     "problem": 110,
     "input_data": [
       "B-123, A0000, B-456"
     ],
-    "expected_output": "['B-123', 'B-456']"
+    "expected_output": "['B-123', 'B-456']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1297,
+  "pk": 2427,
   "fields": {
     "problem": 110,
     "input_data": [
       "VLD-A, V-A, A-V-A, X-VLD, VLD, X_X_X_X_X, Z12345, B-1-2-3-4"
     ],
-    "expected_output": "['VLD-A', 'A-V-A', 'X-VLD']"
+    "expected_output": "['VLD-A', 'A-V-A', 'X-VLD']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1298,
+  "pk": 2428,
   "fields": {
     "problem": 110,
     "input_data": [
       "A12, B-456, C789012, D-E-F"
     ],
-    "expected_output": "['B-456', 'D-E-F']"
+    "expected_output": "['B-456', 'D-E-F']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1299,
+  "pk": 2429,
   "fields": {
     "problem": 110,
     "input_data": [
       "A1234, X-Y, B5678, Z-ABCDEF"
     ],
-    "expected_output": "['A1234', 'B5678']"
+    "expected_output": "['A1234', 'B5678']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1300,
+  "pk": 2430,
   "fields": {
     "problem": 110,
     "input_data": [
       ", A1234 , B-567 , C9999 ,"
     ],
-    "expected_output": "['B-567']"
+    "expected_output": "['B-567']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1301,
+  "pk": 2431,
   "fields": {
     "problem": 110,
     "input_data": [
       "A1234, ODDNO, C5678, NEXTO"
     ],
-    "expected_output": "['A1234', 'C5678']"
+    "expected_output": "['A1234', 'C5678']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1302,
+  "pk": 2432,
   "fields": {
     "problem": 110,
     "input_data": [
       "lower, X-Y-Z, small, B-C-D"
     ],
-    "expected_output": "['X-Y-Z', 'B-C-D']"
+    "expected_output": "['X-Y-Z', 'B-C-D']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1303,
+  "pk": 2433,
   "fields": {
     "problem": 110,
     "input_data": [
       "ALPHA, O-D-D, BETA, F-I-V"
     ],
-    "expected_output": "['ALPHA', 'O-D-D', 'F-I-V']"
+    "expected_output": "['ALPHA', 'O-D-D', 'F-I-V']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1304,
+  "pk": 2434,
   "fields": {
     "problem": 110,
     "input_data": [
       "A-B-C, ODD-1, X-Y-Z, ODD-2"
     ],
-    "expected_output": "['A-B-C', 'ODD-1', 'X-Y-Z', 'ODD-2']"
+    "expected_output": "['A-B-C', 'ODD-1', 'X-Y-Z', 'ODD-2']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1305,
+  "pk": 2435,
   "fields": {
     "problem": 110,
     "input_data": [
       "A1234, X-123, BCDFF, Y-456, C9999, Z-789, DEFFF, A-BC-"
     ],
-    "expected_output": "['A1234', 'X-123', 'BCDFF', 'Y-456', 'C9999', 'Z-789', 'DEFFF', 'A-BC-']"
+    "expected_output": "['A1234', 'X-123', 'BCDFF', 'Y-456', 'C9999', 'Z-789', 'DEFFF', 'A-BC-']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1306,
+  "pk": 2436,
   "fields": {
     "problem": 110,
     "input_data": [
       "A1234,, B-567"
     ],
-    "expected_output": "['A1234', 'B-567']"
+    "expected_output": "['A1234', 'B-567']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1307,
+  "pk": 2437,
   "fields": {
     "problem": 110,
     "input_data": [
       "ITEM1, NO-HY, ITEM3, YES-H"
     ],
-    "expected_output": "['ITEM1', 'NO-HY', 'ITEM3', 'YES-H']"
+    "expected_output": "['ITEM1', 'NO-HY', 'ITEM3', 'YES-H']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1308,
+  "pk": 2438,
   "fields": {
     "problem": 110,
     "input_data": [
       "small, O-D-D, Large, E-V-E"
     ],
-    "expected_output": "['O-D-D', 'Large', 'E-V-E']"
+    "expected_output": "['O-D-D', 'Large', 'E-V-E']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1309,
+  "pk": 2439,
   "fields": {
     "problem": 110,
     "input_data": [
       "HELLO, -, WORLD"
     ],
-    "expected_output": "['HELLO', 'WORLD']"
+    "expected_output": "['HELLO', 'WORLD']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1310,
+  "pk": 2440,
   "fields": {
     "problem": 110,
     "input_data": [
       "12345, X-Y-Z, 67890"
     ],
-    "expected_output": "['X-Y-Z']"
+    "expected_output": "['X-Y-Z']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1311,
+  "pk": 2441,
   "fields": {
     "problem": 110,
     "input_data": [
       "Zebra, A-123, Lion, B-456"
     ],
-    "expected_output": "['Zebra', 'A-123', 'B-456']"
+    "expected_output": "['Zebra', 'A-123', 'B-456']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1312,
+  "pk": 2442,
   "fields": {
     "problem": 110,
     "input_data": [
       "A12, X-Y-Z-Z, BCD, Y-1-2-3"
     ],
-    "expected_output": "[]"
+    "expected_output": "[]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1313,
+  "pk": 2443,
   "fields": {
     "problem": 110,
     "input_data": [
       "A12345, B-123, c1234, d-123"
     ],
-    "expected_output": "['B-123', 'd-123']"
+    "expected_output": "['B-123', 'd-123']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1314,
+  "pk": 2444,
   "fields": {
     "problem": 110,
     "input_data": [
       "ALPHA, -A, BETA, -B"
     ],
-    "expected_output": "['ALPHA']"
+    "expected_output": "['ALPHA']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1315,
+  "pk": 2445,
   "fields": {
     "problem": 110,
     "input_data": [
       "A, X-Y-Z, B, X-Y-Z"
     ],
-    "expected_output": "['X-Y-Z', 'X-Y-Z']"
+    "expected_output": "['X-Y-Z', 'X-Y-Z']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1316,
+  "pk": 2446,
   "fields": {
     "problem": 110,
     "input_data": [
       "A, XXXXX, B, YYYYY"
     ],
-    "expected_output": "[]"
+    "expected_output": "[]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1317,
+  "pk": 2447,
   "fields": {
     "problem": 110,
     "input_data": [
       "A1234, X-Y-Z, aaaaa, b-b-b, CCCCC, 12345, FFFFF, Z-9-8, G-G-G, H-H-H"
     ],
-    "expected_output": "['A1234', 'X-Y-Z', 'b-b-b', 'CCCCC', 'FFFFF', 'Z-9-8', 'G-G-G', 'H-H-H']"
+    "expected_output": "['A1234', 'X-Y-Z', 'b-b-b', 'CCCCC', 'FFFFF', 'Z-9-8', 'G-G-G', 'H-H-H']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1318,
+  "pk": 2448,
   "fields": {
     "problem": 110,
     "input_data": [
       "E0000, O-D-D, E0002, O-D-D, E0004, O-D-D, E0006, O-D-D"
     ],
-    "expected_output": "['E0000', 'O-D-D', 'E0002', 'O-D-D', 'E0004', 'O-D-D', 'E0006', 'O-D-D']"
+    "expected_output": "['E0000', 'O-D-D', 'E0002', 'O-D-D', 'E0004', 'O-D-D', 'E0006', 'O-D-D']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1319,
+  "pk": 2449,
   "fields": {
     "problem": 110,
     "input_data": [
       ",A12345, X-Y-Z-W, B12345, Y-Z-W-X,"
     ],
-    "expected_output": "[]"
+    "expected_output": "[]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1320,
+  "pk": 2450,
   "fields": {
     "problem": 110,
     "input_data": [
       "A0000, B0000, C0000, D0000, E0000"
     ],
-    "expected_output": "['A0000', 'C0000', 'E0000']"
+    "expected_output": "['A0000', 'C0000', 'E0000']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1321,
+  "pk": 2451,
   "fields": {
     "problem": 110,
     "input_data": [
       "a0000, B-0-0, c0000, D-0-0, e0000"
     ],
-    "expected_output": "['B-0-0', 'D-0-0']"
+    "expected_output": "['B-0-0', 'D-0-0']",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1322,
+  "pk": 2452,
   "fields": {
     "problem": 110,
     "input_data": [
       "A000, B-000000, C000, D-000000, E000"
     ],
-    "expected_output": "[]"
+    "expected_output": "[]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1323,
+  "pk": 2453,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2354,12 +2527,13 @@
         50
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [10, 20, 40], 'Problematic_Duplicates': [50, 25]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [10, 20, 40], 'Problematic_Duplicates': [50, 25]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1324,
+  "pk": 2454,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2372,12 +2546,13 @@
         125
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [100, 110, 120, 130], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [100, 110, 120, 130], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1325,
+  "pk": 2455,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2391,23 +2566,25 @@
         20
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [5], 'Problematic_Duplicates': [20, 15, 10]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [5], 'Problematic_Duplicates': [20, 15, 10]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1326,
+  "pk": 2456,
   "fields": {
     "problem": 111,
     "input_data": [
       []
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1327,
+  "pk": 2457,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2418,12 +2595,13 @@
         3
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [1, 3], 'Problematic_Duplicates': [2]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [1, 3], 'Problematic_Duplicates': [2]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1328,
+  "pk": 2458,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2439,12 +2617,13 @@
         22
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [1, 5, 10, 20], 'Problematic_Duplicates': [22, 15]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [1, 5, 10, 20], 'Problematic_Duplicates': [22, 15]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1329,
+  "pk": 2459,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2456,12 +2635,13 @@
         5
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [1, 2, 3, 4, 5], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [1, 2, 3, 4, 5], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1330,
+  "pk": 2460,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2472,12 +2652,13 @@
         70
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [100], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [100], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1331,
+  "pk": 2461,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2490,12 +2671,13 @@
         7
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [1, 3, 5, 7], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [1, 3, 5, 7], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1332,
+  "pk": 2462,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2506,12 +2688,13 @@
         30
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [20, 30], 'Problematic_Duplicates': [10]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [20, 30], 'Problematic_Duplicates': [10]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1333,
+  "pk": 2463,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2522,12 +2705,13 @@
         15
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [10, 15], 'Problematic_Duplicates': [5]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [10, 15], 'Problematic_Duplicates': [5]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1334,
+  "pk": 2464,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2539,12 +2723,13 @@
         1
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [], 'Problematic_Duplicates': [1]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [], 'Problematic_Duplicates': [1]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1335,
+  "pk": 2465,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2557,12 +2742,13 @@
         1
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [2, 3, 4], 'Problematic_Duplicates': [1]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [2, 3, 4], 'Problematic_Duplicates': [1]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1336,
+  "pk": 2466,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2576,12 +2762,13 @@
         30
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [5, 30], 'Problematic_Duplicates': [20, 10]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [5, 30], 'Problematic_Duplicates': [20, 10]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1337,
+  "pk": 2467,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2593,12 +2780,13 @@
         30
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [10], 'Problematic_Duplicates': [30, 20]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [10], 'Problematic_Duplicates': [30, 20]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1338,
+  "pk": 2468,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2610,12 +2798,13 @@
         30
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [10, 20, 25, 30], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [10, 20, 25, 30], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1339,
+  "pk": 2469,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2626,12 +2815,13 @@
         10
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [], 'Problematic_Duplicates': [20, 10]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [], 'Problematic_Duplicates': [20, 10]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1340,
+  "pk": 2470,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2643,12 +2833,13 @@
         7
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [4, 6, 8], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [4, 6, 8], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1341,
+  "pk": 2471,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2660,12 +2851,13 @@
         10
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [-5, 0, 5, 10], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [-5, 0, 5, 10], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1342,
+  "pk": 2472,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2678,12 +2870,13 @@
         5
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [1, 2, 4, 5], 'Problematic_Duplicates': [3]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [1, 2, 4, 5], 'Problematic_Duplicates': [3]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1343,
+  "pk": 2473,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2694,12 +2887,13 @@
         3000
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [1000, 2000, 3000], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [1000, 2000, 3000], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1344,
+  "pk": 2474,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2710,12 +2904,13 @@
         100
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [99, 101], 'Problematic_Duplicates': [100]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [99, 101], 'Problematic_Duplicates': [100]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1345,
+  "pk": 2475,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2727,12 +2922,13 @@
         15
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [1, 5, 10, 15], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [1, 5, 10, 15], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1346,
+  "pk": 2476,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2744,12 +2940,13 @@
         4
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [1, 2, 4], 'Problematic_Duplicates': [3]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [1, 2, 4], 'Problematic_Duplicates': [3]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1347,
+  "pk": 2477,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2762,12 +2959,13 @@
         40
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [10, 20, 30, 40], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [10, 20, 30, 40], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1348,
+  "pk": 2478,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2780,12 +2978,13 @@
         11
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [2, 5, 7, 9, 11], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [2, 5, 7, 9, 11], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1349,
+  "pk": 2479,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2798,12 +2997,13 @@
         5
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [], 'Problematic_Duplicates': [5, 4, 3]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [], 'Problematic_Duplicates': [5, 4, 3]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1350,
+  "pk": 2480,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2816,12 +3016,13 @@
         400
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [200, 400], 'Problematic_Duplicates': [300, 100]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [200, 400], 'Problematic_Duplicates': [300, 100]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1351,
+  "pk": 2481,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2833,12 +3034,13 @@
         20
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [5, 15, 25], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [5, 15, 25], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1352,
+  "pk": 2482,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2851,12 +3053,13 @@
         3
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [1, 4], 'Problematic_Duplicates': [3, 2]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [1, 4], 'Problematic_Duplicates': [3, 2]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1353,
+  "pk": 2483,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2868,12 +3071,13 @@
         0
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [-10, -5, -2, 0], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [-10, -5, -2, 0], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1354,
+  "pk": 2484,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2889,12 +3093,13 @@
         1
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [5], 'Problematic_Duplicates': [4, 3, 2, 1]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [5], 'Problematic_Duplicates': [4, 3, 2, 1]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1355,
+  "pk": 2485,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2908,12 +3113,13 @@
         20
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [5, 10, 25], 'Problematic_Duplicates': [20, 15]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [5, 10, 25], 'Problematic_Duplicates': [20, 15]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1356,
+  "pk": 2486,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2926,12 +3132,13 @@
         3
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [], 'Problematic_Duplicates': [3, 2, 1]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [], 'Problematic_Duplicates': [3, 2, 1]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1357,
+  "pk": 2487,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2944,12 +3151,13 @@
         25
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [5, 15, 20, 25], 'Problematic_Duplicates': [10]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [5, 15, 20, 25], 'Problematic_Duplicates': [10]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1358,
+  "pk": 2488,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2959,12 +3167,13 @@
         10000
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [10001], 'Problematic_Duplicates': [10000]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [10001], 'Problematic_Duplicates': [10000]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1359,
+  "pk": 2489,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2976,12 +3185,13 @@
         12
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [10, 13], 'Problematic_Duplicates': [12]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [10, 13], 'Problematic_Duplicates': [12]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1360,
+  "pk": 2490,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -2994,12 +3204,13 @@
         11
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [7, 8, 10, 11], 'Problematic_Duplicates': [9]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [7, 8, 10, 11], 'Problematic_Duplicates': [9]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1361,
+  "pk": 2491,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -3012,12 +3223,13 @@
         25
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [1, 5, 10, 15, 20, 25], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [1, 5, 10, 15, 20, 25], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1362,
+  "pk": 2492,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -3030,12 +3242,13 @@
         40
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [], 'Problematic_Duplicates': [40, 35, 30]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [], 'Problematic_Duplicates': [40, 35, 30]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1363,
+  "pk": 2493,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -3048,12 +3261,13 @@
         15
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [5, 10, 15], 'Problematic_Duplicates': [1]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [5, 10, 15], 'Problematic_Duplicates': [1]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1364,
+  "pk": 2494,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -3067,12 +3281,13 @@
         4
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [1], 'Problematic_Duplicates': [4, 3, 2]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [1], 'Problematic_Duplicates': [4, 3, 2]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1365,
+  "pk": 2495,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -3085,12 +3300,13 @@
         30
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [20, 40], 'Problematic_Duplicates': [30, 10]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [20, 40], 'Problematic_Duplicates': [30, 10]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1366,
+  "pk": 2496,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -3103,12 +3319,13 @@
         28
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [10, 15, 20, 25, 30], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [10, 15, 20, 25, 30], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1367,
+  "pk": 2497,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -3125,12 +3342,13 @@
         10
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1368,
+  "pk": 2498,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -3147,12 +3365,13 @@
         9
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [2, 3, 4, 5, 6, 7, 8, 9], 'Problematic_Duplicates': [1]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [2, 3, 4, 5, 6, 7, 8, 9], 'Problematic_Duplicates': [1]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1369,
+  "pk": 2499,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -3167,12 +3386,13 @@
         4
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [5], 'Problematic_Duplicates': [4, 3, 2]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [5], 'Problematic_Duplicates': [4, 3, 2]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1370,
+  "pk": 2500,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -3185,12 +3405,13 @@
         3
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [1, 2, 3], 'Problematic_Duplicates': [0]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [1, 2, 3], 'Problematic_Duplicates': [0]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1371,
+  "pk": 2501,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -3205,12 +3426,13 @@
         25
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [1, 5, 15, 25], 'Problematic_Duplicates': [20, 10]}"
+    "expected_output": "{'Valid_Unique_Timestamps': [1, 5, 15, 25], 'Problematic_Duplicates': [20, 10]}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1372,
+  "pk": 2502,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -3223,12 +3445,13 @@
         25
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [10, 20, 30], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [10, 20, 30], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1373,
+  "pk": 2503,
   "fields": {
     "problem": 111,
     "input_data": [
@@ -3240,551 +3463,601 @@
         10000
       ]
     ],
-    "expected_output": "{'Valid_Unique_Timestamps': [1, 10, 100, 1000, 10000], 'Problematic_Duplicates': []}"
+    "expected_output": "{'Valid_Unique_Timestamps': [1, 10, 100, 1000, 10000], 'Problematic_Duplicates': []}",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1374,
+  "pk": 2504,
   "fields": {
     "problem": 113,
     "input_data": [
       "A1B2C3"
     ],
-    "expected_output": "['cba', 18]"
+    "expected_output": "['cba', 18]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1375,
+  "pk": 2505,
   "fields": {
     "problem": 113,
     "input_data": [
       "Z9Y8X7"
     ],
-    "expected_output": "['xyz', 72]"
+    "expected_output": "['xyz', 72]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1376,
+  "pk": 2506,
   "fields": {
     "problem": 113,
     "input_data": [
       "C0D1E2F3"
     ],
-    "expected_output": "['fedc', 24]"
+    "expected_output": "['fedc', 24]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1377,
+  "pk": 2507,
   "fields": {
     "problem": 113,
     "input_data": [
       "G5H5I5J5"
     ],
-    "expected_output": "['jihg', 80]"
+    "expected_output": "['jihg', 80]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1378,
+  "pk": 2508,
   "fields": {
     "problem": 113,
     "input_data": [
       "K1L9M1N9"
     ],
-    "expected_output": "['nmlk', 80]"
+    "expected_output": "['nmlk', 80]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1379,
+  "pk": 2509,
   "fields": {
     "problem": 113,
     "input_data": [
       "T2E4S6T8"
     ],
-    "expected_output": "['tset', 80]"
+    "expected_output": "['tset', 80]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1380,
+  "pk": 2510,
   "fields": {
     "problem": 113,
     "input_data": [
       "Q1W1E1R1T1"
     ],
-    "expected_output": "['trewq', 25]"
+    "expected_output": "['trewq', 25]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1381,
+  "pk": 2511,
   "fields": {
     "problem": 113,
     "input_data": [
       "P9H9O9N9E9"
     ],
-    "expected_output": "['enohp', 225]"
+    "expected_output": "['enohp', 225]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1382,
+  "pk": 2512,
   "fields": {
     "problem": 113,
     "input_data": [
       "J1U2M3P4S5"
     ],
-    "expected_output": "['spmuj', 75]"
+    "expected_output": "['spmuj', 75]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1383,
+  "pk": 2513,
   "fields": {
     "problem": 113,
     "input_data": [
       "V8I7D6E5O4"
     ],
-    "expected_output": "['oediv', 150]"
+    "expected_output": "['oediv', 150]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1384,
+  "pk": 2514,
   "fields": {
     "problem": 113,
     "input_data": [
       "L1O2N3G4E5R6"
     ],
-    "expected_output": "['regnol', 126]"
+    "expected_output": "['regnol', 126]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1385,
+  "pk": 2515,
   "fields": {
     "problem": 113,
     "input_data": [
       "X9Y9Z9A9B9C9"
     ],
-    "expected_output": "['cbaZYX'.lower(), 324]"
+    "expected_output": "['cbaZYX'.lower(), 324]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1386,
+  "pk": 2516,
   "fields": {
     "problem": 113,
     "input_data": [
       "D1E2C3O4D5E6R7"
     ],
-    "expected_output": "['reDOCED'.lower(), 196]"
+    "expected_output": "['reDOCED'.lower(), 196]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1387,
+  "pk": 2517,
   "fields": {
     "problem": 113,
     "input_data": [
       "F0O0R0Z0E0R0O0"
     ],
-    "expected_output": "['orezrof', 0]"
+    "expected_output": "['orezrof', 0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1388,
+  "pk": 2518,
   "fields": {
     "problem": 113,
     "input_data": [
       "G8A7M6E5O4V3E2R1"
     ],
-    "expected_output": "['revOEmag'.lower(), 288]"
+    "expected_output": "['revOEmag'.lower(), 288]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1389,
+  "pk": 2519,
   "fields": {
     "problem": 113,
     "input_data": [
       "H1I1J1K1L1M1N1"
     ],
-    "expected_output": "['nmlkjih', 49]"
+    "expected_output": "['nmlkjih', 49]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1390,
+  "pk": 2520,
   "fields": {
     "problem": 113,
     "input_data": [
       "a1b1c1d1e1f1"
     ],
-    "expected_output": "['fedcba', 36]"
+    "expected_output": "['fedcba', 36]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1391,
+  "pk": 2521,
   "fields": {
     "problem": 113,
     "input_data": [
       "R9E8V7I6S5E4D3"
     ],
-    "expected_output": "['dEsIvEr'.lower(), 294]"
+    "expected_output": "['dEsIvEr'.lower(), 294]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1392,
+  "pk": 2522,
   "fields": {
     "problem": 113,
     "input_data": [
       "M3A3T3R3I3X3"
     ],
-    "expected_output": "['xirtam', 108]"
+    "expected_output": "['xirtam', 108]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1393,
+  "pk": 2523,
   "fields": {
     "problem": 113,
     "input_data": [
       "W1O2R3K4I5N6G7"
     ],
-    "expected_output": "['gniKroW'.lower(), 196]"
+    "expected_output": "['gniKroW'.lower(), 196]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1394,
+  "pk": 2524,
   "fields": {
     "problem": 113,
     "input_data": [
       "A1B9C1D9"
     ],
-    "expected_output": "['dcbA'.lower(), 80]"
+    "expected_output": "['dcbA'.lower(), 80]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1395,
+  "pk": 2525,
   "fields": {
     "problem": 113,
     "input_data": [
       "E0F9G0H9"
     ],
-    "expected_output": "['hGfE'.lower(), 72]"
+    "expected_output": "['hGfE'.lower(), 72]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1396,
+  "pk": 2526,
   "fields": {
     "problem": 113,
     "input_data": [
       "I3J7K3L7"
     ],
-    "expected_output": "['lKjI'.lower(), 80]"
+    "expected_output": "['lKjI'.lower(), 80]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1397,
+  "pk": 2527,
   "fields": {
     "problem": 113,
     "input_data": [
       "M5N5O5P5Q5"
     ],
-    "expected_output": "['qPoNm'.lower(), 125]"
+    "expected_output": "['qPoNm'.lower(), 125]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1398,
+  "pk": 2528,
   "fields": {
     "problem": 113,
     "input_data": [
       "R0S0T0U0V0"
     ],
-    "expected_output": "['vutSr'.lower(), 0]"
+    "expected_output": "['vutSr'.lower(), 0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1399,
+  "pk": 2529,
   "fields": {
     "problem": 113,
     "input_data": [
       "W1E1B1C1A1M1"
     ],
-    "expected_output": "['macbew', 36]"
+    "expected_output": "['macbew', 36]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1400,
+  "pk": 2530,
   "fields": {
     "problem": 113,
     "input_data": [
       "D2A4T6A8"
     ],
-    "expected_output": "['atad', 80]"
+    "expected_output": "['atad', 80]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1401,
+  "pk": 2531,
   "fields": {
     "problem": 113,
     "input_data": [
       "F9I9L9E9"
     ],
-    "expected_output": "['elif', 144]"
+    "expected_output": "['elif', 144]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1402,
+  "pk": 2532,
   "fields": {
     "problem": 113,
     "input_data": [
       "G1H2I3J4K5L6M7"
     ],
-    "expected_output": "['mlkjihg', 196]"
+    "expected_output": "['mlkjihg', 196]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1403,
+  "pk": 2533,
   "fields": {
     "problem": 113,
     "input_data": [
       "N8O8P8Q8R8S8"
     ],
-    "expected_output": "['srqpon', 288]"
+    "expected_output": "['srqpon', 288]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1404,
+  "pk": 2534,
   "fields": {
     "problem": 113,
     "input_data": [
       "H1e2L3l4O5"
     ],
-    "expected_output": "['oLlEh'.lower(), 75]"
+    "expected_output": "['oLlEh'.lower(), 75]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1405,
+  "pk": 2535,
   "fields": {
     "problem": 113,
     "input_data": [
       "W9o8R7l6D5"
     ],
-    "expected_output": "['dLrOw'.lower(), 175]"
+    "expected_output": "['dLrOw'.lower(), 175]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1406,
+  "pk": 2536,
   "fields": {
     "problem": 113,
     "input_data": [
       "P1y2T3h4O5n6"
     ],
-    "expected_output": "['nOhTyP'.lower(), 126]"
+    "expected_output": "['nOhTyP'.lower(), 126]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1407,
+  "pk": 2537,
   "fields": {
     "problem": 113,
     "input_data": [
       "J4a3V2a1"
     ],
-    "expected_output": "['aVaJ'.lower(), 40]"
+    "expected_output": "['aVaJ'.lower(), 40]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1408,
+  "pk": 2538,
   "fields": {
     "problem": 113,
     "input_data": [
       "S2h4O6e8S1"
     ],
-    "expected_output": "['sEoHs'.lower(), 105]"
+    "expected_output": "['sEoHs'.lower(), 105]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1409,
+  "pk": 2539,
   "fields": {
     "problem": 113,
     "input_data": [
       "B7o6O5k4"
     ],
-    "expected_output": "['kOoB'.lower(), 88]"
+    "expected_output": "['kOoB'.lower(), 88]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1410,
+  "pk": 2540,
   "fields": {
     "problem": 113,
     "input_data": [
       "C9a8T7"
     ],
-    "expected_output": "['tAc'.lower(), 72]"
+    "expected_output": "['tAc'.lower(), 72]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1411,
+  "pk": 2541,
   "fields": {
     "problem": 113,
     "input_data": [
       "D1o2G3"
     ],
-    "expected_output": "['gOd'.lower(), 18]"
+    "expected_output": "['gOd'.lower(), 18]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1412,
+  "pk": 2542,
   "fields": {
     "problem": 113,
     "input_data": [
       "M3O4U5S6E7"
     ],
-    "expected_output": "['eSuOm'.lower(), 125]"
+    "expected_output": "['eSuOm'.lower(), 125]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1413,
+  "pk": 2543,
   "fields": {
     "problem": 113,
     "input_data": [
       "A1B1C1D1E1F1G1H1I1J1"
     ],
-    "expected_output": "['jihgfEdcba'.lower(), 100]"
+    "expected_output": "['jihgfEdcba'.lower(), 100]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1414,
+  "pk": 2544,
   "fields": {
     "problem": 113,
     "input_data": [
       "A9B9C9D9E9F9G9H9I9J9"
     ],
-    "expected_output": "['jihgfedcba', 900]"
+    "expected_output": "['jihgfedcba', 900]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1415,
+  "pk": 2545,
   "fields": {
     "problem": 113,
     "input_data": [
       "K1L2M3N4O5P6Q7R8S9T1"
     ],
-    "expected_output": "['tSrQpOnMlK'.lower(), 460]"
+    "expected_output": "['tSrQpOnMlK'.lower(), 460]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1416,
+  "pk": 2546,
   "fields": {
     "problem": 113,
     "input_data": [
       "U2V4W6X8Y1Z3A5B7C9"
     ],
-    "expected_output": "['cBaZyXwVu'.lower(), 405]"
+    "expected_output": "['cBaZyXwVu'.lower(), 405]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1417,
+  "pk": 2547,
   "fields": {
     "problem": 113,
     "input_data": [
       "T1E1S1T1S1H1E1R1E1"
     ],
-    "expected_output": "['eReHsTsEt'.lower(), 81]"
+    "expected_output": "['eReHsTsEt'.lower(), 81]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1418,
+  "pk": 2548,
   "fields": {
     "problem": 113,
     "input_data": [
       "X0Y1X2Y3X4Y5"
     ],
-    "expected_output": "['yXyXyX'.lower(), 90]"
+    "expected_output": "['yXyXyX'.lower(), 90]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1419,
+  "pk": 2549,
   "fields": {
     "problem": 113,
     "input_data": [
       "M1A2X3P4E5R6I7O8D9"
     ],
-    "expected_output": "['doIrEpxAm'.lower(), 405]"
+    "expected_output": "['doIrEpxAm'.lower(), 405]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1420,
+  "pk": 2550,
   "fields": {
     "problem": 113,
     "input_data": [
       "A1L1T1E1R1N1A1T1E1"
     ],
-    "expected_output": "['eTaNrEtLa'.lower(), 81]"
+    "expected_output": "['eTaNrEtLa'.lower(), 81]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1421,
+  "pk": 2551,
   "fields": {
     "problem": 113,
     "input_data": [
       "Z9E8R7O6S5"
     ],
-    "expected_output": "['sOrEz'.lower(), 175]"
+    "expected_output": "['sOrEz'.lower(), 175]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1422,
+  "pk": 2552,
   "fields": {
     "problem": 113,
     "input_data": [
       "O1N2E3H4U5N6D7R8E9D0"
     ],
-    "expected_output": "['dErDnUhEnO'.lower(), 450]"
+    "expected_output": "['dErDnUhEnO'.lower(), 450]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1423,
+  "pk": 2553,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -3799,12 +4072,13 @@
       ],
       2
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 4}, {'Type': 'Stable Period', 'Index': 6, 'Length': 4}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 4}, {'Type': 'Stable Period', 'Index': 6, 'Length': 4}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1424,
+  "pk": 2554,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -3819,12 +4093,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Stable Period', 'Index': 5, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 6, 'Magnitude': 2}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Stable Period', 'Index': 5, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 6, 'Magnitude': 2}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1425,
+  "pk": 2555,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -3839,12 +4114,13 @@
       ],
       3
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 6, 'Length': 7}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 6, 'Length': 7}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1426,
+  "pk": 2556,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -3857,12 +4133,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 5}, {'Type': 'Stable Period', 'Index': 4, 'Length': 4}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 5}, {'Type': 'Stable Period', 'Index': 4, 'Length': 4}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1427,
+  "pk": 2557,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -3872,12 +4149,13 @@
       ],
       1
     ],
-    "expected_output": "[]"
+    "expected_output": "[]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1428,
+  "pk": 2558,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -3888,12 +4166,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1429,
+  "pk": 2559,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -3907,24 +4186,26 @@
       ],
       0
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 1}, {'Type': 'Stable Period', 'Index': 5, 'Length': 3}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 1}, {'Type': 'Stable Period', 'Index': 5, 'Length': 3}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1430,
+  "pk": 2560,
   "fields": {
     "problem": 112,
     "input_data": [
       [],
       5
     ],
-    "expected_output": "[]"
+    "expected_output": "[]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1431,
+  "pk": 2561,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -3937,12 +4218,13 @@
       ],
       2
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 5}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 3}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 5}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 3}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1432,
+  "pk": 2562,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -3955,12 +4237,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1433,
+  "pk": 2563,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -3973,12 +4256,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 2}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 2}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1434,
+  "pk": 2564,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -3993,12 +4277,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 6, 'Length': 7}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 6, 'Length': 7}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1435,
+  "pk": 2565,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4013,12 +4298,13 @@
       ],
       2
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 3}, {'Type': 'Stable Period', 'Index': 6, 'Length': 4}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 3}, {'Type': 'Stable Period', 'Index': 6, 'Length': 4}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1436,
+  "pk": 2566,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4031,12 +4317,13 @@
       ],
       3
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 4, 'Length': 5}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 4, 'Length': 5}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1437,
+  "pk": 2567,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4049,12 +4336,13 @@
       ],
       3
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 4}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 4}, {'Type': 'Stable Period', 'Index': 4, 'Length': 3}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 4}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 4}, {'Type': 'Stable Period', 'Index': 4, 'Length': 3}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1438,
+  "pk": 2568,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4068,12 +4356,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1439,
+  "pk": 2569,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4087,12 +4376,13 @@
       ],
       2
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1440,
+  "pk": 2570,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4106,12 +4396,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1441,
+  "pk": 2571,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4124,12 +4415,13 @@
       ],
       3
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 4, 'Length': 5}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 4, 'Length': 5}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1442,
+  "pk": 2572,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4142,12 +4434,13 @@
       ],
       3
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 4}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 4}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 4}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 4}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 4}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 4}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 4}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 4}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1443,
+  "pk": 2573,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4162,12 +4455,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Stable Period', 'Index': 6, 'Length': 4}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Stable Period', 'Index': 6, 'Length': 4}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1444,
+  "pk": 2574,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4182,12 +4476,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 2}, {'Type': 'Stable Period', 'Index': 4, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 2}, {'Type': 'Stable Period', 'Index': 4, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1445,
+  "pk": 2575,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4201,12 +4496,13 @@
       ],
       2
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 3}, {'Type': 'Stable Period', 'Index': 3, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 3}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 3}, {'Type': 'Stable Period', 'Index': 3, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 3}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1446,
+  "pk": 2576,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4220,12 +4516,13 @@
       ],
       0
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 3, 'Length': 4}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 1}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 1}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 3, 'Length': 4}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 1}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 1}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1447,
+  "pk": 2577,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4239,12 +4536,13 @@
       ],
       0
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 1}, {'Type': 'Stable Period', 'Index': 5, 'Length': 3}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 1}, {'Type': 'Stable Period', 'Index': 5, 'Length': 3}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1448,
+  "pk": 2578,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4258,12 +4556,13 @@
       ],
       0
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 1}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 1}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 1}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 1}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1449,
+  "pk": 2579,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4277,12 +4576,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 7}, {'Type': 'Stable Period', 'Index': 5, 'Length': 3}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 7}, {'Type': 'Stable Period', 'Index': 5, 'Length': 3}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1450,
+  "pk": 2580,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4296,12 +4596,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1451,
+  "pk": 2581,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4315,12 +4616,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1452,
+  "pk": 2582,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4332,12 +4634,13 @@
       ],
       5
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 9}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 10}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 10}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 9}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 10}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 10}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1453,
+  "pk": 2583,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4351,12 +4654,13 @@
       ],
       3
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1454,
+  "pk": 2584,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4369,12 +4673,13 @@
       ],
       4
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 4, 'Length': 5}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 4, 'Length': 5}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1455,
+  "pk": 2585,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4385,12 +4690,13 @@
       ],
       4
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 5}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 5}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 5}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 5}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1456,
+  "pk": 2586,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4404,12 +4710,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1457,
+  "pk": 2587,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4423,12 +4730,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1458,
+  "pk": 2588,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4442,12 +4750,13 @@
       ],
       8
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 9}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 9}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 9}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 9}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 9}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 9}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 9}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 9}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 9}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 9}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1459,
+  "pk": 2589,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4461,12 +4770,13 @@
       ],
       9
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1460,
+  "pk": 2590,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4479,12 +4789,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1461,
+  "pk": 2591,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4497,12 +4808,13 @@
       ],
       4
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 5}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 5}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 5}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 5}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 5}, {'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 5}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 5}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 5}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1462,
+  "pk": 2592,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4516,12 +4828,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1463,
+  "pk": 2593,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4536,12 +4849,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 6, 'Length': 7}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 6, 'Length': 7}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1464,
+  "pk": 2594,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4555,12 +4869,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1465,
+  "pk": 2595,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4574,12 +4889,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1466,
+  "pk": 2596,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4590,12 +4906,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1467,
+  "pk": 2597,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4606,12 +4923,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 2}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 2}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1468,
+  "pk": 2598,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4623,12 +4941,13 @@
       ],
       2
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 3, 'Length': 4}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 3, 'Length': 4}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1469,
+  "pk": 2599,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4640,12 +4959,13 @@
       ],
       2
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 3}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 3}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1470,
+  "pk": 2600,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4659,12 +4979,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 2}, {'Type': 'Stable Period', 'Index': 4, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 2}, {'Type': 'Stable Period', 'Index': 4, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1471,
+  "pk": 2601,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4678,12 +4999,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 3, 'Length': 4}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 2}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 3, 'Length': 4}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 2}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1472,
+  "pk": 2602,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4697,12 +5019,13 @@
       ],
       0
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 3, 'Length': 4}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 1}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 3, 'Length': 4}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 1}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1473,
+  "pk": 2603,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4716,12 +5039,13 @@
       ],
       4
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 5}, {'Type': 'Stable Period', 'Index': 5, 'Length': 3}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 5}, {'Type': 'Stable Period', 'Index': 5, 'Length': 3}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1474,
+  "pk": 2604,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4735,12 +5059,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 1, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1475,
+  "pk": 2605,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4752,12 +5077,13 @@
       ],
       0
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 3, 'Length': 4}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 3, 'Length': 4}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1476,
+  "pk": 2606,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4771,12 +5097,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 5, 'Magnitude': 2}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1477,
+  "pk": 2607,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4790,12 +5117,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 5, 'Length': 6}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1478,
+  "pk": 2608,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4808,12 +5136,13 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 2}]"
+    "expected_output": "[{'Type': 'Rapid Change', 'Index': 2, 'Magnitude': 2}, {'Type': 'Rapid Change', 'Index': 4, 'Magnitude': 2}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1479,
+  "pk": 2609,
   "fields": {
     "problem": 112,
     "input_data": [
@@ -4826,24 +5155,26 @@
       ],
       1
     ],
-    "expected_output": "[{'Type': 'Stable Period', 'Index': 4, 'Length': 5}]"
+    "expected_output": "[{'Type': 'Stable Period', 'Index': 4, 'Length': 5}]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1480,
+  "pk": 2610,
   "fields": {
     "problem": 114,
     "input_data": [
       [],
       10
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1481,
+  "pk": 2611,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -4855,12 +5186,13 @@
       ],
       0
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1482,
+  "pk": 2612,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -4872,12 +5204,13 @@
       ],
       5
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1483,
+  "pk": 2613,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -4893,12 +5226,13 @@
       ],
       5
     ],
-    "expected_output": "15"
+    "expected_output": "15",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1484,
+  "pk": 2614,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -4914,12 +5248,13 @@
       ],
       10
     ],
-    "expected_output": "5"
+    "expected_output": "5",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1485,
+  "pk": 2615,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -4935,12 +5270,13 @@
       ],
       7
     ],
-    "expected_output": "80"
+    "expected_output": "80",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1486,
+  "pk": 2616,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -4956,12 +5292,13 @@
       ],
       6
     ],
-    "expected_output": "50"
+    "expected_output": "50",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1487,
+  "pk": 2617,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -4977,12 +5314,13 @@
       ],
       3
     ],
-    "expected_output": "10"
+    "expected_output": "10",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1488,
+  "pk": 2618,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5002,12 +5340,13 @@
       ],
       2
     ],
-    "expected_output": "5"
+    "expected_output": "5",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1489,
+  "pk": 2619,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5019,12 +5358,13 @@
       ],
       10
     ],
-    "expected_output": "100"
+    "expected_output": "100",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1490,
+  "pk": 2620,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5040,12 +5380,13 @@
       ],
       10
     ],
-    "expected_output": "101"
+    "expected_output": "101",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1491,
+  "pk": 2621,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5065,12 +5406,13 @@
       ],
       8
     ],
-    "expected_output": "20"
+    "expected_output": "20",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1492,
+  "pk": 2622,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5086,12 +5428,13 @@
       ],
       9
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1493,
+  "pk": 2623,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5115,12 +5458,13 @@
       ],
       3
     ],
-    "expected_output": "6"
+    "expected_output": "6",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1494,
+  "pk": 2624,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5140,12 +5484,13 @@
       ],
       6
     ],
-    "expected_output": "13"
+    "expected_output": "13",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1495,
+  "pk": 2625,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5165,12 +5510,13 @@
       ],
       8
     ],
-    "expected_output": "90"
+    "expected_output": "90",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1496,
+  "pk": 2626,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5194,12 +5540,13 @@
       ],
       8
     ],
-    "expected_output": "19"
+    "expected_output": "19",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1497,
+  "pk": 2627,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5219,12 +5566,13 @@
       ],
       10
     ],
-    "expected_output": "110"
+    "expected_output": "110",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1498,
+  "pk": 2628,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5248,12 +5596,13 @@
       ],
       7
     ],
-    "expected_output": "30"
+    "expected_output": "30",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1499,
+  "pk": 2629,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5281,12 +5630,13 @@
       ],
       5
     ],
-    "expected_output": "10"
+    "expected_output": "10",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1500,
+  "pk": 2630,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5306,12 +5656,13 @@
       ],
       20
     ],
-    "expected_output": "20"
+    "expected_output": "20",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1501,
+  "pk": 2631,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5331,12 +5682,13 @@
       ],
       21
     ],
-    "expected_output": "101"
+    "expected_output": "101",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1502,
+  "pk": 2632,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5356,12 +5708,13 @@
       ],
       25
     ],
-    "expected_output": "20"
+    "expected_output": "20",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1503,
+  "pk": 2633,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5381,12 +5734,13 @@
       ],
       16
     ],
-    "expected_output": "25"
+    "expected_output": "25",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1504,
+  "pk": 2634,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5410,12 +5764,13 @@
       ],
       6
     ],
-    "expected_output": "30"
+    "expected_output": "30",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1505,
+  "pk": 2635,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5443,12 +5798,13 @@
       ],
       15
     ],
-    "expected_output": "15"
+    "expected_output": "15",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1506,
+  "pk": 2636,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5468,12 +5824,13 @@
       ],
       40
     ],
-    "expected_output": "100"
+    "expected_output": "100",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1507,
+  "pk": 2637,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5493,12 +5850,13 @@
       ],
       20
     ],
-    "expected_output": "110"
+    "expected_output": "110",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1508,
+  "pk": 2638,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5518,12 +5876,13 @@
       ],
       11
     ],
-    "expected_output": "100"
+    "expected_output": "100",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1509,
+  "pk": 2639,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5551,12 +5910,13 @@
       ],
       10
     ],
-    "expected_output": "50"
+    "expected_output": "50",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1510,
+  "pk": 2640,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5580,12 +5940,13 @@
       ],
       9
     ],
-    "expected_output": "20"
+    "expected_output": "20",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1511,
+  "pk": 2641,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5601,12 +5962,13 @@
       ],
       100
     ],
-    "expected_output": "100"
+    "expected_output": "100",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1512,
+  "pk": 2642,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5634,12 +5996,13 @@
       ],
       10
     ],
-    "expected_output": "100"
+    "expected_output": "100",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1513,
+  "pk": 2643,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5655,12 +6018,13 @@
       ],
       99
     ],
-    "expected_output": "10"
+    "expected_output": "10",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1514,
+  "pk": 2644,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5676,12 +6040,13 @@
       ],
       49
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1515,
+  "pk": 2645,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5697,12 +6062,13 @@
       ],
       10
     ],
-    "expected_output": "100"
+    "expected_output": "100",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1516,
+  "pk": 2646,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5722,12 +6088,13 @@
       ],
       11
     ],
-    "expected_output": "111"
+    "expected_output": "111",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1517,
+  "pk": 2647,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5755,12 +6122,13 @@
       ],
       10
     ],
-    "expected_output": "100"
+    "expected_output": "100",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1518,
+  "pk": 2648,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5776,12 +6144,13 @@
       ],
       10
     ],
-    "expected_output": "101"
+    "expected_output": "101",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1519,
+  "pk": 2649,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5809,12 +6178,13 @@
       ],
       2
     ],
-    "expected_output": "10"
+    "expected_output": "10",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1520,
+  "pk": 2650,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5838,12 +6208,13 @@
       ],
       12
     ],
-    "expected_output": "20"
+    "expected_output": "20",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1521,
+  "pk": 2651,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5875,12 +6246,13 @@
       ],
       4
     ],
-    "expected_output": "18"
+    "expected_output": "18",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1522,
+  "pk": 2652,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5904,12 +6276,13 @@
       ],
       50
     ],
-    "expected_output": "110"
+    "expected_output": "110",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1523,
+  "pk": 2653,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5929,12 +6302,13 @@
       ],
       30
     ],
-    "expected_output": "30"
+    "expected_output": "30",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1524,
+  "pk": 2654,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5954,12 +6328,13 @@
       ],
       31
     ],
-    "expected_output": "30"
+    "expected_output": "30",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1525,
+  "pk": 2655,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -5987,12 +6362,13 @@
       ],
       10
     ],
-    "expected_output": "15"
+    "expected_output": "15",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1526,
+  "pk": 2656,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -6016,12 +6392,13 @@
       ],
       20
     ],
-    "expected_output": "26"
+    "expected_output": "26",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1527,
+  "pk": 2657,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -6045,12 +6422,13 @@
       ],
       60
     ],
-    "expected_output": "130"
+    "expected_output": "130",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1528,
+  "pk": 2658,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -6074,12 +6452,13 @@
       ],
       10
     ],
-    "expected_output": "110"
+    "expected_output": "110",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1529,
+  "pk": 2659,
   "fields": {
     "problem": 114,
     "input_data": [
@@ -6107,496 +6486,541 @@
       ],
       45
     ],
-    "expected_output": "40"
+    "expected_output": "40",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1530,
+  "pk": 2660,
   "fields": {
     "problem": 115,
     "input_data": [
       "abcxyzabcxyz"
     ],
-    "expected_output": "'abcxyz'"
+    "expected_output": "abcxyz",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1531,
+  "pk": 2661,
   "fields": {
     "problem": 115,
     "input_data": [
       "12341234"
     ],
-    "expected_output": "'1234'"
+    "expected_output": "1234",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1532,
+  "pk": 2662,
   "fields": {
     "problem": 115,
     "input_data": [
       "aabbaaabbaa"
     ],
-    "expected_output": "'aabba'"
+    "expected_output": "aabba",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1533,
+  "pk": 2663,
   "fields": {
     "problem": 115,
     "input_data": [
       "ababcdababcd"
     ],
-    "expected_output": "'ababcd'"
+    "expected_output": "ababcd",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1534,
+  "pk": 2664,
   "fields": {
     "problem": 115,
     "input_data": [
       "1234512345"
     ],
-    "expected_output": "'12345'"
+    "expected_output": "12345",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1535,
+  "pk": 2665,
   "fields": {
     "problem": 115,
     "input_data": [
       "topcoderistopcoder"
     ],
-    "expected_output": "'topcoder'"
+    "expected_output": "topcoder",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1536,
+  "pk": 2666,
   "fields": {
     "problem": 115,
     "input_data": [
       "ab_cd_efab_cd_ef"
     ],
-    "expected_output": "'ab_cd_ef'"
+    "expected_output": "ab_cd_ef",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1537,
+  "pk": 2667,
   "fields": {
     "problem": 115,
     "input_data": [
       "QWERTYuiopQWERTYuiop"
     ],
-    "expected_output": "'QWERTYuiop'"
+    "expected_output": "QWERTYuiop",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1538,
+  "pk": 2668,
   "fields": {
     "problem": 115,
     "input_data": [
       "01100110"
     ],
-    "expected_output": "'0110'"
+    "expected_output": "0110",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1539,
+  "pk": 2669,
   "fields": {
     "problem": 115,
     "input_data": [
       "zyxwvuzyxwvu"
     ],
-    "expected_output": "'zyxwvu'"
+    "expected_output": "zyxwvu",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1540,
+  "pk": 2670,
   "fields": {
     "problem": 115,
     "input_data": [
       "abcabdeab"
     ],
-    "expected_output": "'ab'"
+    "expected_output": "ab",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1541,
+  "pk": 2671,
   "fields": {
     "problem": 115,
     "input_data": [
       "mississippi"
     ],
-    "expected_output": "'iss'"
+    "expected_output": "iss",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1542,
+  "pk": 2672,
   "fields": {
     "problem": 115,
     "input_data": [
       "applepieapple"
     ],
-    "expected_output": "'apple'"
+    "expected_output": "apple",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1543,
+  "pk": 2673,
   "fields": {
     "problem": 115,
     "input_data": [
       "hellohellohello"
     ],
-    "expected_output": "'hello'"
+    "expected_output": "hello",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1544,
+  "pk": 2674,
   "fields": {
     "problem": 115,
     "input_data": [
       "abracadabra"
     ],
-    "expected_output": "'abra'"
+    "expected_output": "abra",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1545,
+  "pk": 2675,
   "fields": {
     "problem": 115,
     "input_data": [
       "test_test_test"
     ],
-    "expected_output": "'test_'"
+    "expected_output": "test_",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1546,
+  "pk": 2676,
   "fields": {
     "problem": 115,
     "input_data": [
       "programming"
     ],
-    "expected_output": "'r'"
+    "expected_output": "r",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1547,
+  "pk": 2677,
   "fields": {
     "problem": 115,
     "input_data": [
       "abcdefabghijab"
     ],
-    "expected_output": "'ab'"
+    "expected_output": "ab",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1548,
+  "pk": 2678,
   "fields": {
     "problem": 115,
     "input_data": [
       "AAAA"
     ],
-    "expected_output": "'AA'"
+    "expected_output": "AA",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1549,
+  "pk": 2679,
   "fields": {
     "problem": 115,
     "input_data": [
       "AAAAA"
     ],
-    "expected_output": "'AA'"
+    "expected_output": "AA",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1550,
+  "pk": 2680,
   "fields": {
     "problem": 115,
     "input_data": [
       "AAAAAAAA"
     ],
-    "expected_output": "'AAAA'"
+    "expected_output": "AAAA",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1551,
+  "pk": 2681,
   "fields": {
     "problem": 115,
     "input_data": [
       "ABABABAB"
     ],
-    "expected_output": "'ABAB'"
+    "expected_output": "ABAB",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1552,
+  "pk": 2682,
   "fields": {
     "problem": 115,
     "input_data": [
       "ababab"
     ],
-    "expected_output": "'ab'"
+    "expected_output": "ab",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1553,
+  "pk": 2683,
   "fields": {
     "problem": 115,
     "input_data": [
       "1010101010"
     ],
-    "expected_output": "'1010'"
+    "expected_output": "1010",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1554,
+  "pk": 2684,
   "fields": {
     "problem": 115,
     "input_data": [
       "aaabbbccc"
     ],
-    "expected_output": "'a'"
+    "expected_output": "a",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1555,
+  "pk": 2685,
   "fields": {
     "problem": 115,
     "input_data": [
       "zzzaaa"
     ],
-    "expected_output": "'z'"
+    "expected_output": "z",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1556,
+  "pk": 2686,
   "fields": {
     "problem": 115,
     "input_data": [
       "xoxoxtryxoxox"
     ],
-    "expected_output": "'xoxox'"
+    "expected_output": "xoxox",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1557,
+  "pk": 2687,
   "fields": {
     "problem": 115,
     "input_data": [
       "abcdefa"
     ],
-    "expected_output": "'a'"
+    "expected_output": "a",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1558,
+  "pk": 2688,
   "fields": {
     "problem": 115,
     "input_data": [
       "zyxwvuzy"
     ],
-    "expected_output": "'zy'"
+    "expected_output": "zy",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1559,
+  "pk": 2689,
   "fields": {
     "problem": 115,
     "input_data": [
       "a_b_c_d_a"
     ],
-    "expected_output": "'a'"
+    "expected_output": "a",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1560,
+  "pk": 2690,
   "fields": {
     "problem": 115,
     "input_data": [
       "pqrstuvwpqrstuvwxyz"
     ],
-    "expected_output": "'pqrstuvw'"
+    "expected_output": "pqrstuvw",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1561,
+  "pk": 2691,
   "fields": {
     "problem": 115,
     "input_data": [
       "aabbcceeaabbcce"
     ],
-    "expected_output": "'aabbcce'"
+    "expected_output": "aabbcce",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1562,
+  "pk": 2692,
   "fields": {
     "problem": 115,
     "input_data": [
       "12345671234567"
     ],
-    "expected_output": "'1234567'"
+    "expected_output": "1234567",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1563,
+  "pk": 2693,
   "fields": {
     "problem": 115,
     "input_data": [
       "The quick brown fox jumps over the lazy dog."
     ],
-    "expected_output": "'he '"
+    "expected_output": "he ",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1564,
+  "pk": 2694,
   "fields": {
     "problem": 115,
     "input_data": [
       "abacaba"
     ],
-    "expected_output": "'aba'"
+    "expected_output": "aba",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1565,
+  "pk": 2695,
   "fields": {
     "problem": 115,
     "input_data": [
       "abcde"
     ],
-    "expected_output": "''"
+    "expected_output": "",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1566,
+  "pk": 2696,
   "fields": {
     "problem": 115,
     "input_data": [
       "a"
     ],
-    "expected_output": "''"
+    "expected_output": "",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1567,
+  "pk": 2697,
   "fields": {
     "problem": 115,
     "input_data": [
       ""
     ],
-    "expected_output": "''"
+    "expected_output": "",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1568,
+  "pk": 2698,
   "fields": {
     "problem": 115,
     "input_data": [
       "abccba"
     ],
-    "expected_output": "'a'"
+    "expected_output": "a",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1569,
+  "pk": 2699,
   "fields": {
     "problem": 115,
     "input_data": [
       "123321"
     ],
-    "expected_output": "'1'"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1570,
+  "pk": 2700,
   "fields": {
     "problem": 115,
     "input_data": [
       "abcdefghijklmnopqrstuvwxyz"
     ],
-    "expected_output": "''"
+    "expected_output": "",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1571,
+  "pk": 2701,
   "fields": {
     "problem": 115,
     "input_data": [
       "hannah"
     ],
-    "expected_output": "'h'"
+    "expected_output": "h",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1572,
+  "pk": 2702,
   "fields": {
     "problem": 115,
     "input_data": [
       "123454321"
     ],
-    "expected_output": "'1'"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1573,
+  "pk": 2703,
   "fields": {
     "problem": 115,
     "input_data": [
       "abCdEfG"
     ],
-    "expected_output": "''"
+    "expected_output": "",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1574,
+  "pk": 2704,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6605,12 +7029,13 @@
         10
       ]
     ],
-    "expected_output": "[1, 5.00]"
+    "expected_output": "[1, 5.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1575,
+  "pk": 2705,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6619,12 +7044,13 @@
         100
       ]
     ],
-    "expected_output": "[1, 1.00]"
+    "expected_output": "[1, 1.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1576,
+  "pk": 2706,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6633,12 +7059,13 @@
         1
       ]
     ],
-    "expected_output": "[1, 100.00]"
+    "expected_output": "[1, 100.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1577,
+  "pk": 2707,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6648,12 +7075,13 @@
         1
       ]
     ],
-    "expected_output": "[1, 1.00]"
+    "expected_output": "[1, 1.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1578,
+  "pk": 2708,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6664,12 +7092,13 @@
         40
       ]
     ],
-    "expected_output": "[3, 20.00]"
+    "expected_output": "[3, 20.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1579,
+  "pk": 2709,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6680,12 +7109,13 @@
         5
       ]
     ],
-    "expected_output": "[3, 2.33]"
+    "expected_output": "[3, 2.33]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1580,
+  "pk": 2710,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6696,12 +7126,13 @@
         1
       ]
     ],
-    "expected_output": "[3, 10.00]"
+    "expected_output": "[3, 10.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1581,
+  "pk": 2711,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6713,12 +7144,13 @@
         1
       ]
     ],
-    "expected_output": "[4, 25.75]"
+    "expected_output": "[4, 25.75]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1582,
+  "pk": 2712,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6730,12 +7162,13 @@
         100
       ]
     ],
-    "expected_output": "[4, 1.00]"
+    "expected_output": "[4, 1.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1583,
+  "pk": 2713,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6747,12 +7180,13 @@
         100
       ]
     ],
-    "expected_output": "[4, 2.50]"
+    "expected_output": "[4, 2.50]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1584,
+  "pk": 2714,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6763,12 +7197,13 @@
         100
       ]
     ],
-    "expected_output": "[3, 17.33]"
+    "expected_output": "[3, 17.33]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1585,
+  "pk": 2715,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6779,12 +7214,13 @@
         1
       ]
     ],
-    "expected_output": "[3, 7.0]"
+    "expected_output": "[3, 7.0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1586,
+  "pk": 2716,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6795,12 +7231,13 @@
         10
       ]
     ],
-    "expected_output": "[3, 4.0]"
+    "expected_output": "[3, 4.0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1587,
+  "pk": 2717,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6811,12 +7248,13 @@
         1000
       ]
     ],
-    "expected_output": "[3, 37.0]"
+    "expected_output": "[3, 37.0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1588,
+  "pk": 2718,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6827,12 +7265,13 @@
         1
       ]
     ],
-    "expected_output": "[3, 4.33]"
+    "expected_output": "[3, 4.33]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1589,
+  "pk": 2719,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6843,12 +7282,13 @@
         15
       ]
     ],
-    "expected_output": "[2, 5.00]"
+    "expected_output": "[2, 5.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1590,
+  "pk": 2720,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6859,12 +7299,13 @@
         20
       ]
     ],
-    "expected_output": "[3, 10.00]"
+    "expected_output": "[3, 10.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1591,
+  "pk": 2721,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6875,12 +7316,13 @@
         5
       ]
     ],
-    "expected_output": "[3, 15.0]"
+    "expected_output": "[3, 15.0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1592,
+  "pk": 2722,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6891,12 +7333,13 @@
         100
       ]
     ],
-    "expected_output": "[3, 34.0]"
+    "expected_output": "[3, 34.0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1593,
+  "pk": 2723,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6908,12 +7351,13 @@
         7
       ]
     ],
-    "expected_output": "[1, 7.00]"
+    "expected_output": "[1, 7.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1594,
+  "pk": 2724,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6926,12 +7370,13 @@
         10
       ]
     ],
-    "expected_output": "[1, 10.00]"
+    "expected_output": "[1, 10.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1595,
+  "pk": 2725,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6944,12 +7389,13 @@
         4
       ]
     ],
-    "expected_output": "[5, 2.80]"
+    "expected_output": "[5, 2.80]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1596,
+  "pk": 2726,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6962,12 +7408,13 @@
         1
       ]
     ],
-    "expected_output": "[5, 4.6]"
+    "expected_output": "[5, 4.6]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1597,
+  "pk": 2727,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -6983,12 +7430,13 @@
         100
       ]
     ],
-    "expected_output": "[8, 1.00]"
+    "expected_output": "[8, 1.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1598,
+  "pk": 2728,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7004,12 +7452,13 @@
         1
       ]
     ],
-    "expected_output": "[8, 13.38]"
+    "expected_output": "[8, 13.38]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1599,
+  "pk": 2729,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7025,12 +7474,13 @@
         1
       ]
     ],
-    "expected_output": "[8, 4.38]"
+    "expected_output": "[8, 4.38]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1600,
+  "pk": 2730,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7042,12 +7492,13 @@
         1
       ]
     ],
-    "expected_output": "[4, 750.25]"
+    "expected_output": "[4, 750.25]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1601,
+  "pk": 2731,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7064,12 +7515,13 @@
         1000
       ]
     ],
-    "expected_output": "[9, 500.00]"
+    "expected_output": "[9, 500.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1602,
+  "pk": 2732,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7081,12 +7533,13 @@
         5
       ]
     ],
-    "expected_output": "[4, 2.50]"
+    "expected_output": "[4, 2.50]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1603,
+  "pk": 2733,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7097,12 +7550,13 @@
         2
       ]
     ],
-    "expected_output": "[3, 1.00]"
+    "expected_output": "[3, 1.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1604,
+  "pk": 2734,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7113,12 +7567,13 @@
         1
       ]
     ],
-    "expected_output": "[3, 7.0]"
+    "expected_output": "[3, 7.0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1605,
+  "pk": 2735,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7129,12 +7584,13 @@
         100
       ]
     ],
-    "expected_output": "[3, 1.00]"
+    "expected_output": "[3, 1.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1606,
+  "pk": 2736,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7145,12 +7601,13 @@
         4
       ]
     ],
-    "expected_output": "[3, 2.00]"
+    "expected_output": "[3, 2.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1607,
+  "pk": 2737,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7164,12 +7621,13 @@
         5
       ]
     ],
-    "expected_output": "[4, 1.00]"
+    "expected_output": "[4, 1.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1608,
+  "pk": 2738,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7181,12 +7639,13 @@
         1
       ]
     ],
-    "expected_output": "[4, 4.0]"
+    "expected_output": "[4, 4.0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1609,
+  "pk": 2739,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7198,12 +7657,13 @@
         50
       ]
     ],
-    "expected_output": "[3, 1.00]"
+    "expected_output": "[3, 1.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1610,
+  "pk": 2740,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7215,12 +7675,13 @@
         1
       ]
     ],
-    "expected_output": "[4, 25.5]"
+    "expected_output": "[4, 25.5]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1611,
+  "pk": 2741,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7232,12 +7693,13 @@
         4
       ]
     ],
-    "expected_output": "[4, 4.0]"
+    "expected_output": "[4, 4.0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1612,
+  "pk": 2742,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7249,12 +7711,13 @@
         1
       ]
     ],
-    "expected_output": "[4, 25.75]"
+    "expected_output": "[4, 25.75]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1613,
+  "pk": 2743,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7267,12 +7730,13 @@
         3
       ]
     ],
-    "expected_output": "[5, 5.0]"
+    "expected_output": "[5, 5.0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1614,
+  "pk": 2744,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7284,12 +7748,13 @@
         1
       ]
     ],
-    "expected_output": "[4, 5.5]"
+    "expected_output": "[4, 5.5]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1615,
+  "pk": 2745,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7301,12 +7766,13 @@
         10
       ]
     ],
-    "expected_output": "[4, 5.5]"
+    "expected_output": "[4, 5.5]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1616,
+  "pk": 2746,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7320,12 +7786,13 @@
         1000
       ]
     ],
-    "expected_output": "[6, 17.5]"
+    "expected_output": "[6, 17.5]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1617,
+  "pk": 2747,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7336,12 +7803,13 @@
         8
       ]
     ],
-    "expected_output": "[3, 4.00]"
+    "expected_output": "[3, 4.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1618,
+  "pk": 2748,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7352,12 +7820,13 @@
         2
       ]
     ],
-    "expected_output": "[3, 6.0]"
+    "expected_output": "[3, 6.0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1619,
+  "pk": 2749,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7369,12 +7838,13 @@
         100
       ]
     ],
-    "expected_output": "[1, 1.0]"
+    "expected_output": "[1, 1.0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1620,
+  "pk": 2750,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7386,12 +7856,13 @@
         1
       ]
     ],
-    "expected_output": "[4, 10.00]"
+    "expected_output": "[4, 10.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1621,
+  "pk": 2751,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7404,12 +7875,13 @@
         5
       ]
     ],
-    "expected_output": "[4, 3.00]"
+    "expected_output": "[4, 3.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1622,
+  "pk": 2752,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7422,12 +7894,13 @@
         6
       ]
     ],
-    "expected_output": "[5, 3.0]"
+    "expected_output": "[5, 3.0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1623,
+  "pk": 2753,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7440,12 +7913,13 @@
         10
       ]
     ],
-    "expected_output": "[5, 1.00]"
+    "expected_output": "[5, 1.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1624,
+  "pk": 2754,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7457,12 +7931,13 @@
         1
       ]
     ],
-    "expected_output": "[4, 7.75]"
+    "expected_output": "[4, 7.75]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1625,
+  "pk": 2755,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7475,12 +7950,13 @@
         10
       ]
     ],
-    "expected_output": "[2, 1.00]"
+    "expected_output": "[2, 1.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1626,
+  "pk": 2756,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7491,12 +7967,13 @@
         1
       ]
     ],
-    "expected_output": "[3, 37.0]"
+    "expected_output": "[3, 37.0]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1627,
+  "pk": 2757,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7508,12 +7985,13 @@
         32
       ]
     ],
-    "expected_output": "[4, 7.50]"
+    "expected_output": "[4, 7.50]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1628,
+  "pk": 2758,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7525,12 +8003,13 @@
         2
       ]
     ],
-    "expected_output": "[4, 26.5]"
+    "expected_output": "[4, 26.5]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1629,
+  "pk": 2759,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7547,12 +8026,13 @@
         5
       ]
     ],
-    "expected_output": "[9, 2.78]"
+    "expected_output": "[9, 2.78]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1630,
+  "pk": 2760,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7567,12 +8047,13 @@
         1
       ]
     ],
-    "expected_output": "[7, 6.14]"
+    "expected_output": "[7, 6.14]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1631,
+  "pk": 2761,
   "fields": {
     "problem": 116,
     "input_data": [
@@ -7585,24 +8066,26 @@
         1
       ]
     ],
-    "expected_output": "[5, 30.00]"
+    "expected_output": "[5, 30.00]",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1632,
+  "pk": 2762,
   "fields": {
     "problem": 117,
     "input_data": [
       [],
       10
     ],
-    "expected_output": "-1"
+    "expected_output": "-1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1633,
+  "pk": 2763,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7611,12 +8094,13 @@
       ],
       0
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1634,
+  "pk": 2764,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7629,12 +8113,13 @@
       ],
       0
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1635,
+  "pk": 2765,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7646,12 +8131,13 @@
       ],
       0
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1636,
+  "pk": 2766,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7663,12 +8149,13 @@
       ],
       -1
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1637,
+  "pk": 2767,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7681,12 +8168,13 @@
       ],
       4
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1638,
+  "pk": 2768,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7699,12 +8187,13 @@
       ],
       3
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1639,
+  "pk": 2769,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7717,12 +8206,13 @@
       ],
       100
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1640,
+  "pk": 2770,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7736,12 +8226,13 @@
       ],
       2
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1641,
+  "pk": 2771,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7754,12 +8245,13 @@
       ],
       10
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1642,
+  "pk": 2772,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7772,12 +8264,13 @@
       ],
       2
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1643,
+  "pk": 2773,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7793,12 +8286,13 @@
       ],
       0
     ],
-    "expected_output": "2"
+    "expected_output": "2",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1644,
+  "pk": 2774,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7812,12 +8306,13 @@
       ],
       3
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1645,
+  "pk": 2775,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7832,12 +8327,13 @@
       ],
       4
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1646,
+  "pk": 2776,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7851,12 +8347,13 @@
       ],
       2
     ],
-    "expected_output": "2"
+    "expected_output": "2",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1647,
+  "pk": 2777,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7871,12 +8368,13 @@
       ],
       3
     ],
-    "expected_output": "3"
+    "expected_output": "3",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1648,
+  "pk": 2778,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7890,12 +8388,13 @@
       ],
       0
     ],
-    "expected_output": "4"
+    "expected_output": "4",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1649,
+  "pk": 2779,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7909,12 +8408,13 @@
       ],
       1
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1650,
+  "pk": 2780,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7928,12 +8428,13 @@
       ],
       4
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1651,
+  "pk": 2781,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7945,12 +8446,13 @@
       ],
       3
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1652,
+  "pk": 2782,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7962,12 +8464,13 @@
       ],
       10
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1653,
+  "pk": 2783,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7980,12 +8483,13 @@
       ],
       15
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1654,
+  "pk": 2784,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -7997,12 +8501,13 @@
       ],
       10
     ],
-    "expected_output": "2"
+    "expected_output": "2",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1655,
+  "pk": 2785,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8015,12 +8520,13 @@
       ],
       50
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1656,
+  "pk": 2786,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8033,12 +8539,13 @@
       ],
       0
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1657,
+  "pk": 2787,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8050,12 +8557,13 @@
       ],
       2
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1658,
+  "pk": 2788,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8068,12 +8576,13 @@
       ],
       10
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1659,
+  "pk": 2789,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8085,12 +8594,13 @@
       ],
       10
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1660,
+  "pk": 2790,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8102,12 +8612,13 @@
       ],
       20
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1661,
+  "pk": 2791,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8119,12 +8630,13 @@
       ],
       0
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1662,
+  "pk": 2792,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8138,12 +8650,13 @@
       ],
       1
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1663,
+  "pk": 2793,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8157,12 +8670,13 @@
       ],
       1
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1664,
+  "pk": 2794,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8176,12 +8690,13 @@
       ],
       1
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1665,
+  "pk": 2795,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8194,12 +8709,13 @@
       ],
       1
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1666,
+  "pk": 2796,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8211,12 +8727,13 @@
       ],
       1
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1667,
+  "pk": 2797,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8229,12 +8746,13 @@
       ],
       1
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1668,
+  "pk": 2798,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8247,12 +8765,13 @@
       ],
       2
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1669,
+  "pk": 2799,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8266,12 +8785,13 @@
       ],
       5
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1670,
+  "pk": 2800,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8285,12 +8805,13 @@
       ],
       4
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1671,
+  "pk": 2801,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8302,12 +8823,13 @@
       ],
       9.9
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1672,
+  "pk": 2802,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8319,12 +8841,13 @@
       ],
       2.9
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1673,
+  "pk": 2803,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8336,12 +8859,13 @@
       ],
       3.0
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1674,
+  "pk": 2804,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8353,12 +8877,13 @@
       ],
       3.1
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1675,
+  "pk": 2805,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8370,12 +8895,13 @@
       ],
       1.5
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1676,
+  "pk": 2806,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8387,12 +8913,13 @@
       ],
       1.0
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1677,
+  "pk": 2807,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8407,12 +8934,13 @@
       ],
       18
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1678,
+  "pk": 2808,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8426,12 +8954,13 @@
       ],
       1
     ],
-    "expected_output": "3"
+    "expected_output": "3",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1679,
+  "pk": 2809,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8445,12 +8974,13 @@
       ],
       10
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1680,
+  "pk": 2810,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8463,12 +8993,13 @@
       ],
       3
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1681,
+  "pk": 2811,
   "fields": {
     "problem": 117,
     "input_data": [
@@ -8484,12 +9015,13 @@
       ],
       4
     ],
-    "expected_output": "3"
+    "expected_output": "3",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1682,
+  "pk": 2812,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8500,12 +9032,13 @@
         "Window"
       ]
     ],
-    "expected_output": "2"
+    "expected_output": "2",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1683,
+  "pk": 2813,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8516,12 +9049,13 @@
         "W I N D O W"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1684,
+  "pk": 2814,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8532,12 +9066,13 @@
         "Window"
       ]
     ],
-    "expected_output": "2"
+    "expected_output": "2",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1685,
+  "pk": 2815,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8548,12 +9083,13 @@
         "A Window B"
       ]
     ],
-    "expected_output": "2"
+    "expected_output": "2",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1686,
+  "pk": 2816,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8564,12 +9100,13 @@
         "Window"
       ]
     ],
-    "expected_output": "2"
+    "expected_output": "2",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1687,
+  "pk": 2817,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8578,12 +9115,13 @@
         "Window"
       ]
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1688,
+  "pk": 2818,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8593,12 +9131,13 @@
         "Wall"
       ]
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1689,
+  "pk": 2819,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8608,12 +9147,13 @@
         "Z"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1690,
+  "pk": 2820,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8624,12 +9164,13 @@
         "Window 1234"
       ]
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1691,
+  "pk": 2821,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8640,12 +9181,13 @@
         "D"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1692,
+  "pk": 2822,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8654,12 +9196,13 @@
         "WNDW"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1693,
+  "pk": 2823,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8670,12 +9213,13 @@
         "Gate"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1694,
+  "pk": 2824,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8686,12 +9230,13 @@
         "WIND"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1695,
+  "pk": 2825,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8702,12 +9247,13 @@
         "Not Window"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1696,
+  "pk": 2826,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8718,12 +9264,13 @@
         "WNDW 12"
       ]
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1697,
+  "pk": 2827,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8732,12 +9279,13 @@
         "The Window"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1698,
+  "pk": 2828,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8746,12 +9294,13 @@
         "Wind ow 1"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1699,
+  "pk": 2829,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8760,12 +9309,13 @@
         "W I N D O W 1"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1700,
+  "pk": 2830,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8776,12 +9326,13 @@
         "The Window"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1701,
+  "pk": 2831,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8792,12 +9343,13 @@
         "Window 2"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1702,
+  "pk": 2832,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8806,12 +9358,13 @@
         "Z"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1703,
+  "pk": 2833,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8821,12 +9374,13 @@
         "W I N D O W"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1704,
+  "pk": 2834,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8836,12 +9390,13 @@
         "Window 12"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1705,
+  "pk": 2835,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8852,12 +9407,13 @@
         "Y"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1706,
+  "pk": 2836,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8867,12 +9423,13 @@
         "Window 12"
       ]
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1707,
+  "pk": 2837,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8883,12 +9440,13 @@
         "The Window"
       ]
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1708,
+  "pk": 2838,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8899,12 +9457,13 @@
         "Window"
       ]
     ],
-    "expected_output": "2"
+    "expected_output": "2",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1709,
+  "pk": 2839,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8915,12 +9474,13 @@
         "Window"
       ]
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1710,
+  "pk": 2840,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8931,12 +9491,13 @@
         "Window 123"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1711,
+  "pk": 2841,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8947,12 +9508,13 @@
         "Door"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1712,
+  "pk": 2842,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8961,12 +9523,13 @@
         "WWWWWW"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1713,
+  "pk": 2843,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8975,12 +9538,13 @@
         "A WINDOW B C"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1714,
+  "pk": 2844,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -8989,12 +9553,13 @@
         "WINDOW"
       ]
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1715,
+  "pk": 2845,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -9003,12 +9568,13 @@
         "WIND OW 12"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1716,
+  "pk": 2846,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -9017,12 +9583,13 @@
         "WINDOW 123"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1717,
+  "pk": 2847,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -9033,12 +9600,13 @@
         "Window"
       ]
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1718,
+  "pk": 2848,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -9049,12 +9617,13 @@
         "Window"
       ]
     ],
-    "expected_output": "2"
+    "expected_output": "2",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1719,
+  "pk": 2849,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -9066,12 +9635,13 @@
         "Window"
       ]
     ],
-    "expected_output": "2"
+    "expected_output": "2",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1720,
+  "pk": 2850,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -9084,12 +9654,13 @@
         "Window"
       ]
     ],
-    "expected_output": "3"
+    "expected_output": "3",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1721,
+  "pk": 2851,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -9098,12 +9669,13 @@
         "winDOw"
       ]
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1722,
+  "pk": 2852,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -9112,12 +9684,13 @@
         "WInDo W"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1723,
+  "pk": 2853,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -9126,12 +9699,13 @@
         "W I N D O W"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1724,
+  "pk": 2854,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -9140,12 +9714,13 @@
         "w i n d o w 1"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1725,
+  "pk": 2855,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -9154,23 +9729,25 @@
         "a window b"
       ]
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1726,
+  "pk": 2856,
   "fields": {
     "problem": 118,
     "input_data": [
       []
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1727,
+  "pk": 2857,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -9178,12 +9755,13 @@
         "W"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1728,
+  "pk": 2858,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -9192,12 +9770,13 @@
         "X"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1729,
+  "pk": 2859,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -9205,12 +9784,13 @@
         "Window 12"
       ]
     ],
-    "expected_output": "0"
+    "expected_output": "0",
+    "is_public": true
   }
 },
 {
   "model": "api.testcase",
-  "pk": 1730,
+  "pk": 2860,
   "fields": {
     "problem": 118,
     "input_data": [
@@ -9219,7 +9799,28 @@
         "Window"
       ]
     ],
-    "expected_output": "1"
+    "expected_output": "1",
+    "is_public": true
+  }
+},
+{
+  "model": "api.testcase",
+  "pk": 2861,
+  "fields": {
+    "problem": 108,
+    "input_data": [
+      [
+        3,
+        5,
+        3,
+        4,
+        7,
+        8,
+        10
+      ]
+    ],
+    "expected_output": "[3, 3, 4, 5, 8, 10, 7]",
+    "is_public": true
   }
 }
 ]
