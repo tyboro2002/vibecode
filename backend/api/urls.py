@@ -8,6 +8,7 @@ urlpatterns = [
 
     path('problems/all/', views.get_all_problems, name='get_all_problems'),
     path('problems/solved/', views.get_solved_problems, name='get_solved_problems'),
+    path('users/<int:user_id>/solved-problems/', views.get_user_solved_problems, name='get_user_solved_problems'),
 
     path('submit/', views.generate_code, name='generate_code'),
 

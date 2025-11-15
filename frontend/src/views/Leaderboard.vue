@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 
 interface LeaderboardEntry {
+  id: number
   rank: number
   name: string
   score: number
@@ -9,9 +10,26 @@ interface LeaderboardEntry {
   avatar_url?: string  // Zeus profile picture URL
 }
 
+interface SolvedProblem {
+  id: number
+  name: string
+  points: number
+}
+
+interface UserSolvedData {
+  user_name: string
+  total_score: number
+  solved_problems: SolvedProblem[]
+  total_points_from_problems: number
+  problems_solved_count: number
+}
+
 const leaderboardData = ref<LeaderboardEntry[]>([])
 const isLoading = ref(true)
 const errorMessage = ref('')
+const showModal = ref(false)
+const modalLoading = ref(false)
+const selectedUserData = ref<UserSolvedData | null>(null)
 
 const fetchLeaderboard = async () => {
   try {
@@ -36,6 +54,46 @@ const fetchLeaderboard = async () => {
 
 // Fetch data when component mounts
 onMounted(fetchLeaderboard)
+
+const fetchUserSolvedProblems = async (userId: number, userName: string) => {
+  try {
+    modalLoading.value = true
+    showModal.value = true
+    selectedUserData.value = null
+    
+    const response = await fetch(`http://localhost:8000/api/users/${userId}/solved-problems/`)
+    const data = await response.json()
+    
+    if (data.success) {
+      selectedUserData.value = data
+    } else {
+      console.error('Failed to load user solved problems:', data.error)
+      selectedUserData.value = {
+        user_name: userName,
+        total_score: 0,
+        solved_problems: [],
+        total_points_from_problems: 0,
+        problems_solved_count: 0
+      }
+    }
+  } catch (error) {
+    console.error('Error fetching user solved problems:', error)
+    selectedUserData.value = {
+      user_name: userName,
+      total_score: 0,
+      solved_problems: [],
+      total_points_from_problems: 0,
+      problems_solved_count: 0
+    }
+  } finally {
+    modalLoading.value = false
+  }
+}
+
+const closeModal = () => {
+  showModal.value = false
+  selectedUserData.value = null
+}
 </script>
 
 <template>
@@ -74,7 +132,7 @@ onMounted(fetchLeaderboard)
                 <span v-else>{{ leaderboardData[1].avatar }}</span>
               </div>
               <div class="rank-badge silver">2</div>
-              <h3>{{ leaderboardData[1].name }}</h3>
+              <h3 class="clickable-name" @click="fetchUserSolvedProblems(leaderboardData[1].id, leaderboardData[1].name)">{{ leaderboardData[1].name }}</h3>
               <p class="score">{{ leaderboardData[1].score.toLocaleString() }}</p>
             </div>
             
@@ -85,7 +143,7 @@ onMounted(fetchLeaderboard)
                 <span v-else>{{ leaderboardData[0].avatar }}</span>
               </div>
               <div class="rank-badge gold">1</div>
-              <h3>{{ leaderboardData[0].name }}</h3>
+              <h3 class="clickable-name" @click="fetchUserSolvedProblems(leaderboardData[0].id, leaderboardData[0].name)">{{ leaderboardData[0].name }}</h3>
               <p class="score">{{ leaderboardData[0].score.toLocaleString() }}</p>
               <div class="crown">👑</div>
             </div>
@@ -97,7 +155,7 @@ onMounted(fetchLeaderboard)
                 <span v-else>{{ leaderboardData[2].avatar }}</span>
               </div>
               <div class="rank-badge bronze">3</div>
-              <h3>{{ leaderboardData[2].name }}</h3>
+              <h3 class="clickable-name" @click="fetchUserSolvedProblems(leaderboardData[2].id, leaderboardData[2].name)">{{ leaderboardData[2].name }}</h3>
               <p class="score">{{ leaderboardData[2].score.toLocaleString() }}</p>
             </div>
           </div>
@@ -124,7 +182,7 @@ onMounted(fetchLeaderboard)
                 <img v-if="player.avatar_url" :src="player.avatar_url" :alt="player.name" class="avatar-img-small" />
                 <span v-else>{{ player.avatar }}</span>
               </span>
-              <span class="player-name">{{ player.name }}</span>
+              <span class="player-name clickable-name" @click="fetchUserSolvedProblems(player.id, player.name)">{{ player.name }}</span>
             </div>
             <div class="score-col">
               <span class="player-score">{{ player.score.toLocaleString() }}</span>
@@ -137,6 +195,49 @@ onMounted(fetchLeaderboard)
       <div v-else-if="!isLoading" class="empty-state">
         <h2>📊 No Data Available</h2>
         <p>No leaderboard entries found. Try refreshing or contact an administrator.</p>
+      </div>
+    </div>
+
+    <!-- Modal for User's Solved Problems -->
+    <div v-if="showModal" class="modal-overlay" @click="closeModal">
+      <div class="modal-content" @click.stop>
+        <div class="modal-header">
+          <h2>🏆 {{ selectedUserData?.user_name || 'User' }}'s Solved Problems</h2>
+          <button class="close-btn" @click="closeModal">✕</button>
+        </div>
+        
+        <div v-if="modalLoading" class="modal-loading">
+          <div class="loading-spinner">🔄 Loading...</div>
+        </div>
+        
+        <div v-else-if="selectedUserData" class="modal-body">
+          <div class="stats-summary">
+            <div class="stat-card">
+              <div class="stat-value">{{ selectedUserData.problems_solved_count }}</div>
+              <div class="stat-label">Problems Solved</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">{{ selectedUserData.total_points_from_problems }}</div>
+              <div class="stat-label">Points Earned</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">{{ selectedUserData.total_score }}</div>
+              <div class="stat-label">Total Score</div>
+            </div>
+          </div>
+          
+          <div v-if="selectedUserData.solved_problems.length > 0" class="problems-list">
+            <h3>Solved Problems:</h3>
+            <div v-for="problem in selectedUserData.solved_problems" :key="problem.id" class="problem-item">
+              <span class="problem-name">{{ problem.name }}</span>
+              <span class="problem-points">{{ problem.points }} pts</span>
+            </div>
+          </div>
+          
+          <div v-else class="no-problems">
+            <p>No problems solved yet. Keep practicing! 💪</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -465,6 +566,184 @@ onMounted(fetchLeaderboard)
   font-size: 1.1rem;
 }
 
+.clickable-name {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.clickable-name:hover {
+  color: #4facfe;
+  text-decoration: underline;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: linear-gradient(135deg, rgba(30, 30, 60, 0.95), rgba(20, 20, 40, 0.95));
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 2px solid rgba(79, 172, 254, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h2 {
+  color: white;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.close-btn {
+  background: rgba(255, 107, 107, 0.2);
+  border: 1px solid rgba(255, 107, 107, 0.5);
+  color: #ff6b6b;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 107, 107, 0.3);
+  transform: scale(1.1);
+}
+
+.modal-loading {
+  text-align: center;
+  padding: 3rem;
+  color: #4facfe;
+  font-size: 1.2rem;
+}
+
+.modal-body {
+  color: white;
+}
+
+.stats-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4facfe;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.problems-list h3 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.problem-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.problem-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(79, 172, 254, 0.3);
+}
+
+.problem-name {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.problem-points {
+  color: #43e97b;
+  font-weight: bold;
+  background: rgba(67, 233, 123, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.no-problems {
+  text-align: center;
+  padding: 2rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .leaderboard-container {
@@ -515,6 +794,20 @@ onMounted(fetchLeaderboard)
   
   .player-score {
     font-size: 1rem;
+  }
+
+  .stats-summary {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .modal-header h2 {
+    font-size: 1.2rem;
   }
 }
 

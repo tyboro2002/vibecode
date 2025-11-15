@@ -67,6 +67,7 @@ def get_leaderboard(request):
             avatar_url = entry.picture_url
             
             leaderboard_data.append({
+                'id': entry.id,
                 'rank': index,
                 'name': entry.name,
                 'score': entry.score,
@@ -206,6 +207,52 @@ def get_solved_problems(request):
         response = JsonResponse({
             'success': True,
             'solved_problem_ids': list(solved_problem_ids)
+        })
+        return add_cors_headers(response)
+    except Exception as e:
+        response = JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+        return add_cors_headers(response)
+
+
+@csrf_exempt
+def get_user_solved_problems(request, user_id):
+    if request.method != 'GET':
+        response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        return add_cors_headers(response)
+
+    try:
+        # Get the user's leaderboard entry
+        user_entry = LeaderboardEntry.objects.filter(id=user_id).first()
+        
+        if not user_entry:
+            response = JsonResponse({
+                'success': False,
+                'error': 'User not found'
+            }, status=404)
+            return add_cors_headers(response)
+
+        # Find all problems the user has solved
+        from .models import Submission
+        solved_submissions = Submission.objects.filter(
+            submisser=user_entry,
+            submission_correct=True
+        ).values_list('problem_id', flat=True).distinct()
+
+        # Get the problem details
+        solved_problems = Problem.objects.filter(id__in=solved_submissions).values('id', 'name', 'points')
+        
+        total_points = sum(p['points'] for p in solved_problems)
+
+        response = JsonResponse({
+            'success': True,
+            'user_name': user_entry.name,
+            'total_score': user_entry.score,
+            'solved_problems': list(solved_problems),
+            'total_points_from_problems': total_points,
+            'problems_solved_count': len(solved_problems)
         })
         return add_cors_headers(response)
     except Exception as e:
