@@ -28,6 +28,9 @@ const totalTests = ref(0)
 const passedTests = ref(0)
 const showResults = ref(false)
 const showOnlyFailed = ref(false)
+const selectedCode = ref('')
+const selectionStart = ref(0)
+const selectionEnd = ref(0)
 
 // Python runtime and example code for the editor
 const py = usePython()
@@ -94,6 +97,45 @@ const submitText = async () => {
   errorMessage.value = ''
 
   try {
+    // Try to find the textarea within the py-code-block component
+    let editorElement = document.querySelector('#script textarea') as HTMLTextAreaElement
+    
+    // If not found, try common selectors for code editors
+    if (!editorElement) {
+      editorElement = document.querySelector('py-code-block textarea') as HTMLTextAreaElement
+    }
+    if (!editorElement) {
+      editorElement = document.querySelector('.editor textarea') as HTMLTextAreaElement
+    }
+    
+    let hasSelection = false
+    let codeToSend = pyCode.value
+    
+    if (editorElement) {
+      hasSelection = editorElement.selectionStart !== editorElement.selectionEnd
+      
+      if (hasSelection) {
+        selectedCode.value = editorElement.value.substring(editorElement.selectionStart, editorElement.selectionEnd)
+        selectionStart.value = editorElement.selectionStart
+        selectionEnd.value = editorElement.selectionEnd
+        codeToSend = selectedCode.value
+      }
+    } else {
+      // Fallback: check if there's a window selection (for contenteditable)
+      const selection = window.getSelection()
+      if (selection && selection.toString().length > 0) {
+        const selectedText = selection.toString()
+        const codeIndex = pyCode.value.indexOf(selectedText)
+        if (codeIndex !== -1) {
+          hasSelection = true
+          selectedCode.value = selectedText
+          selectionStart.value = codeIndex
+          selectionEnd.value = codeIndex + selectedText.length
+          codeToSend = selectedText
+        }
+      }
+    }
+
     const response = await fetch('http://localhost:8000/api/submit/', {
       method: 'POST',
       headers: {
@@ -102,14 +144,22 @@ const submitText = async () => {
       credentials: 'include', // Include authentication cookies
       body: JSON.stringify({
         prompt: inputText.value,
-        code: pyCode.value,
+        code: codeToSend,
       })
     })
 
     const data = await response.json()
 
     if (data.success) {
-      pyCode.value = data.generated_code
+      if (hasSelection) {
+        // Replace only the selected portion
+        const before = pyCode.value.substring(0, selectionStart.value)
+        const after = pyCode.value.substring(selectionEnd.value)
+        pyCode.value = before + data.generated_code + after
+      } else {
+        // Replace entire code
+        pyCode.value = data.generated_code
+      }
     } else {
       errorMessage.value = data.error || 'An error occurred while processing the text.'
       // pyCode.value = 'Error processing text. Please try again.'

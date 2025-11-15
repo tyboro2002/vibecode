@@ -219,7 +219,7 @@ TESTCASES = {
         {"input_data": [[10, 5, 20, 15, 30, 25]], "expected_output": "{'Valid_Unique_Timestamps': [10, 20, 30], 'Problematic_Duplicates': []}"},
         {"input_data": [[1, 10, 100, 1000, 10000]], "expected_output": "{'Valid_Unique_Timestamps': [1, 10, 100, 1000, 10000], 'Problematic_Duplicates': []}"},
     ],
-    "The Temperature Stability Tracker": [
+    "The Code String Deconstruction": [
         {"input_data": ["A1B2C3"], "expected_output": "['cba', 18]"},
         {"input_data": ["Z9Y8X7"], "expected_output": "['xyz', 72]"},
         {"input_data": ["C0D1E2F3"], "expected_output": "['fedc', 24]"},
@@ -270,7 +270,7 @@ TESTCASES = {
         {"input_data": ["Z9E8R7O6S5"], "expected_output": "['sOrEz'.lower(), 175]"},
         {"input_data": ["O1N2E3H4U5N6D7R8E9D0"], "expected_output": "['dErDnUhEnO'.lower(), 450]"},
     ],
-    "The Code String Deconstruction": [
+    "The Temperature Stability Tracker": [
         {"input_data": [[20, 21, 23, 27, 26, 25, 27], 2], "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 4}, {'Type': 'Stable Period', 'Index': 6, 'Length': 4}]"},
         {"input_data": [[1, 2, 3, 5, 4, 3, 5], 1], "expected_output": "[{'Type': 'Stable Period', 'Index': 2, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 3, 'Magnitude': 2}, {'Type': 'Stable Period', 'Index': 5, 'Length': 3}, {'Type': 'Rapid Change', 'Index': 6, 'Magnitude': 2}]"},
         {"input_data": [[10, 12, 14, 15, 17, 18, 20], 3], "expected_output": "[{'Type': 'Stable Period', 'Index': 6, 'Length': 7}]"},
