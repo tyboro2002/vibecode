@@ -215,7 +215,7 @@ const filteredTestResults = computed(() => {
   <div class="other-container">
     <div class="split-layout">
       <div class="problems-panel">
-        <li v-for="(problem, index) in problems" :key="index" class="left-list" @click="selectProblem(problem)">
+        <li v-for="(problem, index) in problems" :key="index" class="left-list" :class="{ selected: selectedProblem?.id === problem.id }" @click="selectProblem(problem)">
           <span class="left-list-name">{{ problem.name }}</span>
           <span class="left-list-points">{{ problem.points }}</span>
         </li>
@@ -363,6 +363,17 @@ const filteredTestResults = computed(() => {
   border-color: rgba(255, 255, 255, 0.35);
   background: rgba(255, 255, 255, 0.12);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.left-list.selected {
+  background: rgba(79, 172, 254, 0.25);
+  border-color: rgba(79, 172, 254, 0.5);
+  box-shadow: 0 4px 12px rgba(79, 172, 254, 0.3);
+}
+
+.left-list.selected:hover {
+  background: rgba(79, 172, 254, 0.3);
+  border-color: rgba(79, 172, 254, 0.6);
 }
 
 .left-list {
