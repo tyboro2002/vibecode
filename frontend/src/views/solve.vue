@@ -1,18 +1,21 @@
 <script setup lang="ts">
-import {ref, onMounted, onBeforeMount} from 'vue'
+import {ref, onMounted, onBeforeMount, computed} from 'vue'
 // Vue Python editor and runtime
 import { usePython } from 'usepython'
 import { PyStatus, PyCodeBlock } from 'vuepython'
 import 'vuepython/style.css'
 import 'highlight.js/styles/stackoverflow-dark.css'
+import { marked } from 'marked'
+import DOMPurify from 'dompurify'
 
-type Problem = { id: string | number; name: string; points: number }
+type Problem = { id: string | number; name: string; points: number; assignment?: string }
 
 const inputText = ref('')
 const displayText = ref('Your processed text will appear here when you submit...')
 const isLoading = ref(false)
 const errorMessage = ref('')
 const problems = ref<Problem[]>([])
+const selectedProblem = ref<Problem | null>(null)
 
 // Python runtime and example code for the editor
 const py = usePython()
@@ -47,6 +50,7 @@ onMounted(async () => {
 
     const data = await response.json()
     problems.value = data.problems || []
+    selectedProblem.value = problems.value[0] ?? null
     // for dev
     // problems.value = [
     //   "The Jumbled Jumper",
@@ -86,22 +90,22 @@ const submitText = async () => {
       credentials: 'include', // Include authentication cookies
       body: JSON.stringify({
         prompt: inputText.value,
-        code: ""
+        code: pyCode.value,
       })
     })
 
     const data = await response.json()
 
-    // if (data.success) {
+    if (data.success) {
       pyCode.value = data.generated_code
-    // } else {
-    //   errorMessage.value = data.error || 'An error occurred while processing the text.'
-    //   pyCode.value = 'Error processing text. Please try again.'
-    // }
+    } else {
+      errorMessage.value = data.error || 'An error occurred while processing the text.'
+      // pyCode.value = 'Error processing text. Please try again.'
+    }
 
   } catch (error) {
     errorMessage.value = 'Failed to connect to the backend. Make sure the server is running.'
-    pyCode.value = 'Connection error. Please check if the backend server is running.'
+    // pyCode.value = 'Connection error. Please check if the backend server is running.'
     console.error('Error:', error)
   } finally {
     isLoading.value = false
@@ -114,34 +118,44 @@ const clearText = () => {
   displayText.value = 'Your processed text will appear here when you submit...'
   errorMessage.value = ''
 }
+
+const selectProblem = (p: Problem) => {
+  selectedProblem.value = p
+}
+
+const assignmentHtml = computed(() => {
+  const md = selectedProblem.value?.assignment || ''
+  const html = marked.parse(md)
+  return DOMPurify.sanitize(html)
+})
 </script>
 
 <template>
   <div class="other-container">
     <div class="split-layout">
-      <div>
-        <li v-for="(problem, index) in problems" :key="index" class="left-list">
-          <router-link
-              style="color: white"
-              :to="`/solve/${problem.id}`"
-          >
-            {{ problem.name }}
-          </router-link>
-
+      <div class="problems-panel">
+        <li v-for="(problem, index) in problems" :key="index" class="left-list" @click="selectProblem(problem)">
+          <span class="left-list-name">{{ problem.name }}</span>
           <span class="left-list-points">{{ problem.points }}</span>
         </li>
       </div>
-      <!-- Left Side - Input Field -->
+      <!-- Left Side - Problem Description -->
       <div class="input-section">
         <div class="input-card">
-          <h2>✍️ Text Input</h2>
-          <p>Type something and click submit to send it to the backend for processing!</p>
+          <div class="problem-header" v-if="selectedProblem">
+            <h2>{{ selectedProblem.name }}</h2>
+            <span class="problem-points-badge">{{ selectedProblem.points }} pts</span>
+          </div>
+          
+          <div class="text-display">
+            <div class="display-content markdown-content" v-html="assignmentHtml" style="max-height: 300px; overflow-y: auto;"></div>
+          </div>
 
           <div v-if="errorMessage" class="error-message">
             ⚠️ {{ errorMessage }}
           </div>
 
-          <div class="input-group">
+          <div class="input-group" style="min-width: 40%;">
             <label for="textInput" class="input-label">Enter your text:</label>
             <textarea
                 id="textInput"
@@ -162,22 +176,6 @@ const clearText = () => {
             </button>
             <div class="char-count">
               Characters: {{ inputText.length }}
-            </div>
-          </div>
-
-          <div class="quick-actions">
-            <h3>Quick Insert:</h3>
-            <div class="action-buttons">
-              <button @click="inputText += 'Hello World! '" class="action-btn">
-                👋 Hello
-              </button>
-              <button @click="inputText += 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '"
-                      class="action-btn">
-                📝 Lorem
-              </button>
-              <button @click="inputText += '🎉🚀⭐💫 '" class="action-btn">
-                ✨ Emojis
-              </button>
             </div>
           </div>
         </div>
@@ -203,21 +201,112 @@ const clearText = () => {
 <style scoped>
 
 .left-list-points {
-  margin-left: 1rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: #fff;
   font-weight: 600;
   text-align: right;
-  min-width: 2rem;
+  min-width: 2.25rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
 }
 
 .left-list {
   list-style: none;
   margin: 0;
-  padding: 5px;
+  padding: 0.6rem 0.75rem;
   text-align: left;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.left-list:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.left-list {
+  cursor: pointer;
+}
+
+.left-list-name {
+  color: #fff;
+  font-weight: 600;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  flex: 1;
+  max-width: 70%;
+}
+
+.problems-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100vh;
+  padding-right: 4px;
+}
+
+.problem-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.problem-points-badge {
+  color: #fff;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+}
+
+.markdown-content {
+  overflow: auto;
+  text-align: left;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+  color: #fff;
+  margin: 5.6rem 0;
+  text-align: left;
+}
+
+.markdown-content p {
+  color: rgba(255, 255, 255, 0.9);
+  text-align: left;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  padding-left: 1.2rem;
+}
+
+.markdown-content code {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.15rem 0.35rem;
+  border-radius: 6px;
+}
+
+.markdown-content pre {
+  background: #0b1220;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.75rem;
+  border-radius: 10px;
+  overflow: auto;
 }
 
 .other-container {
@@ -227,7 +316,7 @@ const clearText = () => {
 
 .split-layout {
   display: grid;
-  grid-template-columns: 200px 1fr 1fr;
+  grid-template-columns: 200px minmax(35%, 1fr) minmax(45%, 1fr);
   gap: 15px;
   max-width: 1400px;
   margin: 0 auto;
@@ -561,6 +650,18 @@ const clearText = () => {
 /* If the editor renders a textarea (.code-block), style it too */
 :deep(textarea.code-block) {
   border: none;
+  /* Hide the textarea's own scrollbar so only the editor container scrolls */
+  overflow: hidden !important;
+  resize: none !important;
+  /* Cross-browser scrollbar hiding */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+:deep(textarea.code-block::-webkit-scrollbar) {
+  display: none; /* Chrome/Safari */
+  width: 0;
+  height: 0;
 }
 
 :deep(textarea.code-block:focus),
