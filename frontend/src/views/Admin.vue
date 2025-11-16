@@ -17,15 +17,41 @@ interface Problem {
   assignment: string
 }
 
+interface User {
+  id: number
+  name: string
+  score: number
+  zauth_id: number | null
+  picture_url: string | null
+  created_at: string
+  total_submissions: number
+  correct_submissions: number
+}
+
+interface Submission {
+  id: number
+  problem_id: number
+  problem_name: string
+  problem_points: number
+  submission_time: string
+  submission_correct: boolean
+}
+
 const tests = ref<TestCase[]>([])
 const problems = ref<Problem[]>([])
+const users = ref<User[]>([])
+const userSubmissions = ref<Submission[]>([])
+const selectedUserId = ref<number | null>(null)
+const selectedUserName = ref<string>('')
+const editingUserId = ref<number | null>(null)
+const userScoreEdit = ref(0)
 const isLoading = ref(true)
 const errorMessage = ref('')
 const filterProblemId = ref<number | null>(null)
 const filterPublic = ref<boolean | null>(null)
 const editingTest = ref<number | null>(null)
 const editingProblem = ref<number | null>(null)
-const activeTab = ref<'tests' | 'problems'>('tests')
+const activeTab = ref<'tests' | 'problems' | 'users'>('tests')
 const creatingTest = ref(false)
 const editForm = ref({
   input_data: '',
@@ -86,9 +112,160 @@ const fetchAllProblems = async () => {
   }
 }
 
+const fetchAllUsers = async () => {
+  try {
+    isLoading.value = true
+    errorMessage.value = ''
+    
+    const response = await fetch('http://localhost:8000/api/users/all/')
+    const data = await response.json()
+    
+    if (data.success) {
+      users.value = data.users
+    } else {
+      errorMessage.value = data.error || 'Failed to load users'
+    }
+  } catch (error) {
+    errorMessage.value = 'Failed to connect to the backend. Make sure the server is running.'
+    console.error('Error fetching users:', error)
+  } finally {
+    isLoading.value = false
+  }
+}
+
+const fetchUserSubmissions = async (userId: number, userName: string) => {
+  try {
+    isLoading.value = true
+    errorMessage.value = ''
+    selectedUserId.value = userId
+    selectedUserName.value = userName
+    
+    const response = await fetch(`http://localhost:8000/api/users/${userId}/submissions/`)
+    const data = await response.json()
+    
+    if (data.success) {
+      userSubmissions.value = data.submissions
+    } else {
+      errorMessage.value = data.error || 'Failed to load user submissions'
+    }
+  } catch (error) {
+    errorMessage.value = 'Failed to connect to the backend. Make sure the server is running.'
+    console.error('Error fetching user submissions:', error)
+  } finally {
+    isLoading.value = false
+  }
+}
+
+const closeUserSubmissions = () => {
+  selectedUserId.value = null
+  selectedUserName.value = ''
+  userSubmissions.value = []
+}
+
+const startEditingUser = (user: User) => {
+  editingUserId.value = user.id
+  userScoreEdit.value = user.score
+}
+
+const cancelEditingUser = () => {
+  editingUserId.value = null
+}
+
+const saveUserScore = async (userId: number) => {
+  try {
+    const response = await fetch(`http://localhost:8000/api/users/${userId}/`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        score: userScoreEdit.value
+      })
+    })
+
+    const data = await response.json()
+
+    if (data.success) {
+      // Update the user in the local array
+      const index = users.value.findIndex(u => u.id === userId)
+      if (index !== -1 && users.value[index]) {
+        users.value[index].score = data.user.score
+      }
+      editingUserId.value = null
+      errorMessage.value = ''
+    } else {
+      errorMessage.value = data.error || 'Failed to update user score'
+    }
+  } catch (error) {
+    errorMessage.value = 'Failed to connect to the backend'
+    console.error('Error saving user score:', error)
+  }
+}
+
+const toggleSubmissionStatus = async (submission: Submission) => {
+  try {
+    const response = await fetch(`http://localhost:8000/api/submissions/${submission.id}/`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        submission_correct: !submission.submission_correct
+      })
+    })
+
+    const data = await response.json()
+
+    if (data.success) {
+      // Update the submission in the local array
+      const index = userSubmissions.value.findIndex(s => s.id === submission.id)
+      if (index !== -1 && userSubmissions.value[index]) {
+        userSubmissions.value[index].submission_correct = data.submission.submission_correct
+      }
+      errorMessage.value = ''
+    } else {
+      errorMessage.value = data.error || 'Failed to update submission status'
+    }
+  } catch (error) {
+    errorMessage.value = 'Failed to connect to the backend'
+    console.error('Error toggling submission status:', error)
+  }
+}
+
+const deleteSubmission = async (submissionId: number) => {
+  if (!confirm('Are you sure you want to delete this submission? This action cannot be undone.')) {
+    return
+  }
+
+  try {
+    const response = await fetch(`http://localhost:8000/api/submissions/${submissionId}/delete/`, {
+      method: 'DELETE',
+      credentials: 'include'
+    })
+
+    const data = await response.json()
+
+    if (data.success) {
+      const index = userSubmissions.value.findIndex(s => s.id === submissionId)
+      if (index !== -1) {
+        userSubmissions.value.splice(index, 1)
+      }
+      errorMessage.value = ''
+    } else {
+      errorMessage.value = data.error || 'Failed to delete submission'
+    }
+  } catch (error) {
+    errorMessage.value = 'Failed to connect to the backend'
+    console.error('Error deleting submission:', error)
+  }
+}
+
 onMounted(() => {
   fetchAllTests()
   fetchAllProblems()
+  fetchAllUsers()
 })
 
 const filteredTests = computed(() => {
@@ -374,6 +551,13 @@ export default {
         >
           📝 Problems
         </button>
+        <button 
+          @click="activeTab = 'users'" 
+          :class="{ active: activeTab === 'users' }"
+          class="tab-btn"
+        >
+          👥 Users
+        </button>
       </div>
 
       <!-- Tests Tab -->
@@ -586,6 +770,126 @@ export default {
 
           <div v-if="problems.length === 0" class="empty-state">
             <p>No problems found.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Users Tab -->
+      <div v-if="activeTab === 'users'">
+        <!-- Stats -->
+        <div class="stats-section">
+          <div class="stat-card">
+            <div class="stat-value">{{ users.length }}</div>
+            <div class="stat-label">Total Users</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">{{ users.reduce((sum: number, u: User) => sum + u.total_submissions, 0) }}</div>
+            <div class="stat-label">Total Submissions</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">{{ users.reduce((sum: number, u: User) => sum + u.correct_submissions, 0) }}</div>
+            <div class="stat-label">Correct Submissions</div>
+          </div>
+        </div>
+
+        <!-- Loading State -->
+        <div v-if="isLoading" class="loading-container">
+          <div class="loading-spinner">🔄 Loading users...</div>
+        </div>
+
+        <!-- User Submissions View -->
+        <div v-else-if="selectedUserId !== null" class="submissions-view">
+          <div class="submissions-header">
+            <h3>📋 Submissions for {{ selectedUserName }}</h3>
+            <button @click="closeUserSubmissions" class="back-btn">← Back to Users</button>
+          </div>
+
+          <div v-if="userSubmissions.length === 0" class="empty-state">
+            <p>No submissions found for this user.</p>
+          </div>
+
+          <div v-else class="submissions-list">
+            <div class="list-header">
+              <span>ID</span>
+              <span>Problem</span>
+              <span>Points</span>
+              <span>Status</span>
+              <span>Submitted</span>
+              <span>Actions</span>
+            </div>
+
+            <div v-for="submission in userSubmissions" :key="submission.id" class="submission-item">
+              <div class="submission-id">{{ submission.id }}</div>
+              <div class="submission-problem">{{ submission.problem_name }}</div>
+              <div class="submission-points">{{ submission.problem_points }} pts</div>
+              <div class="submission-status">
+                <button 
+                  @click="toggleSubmissionStatus(submission)" 
+                  class="status-btn" 
+                  :class="submission.submission_correct ? 'btn-correct' : 'btn-incorrect'"
+                >
+                  {{ submission.submission_correct ? '✅ Correct' : '❌ Incorrect' }}
+                </button>
+              </div>
+              <div class="submission-time">{{ new Date(submission.submission_time).toLocaleString() }}</div>
+              <div class="submission-actions">
+                <button @click="deleteSubmission(submission.id)" class="delete-btn">🗑️ Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Users List -->
+        <div v-else class="users-list">
+          <div class="list-header">
+            <span>ID</span>
+            <span>Name</span>
+            <span>Score</span>
+            <span>Submissions</span>
+            <span>Correct</span>
+            <span>Joined</span>
+            <span>Actions</span>
+          </div>
+
+          <div v-for="user in users" :key="user.id" class="user-item">
+            <template v-if="editingUserId === user.id">
+              <!-- Edit Mode -->
+              <div class="user-id">{{ user.id }}</div>
+              <div class="user-name">
+                <img v-if="user.picture_url" :src="user.picture_url" :alt="user.name" class="user-avatar">
+                <span>{{ user.name }}</span>
+              </div>
+              <div class="user-score edit-mode">
+                <input v-model.number="userScoreEdit" type="number" class="score-input" placeholder="Score">
+              </div>
+              <div class="user-submissions">{{ user.total_submissions }}</div>
+              <div class="user-correct">{{ user.correct_submissions }}</div>
+              <div class="user-joined">{{ new Date(user.created_at).toLocaleDateString() }}</div>
+              <div class="user-actions">
+                <button @click="saveUserScore(user.id)" class="save-btn">💾 Save</button>
+                <button @click="cancelEditingUser" class="cancel-btn">❌ Cancel</button>
+              </div>
+            </template>
+            <template v-else>
+              <!-- View Mode -->
+              <div class="user-id">{{ user.id }}</div>
+              <div class="user-name">
+                <img v-if="user.picture_url" :src="user.picture_url" :alt="user.name" class="user-avatar">
+                <span>{{ user.name }}</span>
+              </div>
+              <div class="user-score">{{ user.score }}</div>
+              <div class="user-submissions">{{ user.total_submissions }}</div>
+              <div class="user-correct">{{ user.correct_submissions }}</div>
+              <div class="user-joined">{{ new Date(user.created_at).toLocaleDateString() }}</div>
+              <div class="user-actions">
+                <button @click="startEditingUser(user)" class="edit-btn">✏️ Edit</button>
+                <button @click="fetchUserSubmissions(user.id, user.name)" class="view-btn">👁️ View</button>
+              </div>
+            </template>
+          </div>
+
+          <div v-if="users.length === 0" class="empty-state">
+            <p>No users found.</p>
           </div>
         </div>
       </div>
@@ -1276,5 +1580,291 @@ export default {
     color: rgba(255, 255, 255, 0.7);
     margin-right: 0.5rem;
   }
+}
+
+/* Users Tab Styles */
+.users-list {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.users-list .list-header {
+  display: grid;
+  grid-template-columns: 50px 180px 90px 100px 90px 120px 200px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  font-weight: bold;
+  color: white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 0.75rem;
+}
+
+.user-item {
+  display: grid;
+  grid-template-columns: 50px 180px 90px 100px 90px 120px 200px;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+  align-items: center;
+}
+
+.user-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.user-item:last-child {
+  border-bottom: none;
+}
+
+.user-id {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #4facfe;
+}
+
+.user-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(79, 172, 254, 0.5);
+}
+
+.user-score {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #43e97b;
+}
+
+.user-submissions,
+.user-correct,
+.user-joined {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.user-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.view-btn {
+  background: rgba(79, 172, 254, 0.2);
+  border: 1px solid rgba(79, 172, 254, 0.5);
+  color: #4facfe;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.view-btn:hover {
+  background: rgba(79, 172, 254, 0.3);
+  transform: translateY(-1px);
+}
+
+.score-input {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 0.5rem;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.score-input:focus {
+  outline: none;
+  border-color: #4facfe;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.submissions-view {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.submissions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.submissions-header h3 {
+  color: white;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.back-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.submissions-list {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.submission-item {
+  display: grid;
+  grid-template-columns: 50px 180px 90px 110px 160px 130px;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+  align-items: center;
+}
+
+.submission-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.submission-item:last-child {
+  border-bottom: none;
+}
+
+.submission-id {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #4facfe;
+}
+
+.submission-problem {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.submission-points {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: #43e97b;
+  font-weight: 600;
+}
+
+.submission-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.btn-correct {
+  background: rgba(67, 233, 123, 0.2);
+  border: 1px solid rgba(67, 233, 123, 0.5);
+  color: #43e97b;
+}
+
+.btn-correct:hover {
+  background: rgba(67, 233, 123, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-incorrect {
+  background: rgba(255, 107, 107, 0.2);
+  border: 1px solid rgba(255, 107, 107, 0.5);
+  color: #ff6b6b;
+}
+
+.btn-incorrect:hover {
+  background: rgba(255, 107, 107, 0.3);
+  transform: translateY(-1px);
+}
+
+.badge-correct {
+  background: rgba(67, 233, 123, 0.2);
+  border: 1px solid rgba(67, 233, 123, 0.5);
+  color: #43e97b;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.badge-incorrect {
+  background: rgba(255, 107, 107, 0.2);
+  border: 1px solid rgba(255, 107, 107, 0.5);
+  color: #ff6b6b;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.submission-time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.submission-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
 }
 </style>

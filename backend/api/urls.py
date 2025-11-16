@@ -19,6 +19,13 @@ urlpatterns = [
 
     path('test/', views.test_problem, name='test'),
     
+    # User management endpoints
+    path('users/all/', views.get_all_users, name='get_all_users'),
+    path('users/<int:user_id>/', views.update_user, name='update_user'),
+    path('users/<int:user_id>/submissions/', views.get_user_submissions, name='get_user_submissions'),
+    path('submissions/<int:submission_id>/', views.update_submission, name='update_submission'),
+    path('submissions/<int:submission_id>/delete/', views.delete_submission, name='delete_submission'),
+    
     # Authentication endpoints
     path('auth/login', auth_views.login, name='auth_login'),
     path('auth/callback', auth_views.callback, name='auth_callback'),

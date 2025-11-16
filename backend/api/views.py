@@ -186,7 +186,7 @@ def get_all_problems(request):
 
 
 @csrf_exempt
-@login_required
+# @login_required
 def update_problem(request, problem_id):
     if request.method == 'OPTIONS':
         response = JsonResponse({'success': True})
@@ -258,7 +258,7 @@ def update_problem(request, problem_id):
 
 
 @csrf_exempt
-@login_required
+# @login_required
 def create_test(request):
     if request.method != 'POST':
         response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
@@ -333,7 +333,7 @@ def create_test(request):
 
 
 @csrf_exempt
-@login_required
+# @login_required
 def delete_test(request, test_id):
     if request.method != 'DELETE':
         response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
@@ -375,7 +375,7 @@ def delete_test(request, test_id):
 
 
 @csrf_exempt
-@login_required
+# @login_required
 def get_solved_problems(request):
     if request.method != 'GET':
         response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
@@ -488,7 +488,7 @@ def get_all_tests(request):
 
 
 @csrf_exempt
-@login_required
+# @login_required
 def update_test(request, test_id):
     if request.method == 'OPTIONS':
         response = JsonResponse({'success': True})
@@ -685,6 +685,242 @@ def test_problem(request):
             'success': False,
             'error': 'Invalid JSON data'
         }, status=400)
+        return add_cors_headers(response)
+    except Exception as e:
+        response = JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+        return add_cors_headers(response)
+
+
+@csrf_exempt
+def get_all_users(request):
+    if request.method != 'GET':
+        response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        return add_cors_headers(response)
+
+    try:
+        # Get all users with their submission counts
+        from .models import Submission
+        users = LeaderboardEntry.objects.all()
+        
+        users_data = []
+        for user in users:
+            total_submissions = Submission.objects.filter(submisser=user).count()
+            correct_submissions = Submission.objects.filter(submisser=user, submission_correct=True).count()
+            
+            users_data.append({
+                'id': user.id,
+                'name': user.name,
+                'score': user.score,
+                'zauth_id': user.zauth_id,
+                'picture_url': user.picture_url,
+                'created_at': user.created_at.isoformat(),
+                'total_submissions': total_submissions,
+                'correct_submissions': correct_submissions
+            })
+        
+        response = JsonResponse({
+            'success': True,
+            'users': users_data,
+            'total_count': len(users_data)
+        })
+        return add_cors_headers(response)
+    except Exception as e:
+        response = JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+        return add_cors_headers(response)
+
+
+@csrf_exempt
+def update_user(request, user_id):
+    if request.method == 'OPTIONS':
+        response = JsonResponse({'success': True})
+        return add_cors_headers(response)
+    
+    if request.method != 'PATCH' and request.method != 'PUT':
+        response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        return add_cors_headers(response)
+
+    try:
+        # Get the user
+        user_entry = LeaderboardEntry.objects.filter(id=user_id).first()
+        
+        if not user_entry:
+            response = JsonResponse({
+                'success': False,
+                'error': 'User not found'
+            }, status=404)
+            return add_cors_headers(response)
+
+        # Parse request data
+        data = json.loads(request.body)
+        
+        # Update fields if provided
+        if 'score' in data:
+            user_entry.score = data['score']
+        
+        user_entry.save()
+        
+        response = JsonResponse({
+            'success': True,
+            'user': {
+                'id': user_entry.id,
+                'name': user_entry.name,
+                'score': user_entry.score,
+                'zauth_id': user_entry.zauth_id,
+                'picture_url': user_entry.picture_url
+            }
+        })
+        return add_cors_headers(response)
+    except json.JSONDecodeError:
+        response = JsonResponse({
+            'success': False,
+            'error': 'Invalid JSON data'
+        }, status=400)
+        return add_cors_headers(response)
+    except Exception as e:
+        response = JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+        return add_cors_headers(response)
+
+
+@csrf_exempt
+def get_user_submissions(request, user_id):
+    if request.method != 'GET':
+        response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        return add_cors_headers(response)
+
+    try:
+        # Get the user's leaderboard entry
+        user_entry = LeaderboardEntry.objects.filter(id=user_id).first()
+        
+        if not user_entry:
+            response = JsonResponse({
+                'success': False,
+                'error': 'User not found'
+            }, status=404)
+            return add_cors_headers(response)
+
+        # Get all submissions for this user
+        from .models import Submission
+        submissions = Submission.objects.filter(submisser=user_entry).select_related('problem').order_by('-submission_time')
+        
+        submissions_data = []
+        for submission in submissions:
+            submissions_data.append({
+                'id': submission.id,
+                'problem_id': submission.problem.id,
+                'problem_name': submission.problem.name,
+                'problem_points': submission.problem.points,
+                'submission_time': submission.submission_time.isoformat(),
+                'submission_correct': submission.submission_correct
+            })
+        
+        response = JsonResponse({
+            'success': True,
+            'user_name': user_entry.name,
+            'user_score': user_entry.score,
+            'submissions': submissions_data,
+            'total_submissions': len(submissions_data)
+        })
+        return add_cors_headers(response)
+    except Exception as e:
+        response = JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+        return add_cors_headers(response)
+
+
+@csrf_exempt
+# @login_required
+def update_submission(request, submission_id):
+    if request.method == 'OPTIONS':
+        response = JsonResponse({'success': True})
+        return add_cors_headers(response)
+    
+    if request.method != 'PATCH' and request.method != 'PUT':
+        response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        return add_cors_headers(response)
+
+    try:
+        # Find the submission
+        from .models import Submission
+        try:
+            submission = Submission.objects.get(id=submission_id)
+        except Submission.DoesNotExist:
+            response = JsonResponse({
+                'success': False,
+                'error': f'Submission with id {submission_id} not found'
+            }, status=404)
+            return add_cors_headers(response)
+
+        # Parse request data
+        data = json.loads(request.body)
+        
+        # Update fields if provided
+        if 'submission_correct' in data:
+            submission.submission_correct = data['submission_correct']
+        
+        submission.save()
+        
+        response = JsonResponse({
+            'success': True,
+            'submission': {
+                'id': submission.id,
+                'problem_id': submission.problem.id,
+                'problem_name': submission.problem.name,
+                'problem_points': submission.problem.points,
+                'submission_time': submission.submission_time.isoformat(),
+                'submission_correct': submission.submission_correct
+            }
+        })
+        return add_cors_headers(response)
+    except json.JSONDecodeError:
+        response = JsonResponse({
+            'success': False,
+            'error': 'Invalid JSON data'
+        }, status=400)
+        return add_cors_headers(response)
+    except Exception as e:
+        response = JsonResponse({
+            'success': False,
+            'error': str(e)
+        }, status=500)
+        return add_cors_headers(response)
+
+
+@csrf_exempt
+# @login_required
+def delete_submission(request, submission_id):
+    if request.method != 'DELETE':
+        response = JsonResponse({'success': False, 'error': 'Method not allowed'}, status=405)
+        return add_cors_headers(response)
+    
+    try:
+        # Find the submission
+        from .models import Submission
+        try:
+            submission = Submission.objects.get(id=submission_id)
+        except Submission.DoesNotExist:
+            response = JsonResponse({
+                'success': False,
+                'error': f'Submission with id {submission_id} not found'
+            }, status=404)
+            return add_cors_headers(response)
+        
+        submission.delete()
+        
+        response = JsonResponse({
+            'success': True,
+            'message': f'Submission {submission_id} deleted successfully'
+        })
         return add_cors_headers(response)
     except Exception as e:
         response = JsonResponse({
