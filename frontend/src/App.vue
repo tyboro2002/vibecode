@@ -144,7 +144,7 @@ watch(() => route.query.login, (newValue) => {
 
 <style scoped>
 .app {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   color: white;
 }
 
@@ -164,7 +164,7 @@ watch(() => route.query.login, (newValue) => {
   margin: 0;
   font-size: 1.8rem;
   font-weight: bold;
-  background: linear-gradient(45deg, #fff, #f0f0ff);
+  background: linear-gradient(45deg, #fff, #e0f0ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
