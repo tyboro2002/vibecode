@@ -1,3 +1,4 @@
+huggingface-hub
 torch
 accelerate
 transformers
