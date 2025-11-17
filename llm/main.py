@@ -6,21 +6,23 @@ from fastapi import FastAPI
 import torch
 from transformers import pipeline
 from pydantic import BaseModel
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
-pipe = None
+model_name = "Qwen/Qwen2.5-3B-Instruct"
+model = None
+tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
 
 app = FastAPI()
 
 @app.on_event("startup")
 def startup_event():
-    global pipe
+    global model
     print(f"Starting up... {datetime.now().isoformat()}")
     start = time.time()
-    pipe = pipeline(
-        "text-generation",
-        model="TinyLlama/TinyLlama-1.1B-Chat-v1.0",
-        dtype=torch.bfloat16,
-        device_map="auto",
+    model = AutoModelForCausalLM.from_pretrained(
+    	model_name,
+    	torch_dtype="auto",
+    	device_map="auto"
     )
     end = time.time()
 
@@ -31,18 +33,34 @@ class CodeRequest(BaseModel):
     prompt: str = ""
 @app.post("/")
 def generate_response(request: CodeRequest):
-    global pipe
+    global model
+    global tokenizer
     messages = [
         {
             "role": "system",
             "content": "answer in python markdown",
         },
-        {"role": "user", "content": request.prompt + "\n the current code is: " + request.code + "\n anwer in python markdown"},
+        {"role": "user", "content": request.prompt + "\n the current code is: " + request.code},
     ]
-    prompt = pipe.tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-    outputs = pipe(prompt, max_new_tokens=256, do_sample=True, temperature=0.7, top_k=50, top_p=0.95)
 
-    code = outputs[0].get("generated_text", "")
+    text = tokenizer.apply_chat_template(
+        messages,
+        tokenize=False,
+        add_generation_prompt=True
+    )
+    model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
+
+    generated_ids = model.generate(
+        **model_inputs,
+        max_new_tokens=512
+    )
+    generated_ids = [
+        output_ids[len(input_ids):] for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)
+    ]
+
+    code = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
+
+
     matches = re.findall(r"```python\n(.*?)\n```", code, flags=re.S)
     matches3 = re.findall(r"```\n(.*?)\n```", code, flags=re.S)
 
