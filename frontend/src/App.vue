@@ -89,7 +89,7 @@ watch(() => route.query.login, (newValue) => {
           Solver
         </router-link>
         <router-link 
-          v-if="isAuthenticated && currentUser?.username === 'tyboro'"
+          v-if="isAuthenticated && (currentUser?.username === 'tyboro' || currentUser?.username === 'runo')"
           to="/admin"
           :class="{ active: route.name === 'Admin' }"
           class="nav-btn admin-btn"

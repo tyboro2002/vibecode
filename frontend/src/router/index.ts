@@ -50,11 +50,11 @@ router.beforeEach(async (to, _from, next) => {
       return
     }
 
-    // Check if route requires admin access (tyboro only)
+    // Check if route requires admin access (tyboro or runo)
     if (to.meta.requiresAdmin) {
       const username = authStatus.user?.username
-      if (username !== 'tyboro') {
-        // Redirect to home if not tyboro
+      if (!['tyboro', 'runo'].includes(username ?? '')) {
+        // Redirect to home if not tyboro or runo
         next('/')
         return
       }
