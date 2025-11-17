@@ -600,8 +600,8 @@ const filteredTestResults = computed(() => {
 
             <div class="test-controls">
               <button @click="testCode" :disabled="isLoading || !selectedProblem" class="test-btn">
-                <span v-if="isLoading">⏳ Testing...</span>
-                <span v-else>🧪 Test Solution</span>
+                <span v-if="isLoading">⏳ Vibe Rating...</span>
+                <span v-else>🧪 Vibe Rate Solution</span>
               </button>
             </div>
 
