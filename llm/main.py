@@ -45,7 +45,7 @@ def generate_response(request: CodeRequest):
 
     text = tokenizer.apply_chat_template(
         messages,
-        tokenize=False,
+        tokenize=True,
         add_generation_prompt=True
     )
     model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
