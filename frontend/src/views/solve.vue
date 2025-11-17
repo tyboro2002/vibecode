@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, onMounted, onBeforeMount, computed} from 'vue'
+import { ref, onMounted, onBeforeMount, computed, nextTick, onUnmounted, watch } from 'vue'
 // Vue Python editor and runtime
 import { usePython } from 'usepython'
 import { PyStatus, PyCodeBlock } from 'vuepython'
@@ -33,6 +33,219 @@ const showOnlyFailed = ref(false)
 const selectedCode = ref('')
 const selectionStart = ref(0)
 const selectionEnd = ref(0)
+const editorElement = ref<HTMLTextAreaElement | null>(null)
+
+const editorCleanupFns: Array<() => void> = []
+
+const allowedControlKeys = new Set([
+  'ArrowLeft',
+  'ArrowRight',
+  'ArrowUp',
+  'ArrowDown',
+  'Home',
+  'End',
+  'PageUp',
+  'PageDown',
+  'Escape',
+  'CapsLock',
+  'Shift',
+  'Insert'
+])
+
+const findEditorElement = (): HTMLTextAreaElement | null => {
+  return document.querySelector(
+    '#script textarea, .pycode-block textarea, py-code-block textarea'
+  ) as HTMLTextAreaElement | null
+}
+
+const detachEditorListeners = () => {
+  while (editorCleanupFns.length) {
+    const dispose = editorCleanupFns.pop()
+    dispose?.()
+  }
+}
+
+const syncPyCodeFromEditor = () => {
+  if (!editorElement.value) return
+  const newValue = editorElement.value.value
+  if (pyCode.value !== newValue) {
+    pyCode.value = newValue
+  }
+}
+
+const insertTextAtCursor = (text: string) => {
+  const el = editorElement.value
+  if (!el) return
+  const start = el.selectionStart
+  const end = el.selectionEnd
+  const value = el.value
+  el.value = value.slice(0, start) + text + value.slice(end)
+  const newPos = start + text.length
+  el.setSelectionRange(newPos, newPos)
+  syncPyCodeFromEditor()
+}
+
+const handleKeyDown = (event: KeyboardEvent) => {
+  const el = editorElement.value
+  if (!el || event.target !== el) return
+
+  if (event.key === 'Backspace' || event.key === 'Delete') {
+    event.preventDefault()
+    return
+  }
+
+  // Prevent cutting text which would remove existing code
+  if ((event.ctrlKey || event.metaKey) && (event.key === 'x' || event.key === 'X')) {
+    event.preventDefault()
+    return
+  }
+
+  if (event.ctrlKey || event.metaKey || event.altKey) {
+    return
+  }
+
+  if (event.key === 'Tab') {
+    event.preventDefault()
+    insertTextAtCursor('\t')
+    return
+  }
+
+  if (event.key === 'Enter') {
+    event.preventDefault()
+    return
+  }
+
+  if (event.key === ' ') {
+    return
+  }
+
+  if (allowedControlKeys.has(event.key)) {
+    return
+  }
+
+  if (event.key.length === 1) {
+    event.preventDefault()
+  }
+}
+
+const handleBeforeInput = (event: InputEvent) => {
+  const el = editorElement.value
+  if (!el || event.target !== el) return
+
+  const disallow = () => {
+    event.preventDefault()
+  }
+
+  const richEvent = event as InputEvent & { dataTransfer?: DataTransfer | null }
+  const textData = event.data ?? richEvent.dataTransfer?.getData('text') ?? ''
+  const hasSelection = el.selectionStart !== el.selectionEnd
+
+  if (event.inputType.startsWith('delete') || event.inputType === 'historyUndo' || event.inputType === 'historyRedo') {
+    disallow()
+    return
+  }
+
+  if (event.inputType === 'insertText') {
+    if (!textData || /[^\t ]/.test(textData) || hasSelection) {
+      disallow()
+    }
+    return
+  }
+
+  if (
+    event.inputType === 'insertFromPaste' ||
+    event.inputType === 'insertFromDrop'
+  ) {
+    if (!/^[\t ]*$/.test(textData || '') || hasSelection) {
+      disallow()
+    }
+    return
+  }
+
+  if (
+    event.inputType === 'insertCompositionText' ||
+    event.inputType === 'insertParagraph' ||
+    event.inputType === 'insertLineBreak'
+  ) {
+    disallow()
+  }
+}
+
+const handlePaste = (event: ClipboardEvent) => {
+  const el = editorElement.value
+  if (!el || event.target !== el) return
+  const text = event.clipboardData?.getData('text') ?? ''
+  if (!/^[\t ]*$/.test(text)) {
+    event.preventDefault()
+  }
+}
+
+const handleCut = (event: ClipboardEvent) => {
+  const el = editorElement.value
+  if (!el || event.target !== el) return
+  event.preventDefault()
+}
+
+const handleInput = (event: Event) => {
+  if (event.target !== editorElement.value) return
+  syncPyCodeFromEditor()
+}
+
+const attachEditorListeners = (el: HTMLTextAreaElement) => {
+  const keydownListener = (event: Event) => handleKeyDown(event as KeyboardEvent)
+  const beforeInputListener = (event: Event) => handleBeforeInput(event as InputEvent)
+  const pasteListener = (event: Event) => handlePaste(event as ClipboardEvent)
+  const cutListener = (event: Event) => handleCut(event as ClipboardEvent)
+  const inputListener = (event: Event) => handleInput(event)
+
+  el.addEventListener('keydown', keydownListener)
+  el.addEventListener('beforeinput', beforeInputListener)
+  el.addEventListener('paste', pasteListener)
+  el.addEventListener('cut', cutListener)
+  el.addEventListener('input', inputListener)
+
+  editorCleanupFns.push(() => {
+    el.removeEventListener('keydown', keydownListener)
+    el.removeEventListener('beforeinput', beforeInputListener)
+    el.removeEventListener('paste', pasteListener)
+    el.removeEventListener('cut', cutListener)
+    el.removeEventListener('input', inputListener)
+  })
+
+  if (el.value !== pyCode.value) {
+    el.value = pyCode.value
+    el.setSelectionRange(pyCode.value.length, pyCode.value.length)
+  }
+}
+
+const ensureEditorReady = () => {
+  nextTick(() => {
+    const el = findEditorElement()
+    if (!el) {
+      return
+    }
+
+    if (editorElement.value !== el) {
+      detachEditorListeners()
+      editorElement.value = el
+      attachEditorListeners(el)
+    }
+  })
+}
+
+const syncEditorDisplay = () => {
+  nextTick(() => {
+    const el = editorElement.value
+    if (!el) return
+    if (el.value !== pyCode.value) {
+      const caret = Math.min(el.selectionStart, pyCode.value.length)
+      el.value = pyCode.value
+      el.setSelectionRange(caret, caret)
+    }
+  })
+}
+
+const getEditorCode = () => editorElement.value?.value ?? pyCode.value
 
 // Python runtime and example code for the editor
 const py = usePython()
@@ -103,6 +316,18 @@ onMounted(async () => {
   } catch (error) {
     console.error('Error fetching problems:', error)
   }
+
+  ensureEditorReady()
+})
+
+watch(pyCode, () => {
+  ensureEditorReady()
+  syncEditorDisplay()
+})
+
+onUnmounted(() => {
+  detachEditorListeners()
+  editorElement.value = null
 })
 
 // Submit function to send text to backend
@@ -117,27 +342,29 @@ const submitText = async () => {
 
   try {
     // Try to find the textarea within the py-code-block component
-    let editorElement = document.querySelector('#script textarea') as HTMLTextAreaElement
+    let textareaEl = editorElement.value || (document.querySelector('#script textarea') as HTMLTextAreaElement)
     
     // If not found, try common selectors for code editors
-    if (!editorElement) {
-      editorElement = document.querySelector('py-code-block textarea') as HTMLTextAreaElement
+    if (!textareaEl) {
+      textareaEl = document.querySelector('py-code-block textarea') as HTMLTextAreaElement
     }
-    if (!editorElement) {
-      editorElement = document.querySelector('.editor textarea') as HTMLTextAreaElement
+    if (!textareaEl) {
+      textareaEl = document.querySelector('.editor textarea') as HTMLTextAreaElement
     }
     
     let hasSelection = false
-    let codeToSend = pyCode.value
+    let codeToSend = getEditorCode()
     
-    if (editorElement) {
-      hasSelection = editorElement.selectionStart !== editorElement.selectionEnd
+    if (textareaEl) {
+      hasSelection = textareaEl.selectionStart !== textareaEl.selectionEnd
       
       if (hasSelection) {
-        selectedCode.value = editorElement.value.substring(editorElement.selectionStart, editorElement.selectionEnd)
-        selectionStart.value = editorElement.selectionStart
-        selectionEnd.value = editorElement.selectionEnd
+        selectedCode.value = textareaEl.value.substring(textareaEl.selectionStart, textareaEl.selectionEnd)
+        selectionStart.value = textareaEl.selectionStart
+        selectionEnd.value = textareaEl.selectionEnd
         codeToSend = selectedCode.value
+      } else {
+        codeToSend = textareaEl.value
       }
     } else {
       // Fallback: check if there's a window selection (for contenteditable)
@@ -179,6 +406,7 @@ const submitText = async () => {
         // Replace entire code
         pyCode.value = data.generated_code
       }
+      syncEditorDisplay()
     } else {
       errorMessage.value = data.error || 'An error occurred while processing the text.'
       // pyCode.value = 'Error processing text. Please try again.'
@@ -224,7 +452,9 @@ const testCode = async () => {
     return
   }
 
-  if (!pyCode.value.trim()) {
+  const currentCodeValue = getEditorCode()
+
+  if (!currentCodeValue.trim()) {
     errorMessage.value = 'Please write some code before testing.'
     return
   }
@@ -241,7 +471,7 @@ const testCode = async () => {
       credentials: 'include',
       body: JSON.stringify({
         problem_id: selectedProblem.value.id,
-        submission: pyCode.value,
+        submission: currentCodeValue,
       })
     })
 
