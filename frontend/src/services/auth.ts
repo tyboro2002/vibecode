@@ -1,7 +1,7 @@
 // Authentication Service for Zeus OAuth
 // Place this file in: frontend/src/services/auth.ts
 
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = 'http://192.168.0.107:8000/api';
 
 export interface User {
   username: string;

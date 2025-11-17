@@ -151,6 +151,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Vite dev server
     "http://localhost:3000",  # Alternative frontend port
+    "http://192.168.0.107:5173",  # Local network access
+    "http://192.168.0.107:3000",  # Local network alternative port
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -168,4 +170,6 @@ SESSION_COOKIE_DOMAIN = None
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://localhost:3000",
+    "http://192.168.0.107:5173",  # Local network access
+    "http://192.168.0.107:3000",  # Local network alternative port
 ]
