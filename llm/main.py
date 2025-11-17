@@ -7,8 +7,8 @@ import torch
 from transformers import pipeline
 from pydantic import BaseModel
 
+model_name = "meta-llama/Llama-3.2-1B-Instruct"
 pipe = None
-
 app = FastAPI()
 
 @app.on_event("startup")
@@ -18,7 +18,7 @@ def startup_event():
     start = time.time()
     pipe = pipeline(
         "text-generation",
-        model="TinyLlama/TinyLlama-1.1B-Chat-v1.0",
+        model=model_name,
         dtype=torch.bfloat16,
         device_map="auto",
     )
@@ -32,17 +32,17 @@ class CodeRequest(BaseModel):
 @app.post("/")
 def generate_response(request: CodeRequest):
     global pipe
+
     messages = [
         {
             "role": "system",
             "content": "answer in python markdown",
         },
-        {"role": "user", "content": request.prompt + "\n the current code is: " + request.code + "\n anwer in python markdown"},
+        {"role": "user", "content": request.prompt + "\n the current code is: " + request.code},
     ]
-    prompt = pipe.tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-    outputs = pipe(prompt, max_new_tokens=256, do_sample=True, temperature=0.7, top_k=50, top_p=0.95)
 
-    code = outputs[0].get("generated_text", "")
+    code = pipe(messages, max_new_tokens=256)[0]["generated_text"][-1]['content']
+
     matches = re.findall(r"```python\n(.*?)\n```", code, flags=re.S)
     matches3 = re.findall(r"```\n(.*?)\n```", code, flags=re.S)
 
