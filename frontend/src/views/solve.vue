@@ -155,6 +155,12 @@ const submitText = async () => {
       }
     }
 
+    if (!selectedProblem.value) {
+      errorMessage.value = 'Please select a problem first.'
+      isLoading.value = false
+      return
+    }
+
     const response = await fetch('http://192.168.0.107:8000/api/submit/', {
       method: 'POST',
       headers: {
@@ -164,6 +170,7 @@ const submitText = async () => {
       body: JSON.stringify({
         prompt: inputText.value,
         code: codeToSend,
+        problem_id: selectedProblem.value.id,
       })
     })
 

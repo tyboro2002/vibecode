@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import requests
-from .models import LeaderboardEntry, Problem, TestCase
+from .models import LeaderboardEntry, Problem, TestCase, Submission
 from .utils import random_score_increase
 from .auth import login_required, get_current_user
 import json
@@ -584,6 +584,24 @@ def generate_code(request):
             'success': True,
             'generated_code': generated_code
         })
+
+        problem_id = data.get("problem_id")
+        problem = Problem.objects.get(id=problem_id)
+
+        user = get_current_user(request)
+        user_entry = get_or_create_user_leaderboard_entry(user)
+
+
+        # Create submission record
+        from .models import Submission
+        Submission.objects.create(
+            problem=problem,
+            submission_correct=False,
+            submisser=user_entry,
+            prompt=prompt,
+            response=generated_code
+        )
+
         return add_cors_headers(response)
     except json.JSONDecodeError:
         response = JsonResponse({

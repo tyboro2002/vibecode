@@ -30,6 +30,8 @@ class Submission(models.Model):
     submission_time = models.DateTimeField(auto_now_add=True)
     submission_correct = models.BooleanField(default=False)
     submisser = models.ForeignKey(LeaderboardEntry, on_delete=models.CASCADE)
+    prompt = models.TextField(blank=True, null=True)
+    response = models.TextField(blank=True, null=True)
 
 
 class TestCase(models.Model):
