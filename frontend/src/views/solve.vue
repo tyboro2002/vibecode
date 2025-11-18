@@ -57,7 +57,7 @@ onBeforeMount(async () => {
 // Fetch the problems from the backend on component mount
 onMounted(async () => {
   try {
-    const response = await fetch('http://localhost:8000/api/problems/all', {
+    const response = await fetch('http://192.168.0.107:8000/api/problems/all', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ onMounted(async () => {
 
     // Fetch solved problems
     try {
-      const solvedResponse = await fetch('http://localhost:8000/api/problems/solved/', {
+      const solvedResponse = await fetch('http://192.168.0.107:8000/api/problems/solved/', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -155,7 +155,7 @@ const submitText = async () => {
       }
     }
 
-    const response = await fetch('http://localhost:8000/api/submit/', {
+    const response = await fetch('http://192.168.0.107:8000/api/submit/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -233,7 +233,7 @@ const testCode = async () => {
   errorMessage.value = ''
 
   try {
-    const response = await fetch('http://localhost:8000/api/test/', {
+    const response = await fetch('http://192.168.0.107:8000/api/test/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

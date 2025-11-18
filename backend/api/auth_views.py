@@ -14,8 +14,8 @@ from .auth import (
     ZAUTH_CONFIG
 )
 
-url = "http://localhost:5173"
-# url = "http://192.168.0.107:5173"
+# url = "http://localhost:5173"
+url = "http://192.168.0.107:5173"
 
 @csrf_exempt
 @require_http_methods(["GET", "POST"])

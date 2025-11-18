@@ -75,7 +75,7 @@ const fetchAllTests = async () => {
     isLoading.value = true
     errorMessage.value = ''
     
-    const response = await fetch('http://localhost:8000/api/tests/all/')
+    const response = await fetch('http://192.168.0.107:8000/api/tests/all/')
     const data = await response.json()
     
     if (data.success) {
@@ -96,7 +96,7 @@ const fetchAllProblems = async () => {
     isLoading.value = true
     errorMessage.value = ''
     
-    const response = await fetch('http://localhost:8000/api/problems/all/')
+    const response = await fetch('http://192.168.0.107:8000/api/problems/all/')
     const data = await response.json()
     
     if (data.success) {
@@ -117,7 +117,7 @@ const fetchAllUsers = async () => {
     isLoading.value = true
     errorMessage.value = ''
     
-    const response = await fetch('http://localhost:8000/api/users/all/')
+    const response = await fetch('http://192.168.0.107:8000/api/users/all/')
     const data = await response.json()
     
     if (data.success) {
@@ -140,7 +140,7 @@ const fetchUserSubmissions = async (userId: number, userName: string) => {
     selectedUserId.value = userId
     selectedUserName.value = userName
     
-    const response = await fetch(`http://localhost:8000/api/users/${userId}/submissions/`)
+    const response = await fetch(`http://192.168.0.107:8000/api/users/${userId}/submissions/`)
     const data = await response.json()
     
     if (data.success) {
@@ -173,7 +173,7 @@ const cancelEditingUser = () => {
 
 const saveUserScore = async (userId: number) => {
   try {
-    const response = await fetch(`http://localhost:8000/api/users/${userId}/`, {
+    const response = await fetch(`http://192.168.0.107:8000/api/users/${userId}/`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -205,7 +205,7 @@ const saveUserScore = async (userId: number) => {
 
 const toggleSubmissionStatus = async (submission: Submission) => {
   try {
-    const response = await fetch(`http://localhost:8000/api/submissions/${submission.id}/`, {
+    const response = await fetch(`http://192.168.0.107:8000/api/submissions/${submission.id}/`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -240,7 +240,7 @@ const deleteSubmission = async (submissionId: number) => {
   }
 
   try {
-    const response = await fetch(`http://localhost:8000/api/submissions/${submissionId}/delete/`, {
+    const response = await fetch(`http://192.168.0.107:8000/api/submissions/${submissionId}/delete/`, {
       method: 'DELETE',
       credentials: 'include'
     })
@@ -299,7 +299,7 @@ const clearFilters = () => {
 
 const toggleVisibility = async (test: TestCase) => {
   try {
-    const response = await fetch(`http://localhost:8000/api/tests/${test.id}/`, {
+    const response = await fetch(`http://192.168.0.107:8000/api/tests/${test.id}/`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -350,7 +350,7 @@ const saveEdit = async (testId: number) => {
       return
     }
 
-    const response = await fetch(`http://localhost:8000/api/tests/${testId}/`, {
+    const response = await fetch(`http://192.168.0.107:8000/api/tests/${testId}/`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -411,7 +411,7 @@ const createTest = async () => {
       return
     }
 
-    const response = await fetch('http://localhost:8000/api/tests/create/', {
+    const response = await fetch('http://192.168.0.107:8000/api/tests/create/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -446,7 +446,7 @@ const deleteTest = async (testId: number) => {
   }
 
   try {
-    const response = await fetch(`http://localhost:8000/api/tests/${testId}/delete/`, {
+    const response = await fetch(`http://192.168.0.107:8000/api/tests/${testId}/delete/`, {
       method: 'DELETE',
       credentials: 'include'
     })
@@ -483,7 +483,7 @@ const cancelEditingProblem = () => {
 
 const saveProblemEdit = async (problemId: number) => {
   try {
-    const response = await fetch(`http://localhost:8000/api/problems/${problemId}/`, {
+    const response = await fetch(`http://192.168.0.107:8000/api/problems/${problemId}/`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

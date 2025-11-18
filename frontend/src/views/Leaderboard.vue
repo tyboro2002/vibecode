@@ -36,7 +36,7 @@ const fetchLeaderboard = async () => {
     isLoading.value = true
     errorMessage.value = ''
     
-    const response = await fetch('http://localhost:8000/api/leaderboard/')
+    const response = await fetch('http://192.168.0.107:8000/api/leaderboard/')
     const data = await response.json()
     
     if (data.success) {
@@ -61,7 +61,7 @@ const fetchUserSolvedProblems = async (userId: number, userName: string) => {
     showModal.value = true
     selectedUserData.value = null
     
-    const response = await fetch(`http://localhost:8000/api/users/${userId}/solved-problems/`)
+    const response = await fetch(`http://192.168.0.107:8000/api/users/${userId}/solved-problems/`)
     const data = await response.json()
     
     if (data.success) {
