@@ -41,7 +41,7 @@ def generate_response(request: CodeRequest):
         {"role": "user", "content": request.prompt + "\n the current code is: " + request.code},
     ]
 
-    code = pipe(messages, max_new_tokens=256)[0]["generated_text"][-1]['content']
+    code = pipe(messages, max_new_tokens=512)[0]["generated_text"][-1]['content']
 
     matches = re.findall(r"```python\n(.*?)\n```", code, flags=re.S)
     matches3 = re.findall(r"```\n(.*?)\n```", code, flags=re.S)
