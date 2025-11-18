@@ -201,7 +201,7 @@ def update_problem(request, problem_id):
         user = get_current_user(request)
         username = user.get('username', '')
         
-        if username != 'tyboro':
+        if username != 'tyboro' or username != 'runo' :
             response = JsonResponse({
                 'success': False,
                 'error': 'Unauthorized - Admin access required'
@@ -267,7 +267,7 @@ def create_test(request):
     try:
         # # Admin check
         # user = get_current_user(request)
-        # if user.username != 'tyboro':
+        # if user.username != 'tyboro' or username != 'runo' :
         #     response = JsonResponse({
         #         'success': False,
         #         'error': 'Unauthorized - Admin access required'
@@ -342,7 +342,7 @@ def delete_test(request, test_id):
     try:
         # Admin check
         # user = get_current_user(request)
-        # if user.username != 'tyboro':
+        # if user.username != 'tyboro' or username != 'runo' :
         #     response = JsonResponse({
         #         'success': False,
         #         'error': 'Unauthorized - Admin access required'
@@ -503,7 +503,7 @@ def update_test(request, test_id):
         user = get_current_user(request)
         username = user.get('username', '')
         
-        # if username != 'tyboro':
+        # if username != 'tyboro' or username != 'runo' :
         #     response = JsonResponse({
         #         'success': False,
         #         'error': 'Unauthorized - Admin access required'
